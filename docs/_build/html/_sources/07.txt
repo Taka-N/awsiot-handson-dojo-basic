@@ -1,0 +1,47 @@
+===================================
+その他の設定（オプション）
+===================================
+
+
+CloudWatch Logsの設定
+=====================
+
+AWS IoTのログはCloudWatch Logsで取得可能です。
+
+サービス:AWS IoTへ行き、"Settings"をクリックして下さい。
+
+
+.. image:: images/7-IoT-Settings.png
+
+|
+
+次に、[Update]をクリックしてください。
+
+.. image:: images/7-IoT-Settings-Update.png
+
+|
+
+次に[Create a new role]をクリック
+
+.. image:: images/7-IoT-Settings-Update-create-a-new-role.png
+
+|
+
+次に"IAM role name"欄に、"AWSIoTCloudWatchLog"と入力し、[Create a new role]をクリックする。
+
+.. image:: images/7-IoT-Settings-Update-create-a-new-role2.png
+
+|
+
+再度"IAM role name"欄から、"AWSIoTCloudWatchLog"を選択し、[Update role]をクリックする。
+"Successfully..."と表示されるので、"Log level"で"info"を選択し、[Save]をクリックする。
+
+.. image:: images/7-IoT-Settings-Update-save.png
+
+|
+
+サービス：CloudWatchに移動し、"ログ"というタブをクリックする。
+
+.. image:: images/7-CloudWatch-Log.png
+
+|

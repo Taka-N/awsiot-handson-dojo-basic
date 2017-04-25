@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>7. その他の設定（オプション） &mdash; awsiot-handson-basic v0.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '0.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="awsiot-handson-basic v0.0 documentation" href="index.html" />
+    <link rel="next" title="8. ハンズオン終了後" href="08.html" />
+    <link rel="prev" title="6. LEDのリモート制御" href="06.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="08.html" title="8. ハンズオン終了後"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="06.html" title="6. LEDのリモート制御"
+             accesskey="P">前へ</a> |</li>
+        <li><a href="index.html">awsiot-handson-basic v0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>7. その他の設定（オプション）<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="cloudwatch-logs">
+<h2>7.1. CloudWatch Logsの設定<a class="headerlink" href="#cloudwatch-logs" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>AWS IoTのログはCloudWatch Logsで取得可能です。</p>
+<p>サービス:AWS IoTへ行き、&#8221;Settings&#8221;をクリックして下さい。</p>
+<img alt="_images/7-IoT-Settings.png" src="_images/7-IoT-Settings.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>次に、[Update]をクリックしてください。</p>
+<img alt="_images/7-IoT-Settings-Update.png" src="_images/7-IoT-Settings-Update.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>次に[Create a new role]をクリック</p>
+<img alt="_images/7-IoT-Settings-Update-create-a-new-role.png" src="_images/7-IoT-Settings-Update-create-a-new-role.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>次に&#8221;IAM role name&#8221;欄に、&#8221;AWSIoTCloudWatchLog&#8221;と入力し、[Create a new role]をクリックする。</p>
+<img alt="_images/7-IoT-Settings-Update-create-a-new-role2.png" src="_images/7-IoT-Settings-Update-create-a-new-role2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>再度&#8221;IAM role name&#8221;欄から、&#8221;AWSIoTCloudWatchLog&#8221;を選択し、[Update role]をクリックする。
+&#8220;Successfully...&#8221;と表示されるので、&#8221;Log level&#8221;で&#8221;info&#8221;を選択し、[Save]をクリックする。</p>
+<img alt="_images/7-IoT-Settings-Update-save.png" src="_images/7-IoT-Settings-Update-save.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>サービス：CloudWatchに移動し、&#8221;ログ&#8221;というタブをクリックする。</p>
+<img alt="_images/7-CloudWatch-Log.png" src="_images/7-CloudWatch-Log.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">目次</a></h3>
+            <ul>
+<li><a class="reference external" href="#">7. その他の設定（オプション）</a><ul>
+<li><a class="reference external" href="#cloudwatch-logs">7.1. CloudWatch Logsの設定</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>前のトピックへ</h4>
+            <p class="topless"><a href="06.html"
+                                  title="前の章へ">6. LEDのリモート制御</a></p>
+            <h4>次のトピックへ</h4>
+            <p class="topless"><a href="08.html"
+                                  title="次の章へ">8. ハンズオン終了後</a></p>
+            <h3>このページ</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/07.txt"
+                     rel="nofollow">ソースコードを表示</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>クイック検索</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="検索" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="08.html" title="8. ハンズオン終了後"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="06.html" title="6. LEDのリモート制御"
+             >前へ</a> |</li>
+        <li><a href="index.html">awsiot-handson-basic v0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2017, ikeyoshy.
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.5 で生成しました。
+    </div>
+  </body>
+</html>
