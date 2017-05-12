@@ -1,33 +1,47 @@
-==================
- ハンズオン終了後
-==================
+===================================
+その他の設定（オプション）
+===================================
 
-ハンズオン終了後には以下の設定を削除してください。
 
-AWS IoTのリソース削除
+CloudWatch Logsの設定
 =====================
 
-AWS IoTの証明書、ポリシー、デバイスを削除するためには、削除前にアタッチされているリソースをデタッチする必要があります。（ルールは他のリソースとの関連性はありません）
+AWS IoTのログはCloudWatch Logsで取得可能です。トラブルシューティングなどに使用する事ができます。
 
-- マネージメントコンソールのサービスから[AWS IoT]を選択します。
-- 削除したい証明書を選択します。
-- 関連付けられているデバイスを選択し、[Detach]をクリックします。
-- 同様にポリシーもデタッチします。
+マネージメントコンソールのAWS IoTを開き、[Settings]を選択し、[Update]をクリックします。
 
-.. image:: images/8-detach-1.png
+
+.. image:: images/7-IoT-Settings.png
 
 |
 
-- 削除したいリソースを選択し、"Actions"のメニューから"Delete”を選択します。
+次に、[Update]をクリックしてください。
+
+.. image:: images/7-IoT-Settings-Update.png
 
 |
 
+次に[Create a new role]をクリック
 
-CloudFormationスタックの削除
-============================
+.. image:: images/7-IoT-Settings-Update-create-a-new-role.png
 
-- マネージメントコンソールのサービス一覧から[CloudFormation]をクリックします。
-- リストから"AWSIoTHandsonStack"のスタックを選択し、"Actions"から[Delete Stack]をクリックします。
+|
 
-.. image:: images/8-delete-cf-stack-1.png
+次に"IAM role name"欄に、"AWSIoTCloudWatchLog"と入力し、[Create a new role]をクリックする。
 
+.. image:: images/7-IoT-Settings-Update-create-a-new-role2.png
+
+|
+
+再度"IAM role name"欄から、"AWSIoTCloudWatchLog"を選択し、[Update role]をクリックする。
+"Successfully..."と表示されるので、"Log level"で"info"を選択し、[Save]をクリックする。
+
+.. image:: images/7-IoT-Settings-Update-save.png
+
+|
+
+サービス：CloudWatchに移動し、"ログ"というタブをクリックする。
+
+.. image:: images/7-CloudWatch-Log.png
+
+|

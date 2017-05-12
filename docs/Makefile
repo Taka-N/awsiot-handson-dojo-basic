@@ -85,17 +85,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/awsiot-handson-fundamentals.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/aws-iot-handson-dojo-basic.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/awsiot-handson-fundamentals.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/aws-iot-handson-dojo-basic.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/awsiot-handson-fundamentals"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/awsiot-handson-fundamentals"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/aws-iot-handson-dojo-basic"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/aws-iot-handson-dojo-basic"
 	@echo "# devhelp"
 
 epub:

@@ -1,52 +1,245 @@
 ===================
- LEDのリモート制御
+シナリオ1＋: センサーデータの送信
 ===================
 
-AWS CLIを実行し、Intel Edisonに接続されたLEDのON/OFFを行います。AWS IoTのShadowを利用してブラウザからEdisonのステータスの変更リクエストを送信し、Edisonは変更通知を元にLEDをOFF/ONします。また、完了後は最新のステータスをShadowにアップデートします。
+Intel Edisonに接続された照度センサー、温度センサーのデータをEdison上のプログラムで定期的にAWS IoTに送信します。AWS IoTではルールに基づきElasticSearch ServiceやFirehose経由でS3に保存します。WebブラウザからはElasticSearch Service上のKibanaにアクセスして保管されているデータをグラフ表示できます。
 
-.. image:: images/senario2.png
-
-
-プログラムの実行
-================
-
-Edison上で以下のプログラムを実行します。
-
-::
-   
-  root@edison:~# cd ~/awsiot-handson-fundamentals/led
-  root@edison:~/awsiot-handson-fundamentals/led# node main.js edison<任意の番号>
-
-|          
-
-マネージメントコンソールのAWS IoTを開き、メニューの"Registry" > "things" をクリックし、"edison<任
-意の番号>"をクリックします。
-
-左のメニュー画面から"Shadow"をクリックし、"Shadow document"の"Edit"をクリックして編集モードにします。
+.. image:: images/scenario1-plus.png
 
 |
 
-.. image:: images/6-led-1.png
-
-|   
-
-”Shadow state:"に以下のJSONを入力してください。入力が終わったら"Save"をクリックします。クリック後、EdisonのLEDが点灯することを確認してください。
+送信するセンサーデータは以下のJSONフォーマットとします。
 
 ::
-   
-   {
-     "reported": {
-       "led": "off"
-     },
-     "desired": {
-       "led": "on"
-     }
+
+  {
+     "timestamp": "2015-10-24T14:16:37.305Z", ← ISO8601形式
+     "illuminace": "300",                     ← 照度 アナログ値
+     "temperature": "200"                     ← 温度 アナログ値
    }
 
 |
 
-.. image:: images/6-led-2.png
+プログラムの実行
+=============
 
-|   
+本ハンズオン用に用意されているzipファイルを解凍したaws-iot-handson-fundamentalsの配下scenario1-nodejsにシナリオ1用のNode.jsプログラムがあります。プログラムを実行すると、5秒ごとにメッセージが送られ続けます。このシナリオ終了時までそのまま動かし続けます。ハンズオン終了時にプログラムを終了させる場合はCtrl+Cを押します。
 
-"desired"内にある"led"アイテムの値をoff/onのように記述を変更することでLEDの消灯/点灯を行なうことができます。
+::
+
+  # cd ~/aws-iot-handson-dojo-basic/scenario1/
+   # node main.js
+   Connected to Message Broker
+   Publishing: {"timestamp":"2016-03-27T09:29:19.725Z","illuminance":475,"temperature":467}
+   Publishing: {"timestamp":"2016-03-27T09:29:24.776Z","illuminance":476,"temperature":464}
+   Publishing: {"timestamp":"2016-03-27T09:29:29.837Z","illuminance":474,"temperature":466}
+   Publishing: {"timestamp":"2016-03-27T09:29:34.895Z","illuminance":475,"temperature":465}
+   Publishing: {"timestamp":"2016-03-27T09:29:39.956Z","illuminance":477,"temperature":463}
+
+|
+
+ElasticSearch Serviceへ保存するAWS IoT ルールを作成
+===============================================
+
+マネージメントコンソールのサービス一覧から[AWS IoT]を開き、左側のメニューから[Rules]を選択します。
+
+.. image:: images/6-create-rule-1.png
+
+|
+
+その後、[Create]をクリックします。
+
+スクリーンショットの赤枠で囲んだ部分について、以下の項目を入力し、[Add action]をクリックします。
+
+=================== ===============================
+設定項目                値
+=================== ===============================
+Name                  SaveToElasticsearch\_<参加者番号>
+Using SQL version     2016-03-23
+Attribute             *, topic(1) AS place, topic(2) AS position
+Topic Filter          place-a/position-<参加者番号>
+=================== ===============================
+
+.. image:: images/6-create-rule-2.png
+
+.. image:: images/6-create-rule-3.png
+
+|
+
+Select an action画面で、[Send messages to the **Amazon Elasticsearch Service**]を選択し、[Configure action]をクリックします。
+
+.. image:: images/6-create-rule-4.png
+
+.. image:: images/6-create-rule-5.png
+
+|
+
+[Configure action]画面にて、下記の項目を入力します。
+
+===========  ==============================================
+設定項目          値
+===========  ==============================================
+Domain name    awsioth-sensor-<英数字> （「2.2. CloudFormationを使ってElasticsearch Searchを自動作成」の最後で確認したElasticSearchDomainを選択）
+ID             ${timestamp()}
+Index          sensordata-<参加者番号>
+Type           scenario1
+===========  ==============================================
+
+.. image:: images/6-configure-action-1.png
+
+|
+
+"*IAM role name"横の[Create a new role]ボタンを押して、Elasticsearch Search用のロールを作成します。
+
+"*IAM role name" 欄に、SaveToElasticSearchRole-<参加者番号> を入力し、[Create a new role]ボタンを押します。
+
+新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-<参加者番号> を選択し、[Update role]ボタンを押し、最後に、[Add action]ボタンを押します。
+
+.. image:: images/6-configure-action-2.png
+
+|
+
+最後に、確認画面が出ますので、[Create rule]ボタンを押して、ルールを作成して下さい。
+
+.. image:: images/6-rules.png
+
+|
+
+Kibanaでデータを確認
+==================
+
+マネージメントコンソールのサービス一覧から[Elasticsearch Service]を開きます。「2.2. CloudFormationを使ってElasticsearch Searchを自動作成」の最後で確認したElasticSearchDomainの[Searchable documents]の数字が0より大きくなっていることを確認します。[Cluster health]が[Yellow]になっていのはシングルノード構成のためでありハンズオンでは問題ありません。
+
+.. image:: images/6-searchable_documents.png
+
+|
+
+[Domain]のリンクをクリックして開きます。
+
+.. image:: images/6-kibana-link.png
+
+|
+
+Kibanaで表示させるindexを指定します。以下の値を入力して、[Create]をクリックします。
+
+=========================  ==============================================
+設定項目                        値
+=========================  ==============================================
+  Index name or pattern        sensordata-<参加者番号>
+Time-field names               timestamp (リストから選択)
+=========================  ==============================================
+
+.. image:: images/6-kibana-configure.png
+
+|
+
+[illuminance], [temperature], [timestamp]のフィールドが表示されている事を確認します。
+
+.. image:: images/6-kibana-settings.png
+
+|
+
+メニューにある[Discover]をクリックし、データが届いている事を確認します。
+
+.. image:: images/6-kibana-discover.png
+
+|
+
+メニューにある[Visualize]をクリックし、グラフの種類として[Area chart]を選択します。
+
+.. image:: images/6-kibana-visualize.png
+
+|
+
+[From a new search]をクリックします。
+
+.. image:: images/6-kibana-new-search.png
+
+|
+
+データに[sensordata-<参加者番号>]が選択され、Y軸にサンプル数(Count)が設定されている事を確認し、X軸の設定を開始するために[X-Axis]をクリックします。
+
+.. image:: images/6-kibana-visualize-2.png
+
+|
+
+[Aggregation]に[Data Histogram]を選択し[Apply]をクリックすると、右側にグラフが表示されることを確認します。
+
+.. image:: images/6-kibana-visualize-3.png
+
+|
+
+保存ボタンをクリックし、[Title]に[Sensor Data - Sampling Count]と入力し、[Save]をクリックします。
+
+.. image:: images/6-kibana-visualize-4.png
+
+|
+
+保存されたら、Y軸の設定を表示し、[Aggregation]を[Average]に変更し、[Field]に[illuminance]を指定します。[Apply]をクリックしてグラフに適切なデータが表示されることを確認します。
+
+.. image:: images/6-kibana-visualize-5.png
+
+|
+
+保存ボタンをクリックし、[Title]を[Sensor Data - Illuminance]に変更し、[Save]をクリックします。
+
+.. image:: images/6-kibana-visualize-6.png
+
+|
+
+保存されたら、Y軸の設定を表示し、[Field]を[temperature]を変更します。[Apply]をクリックしてグラフに適切なデータが表示されることを確認します。
+
+.. image:: images/6-kibana-visualize-7.png
+
+|
+
+保存ボタンをクリックし、[Title]を[Sensor Data - Temperature]に変更し、[Save]をクリックします。
+
+.. image:: images/6-kibana-visualize-8.png
+
+|
+
+メニューにある[Dashboard]をクリックし、追加ボタンをクリックします。
+
+.. image:: images/6-kibana-dashboard-1.png
+
+|
+
+[Sensor Data - Sampling Count]をクリックし、下側にグラフが追加されたのを確認します。
+
+.. image:: images/6-kibana-dashboard-2.png
+
+|
+
+同様に、[Sensor Data - Illuminance]、[Sensor Data - Temperature]をクリックし、下側にグラフが追加されたのを確認します。確認したら、[＜]ボタンを押して閉じます。
+
+.. image:: images/6-kibana-dashboard-3.png
+
+|
+
+保存ボタンをクリックし、[Title]を[Sensor Data]と入力し、[Save]をクリックします。
+
+.. image:: images/6-kibana-dashboard-4.png
+
+|
+
+右上の[Last 15 minutes]をクリックすると、表示する期間や表示を自動更新する頻度を変更できます。
+
+.. image:: images/6-kibana-dashboard-5.png
+
+|
+
+グラフをマウスで操作して、位置やサイズを変更することもできます。
+
+.. image:: images/6-kibana-dashboard-6.png
+
+|
+
+Firehoseのストリームを作成
+=======================
+
+マネージメントコンソールのサービス一覧から[Kinesis]を開きます。[Firehoseに進む]をクリックします。
+
+.. image:: images/6-kinesis-firehose-1.png
+
+|

@@ -21,8 +21,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="top" title="awsiot-handson-basic v0.0 documentation" href="index.html" />
-    <link rel="next" title="2. インテルEdisonの設定" href="02.html" />
-    <link rel="prev" title="AWS IoT ハンズオン ~基本編~" href="index.html" /> 
+    <link rel="next" title="2. AWS環境の準備" href="02.html" />
+    <link rel="prev" title="AWS IoT ハンズオン Dojo ~基本編~" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,10 +32,10 @@
           <a href="genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="02.html" title="2. インテルEdisonの設定"
+          <a href="02.html" title="2. AWS環境の準備"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="index.html" title="AWS IoT ハンズオン ~基本編~"
+          <a href="index.html" title="AWS IoT ハンズオン Dojo ~基本編~"
              accesskey="P">前へ</a> |</li>
         <li><a href="index.html">awsiot-handson-basic v0.0 documentation</a> &raquo;</li> 
       </ul>
@@ -51,39 +51,38 @@
 <div class="section" id="id2">
 <h2>1.1. ハンズオンシナリオ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p><strong>シナリオ1: センサーデータの送信</strong></p>
-<p>EdisonからAWS IoTのトピックに照度センサーのデータを送信し、AWS IoTでルールに基づきKinesisへデータを渡し、Lambdaへ送り、Lambda関数で外部サービスへデータを送信します。</p>
-<img alt="_images/senario1.png" src="_images/senario1.png" />
+<p>Edisonに接続された照度センサー、温度センサーの情報をAWS IoTに送り、Webブラウザから確認できるようにします。また、一定の照度を下回るとE-Mailでアラートを受け取れるようにします。</p>
+<img alt="_images/scenario1.png" src="_images/scenario1.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>シナリオ2: アプリケーションからLEDをリモート制御</strong></p>
-<p>WebアプリケーションからEdisonに接続されたLEDの点灯/消灯の操作を行います。EdisonはAWS IoTのShadowのMQTTトピックをSubscribeしており、アプリケーションはShadowにコマンドを送信することでEdison側ではリアルタイムにコマンドを受信することができます。</p>
-<img alt="_images/senario2.png" src="_images/senario2.png" />
+<p><strong>シナリオ2: LEDをローカルからもリモートからも制御</strong></p>
+<p>Edisonに接続されたLEDの点灯/消灯をEdisonに接続されたボタンおよびWebブラウザの両方から行えるようにします。</p>
+<img alt="_images/scenario2.png" src="_images/scenario2.png" />
 </div>
 <div class="section" id="id3">
 <h2>1.2. 利用するデバイス、アプリケーション、サービス<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p><strong>インテルEdison</strong></p>
 <dl class="docutils">
-<dt>インテル社が提供する開発用のシングルボードコンピュータです。本ハンズオンではセンサーからのデータ取得、AWS IoTへのデータ送信に利用します。</dt>
+<dt>Intel社が提供する開発用のシングルボードコンピュータです。本ハンズオンではセンサーからのデータ取得してAWS IoTへのデータ送信、LEDの制御に利用します。</dt>
 <dd><a class="reference external" href="http://www.intel.co.jp/content/www/jp/ja/do-it-yourself/edison.html">http://www.intel.co.jp/content/www/jp/ja/do-it-yourself/edison.html</a></dd>
 </dl>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Groveスターターキット</strong></p>
+<p><strong>Speeed Studio Groveスターターキット</strong></p>
 <dl class="docutils">
 <dt>Aruduinoなどの開発用ボードに接続可能なセンサーやケーブルが同梱されたキット。本ハンズオンではスターターキットの中のセンサーを選んでIntel Edisonに接続し、センサーデータを取得します。</dt>
-<dd><a class="reference external" href="http://www.seeedstudio.com/document/Grove%20Starter%20Kit.pdf">http://www.seeedstudio.com/document/Grove%20Starter%20Kit.pdf</a>
-<a class="reference external" href="http://www.seeedstudio.com/wiki/GROVE_System">http://www.seeedstudio.com/wiki/GROVE_System</a></dd>
+<dd><a class="reference external" href="http://www.seeedstudio.com/document/Grove%20Starter%20Kit.pdf">http://www.seeedstudio.com/document/Grove%20Starter%20Kit.pdf</a> <a class="reference external" href="http://www.seeedstudio.com/wiki/GROVE_System">http://www.seeedstudio.com/wiki/GROVE_System</a></dd>
 </dl>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>AWSアカウント</strong></p>
-<p>AWSコマンドラインでiotおよびiot-dataを実行できるようにご利用のPCの設定をお願いします。
-インストールの手順はこちらのとおりです。</p>
-<blockquote>
-<a class="reference external" href="https://aws.amazon.com/jp/register-flow/">https://aws.amazon.com/jp/register-flow/</a></blockquote>
+<dl class="docutils">
+<dt>センサーデータの保存先、LEDのリモート制御に使用するAWSを利用・管理するためのアカウント。アカウント作成の手順はこちらのとおりです。</dt>
+<dd><a class="reference external" href="https://aws.amazon.com/jp/register-flow/">https://aws.amazon.com/jp/register-flow/</a></dd>
+</dl>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -96,16 +95,61 @@
 <div class="line"><br /></div>
 </div>
 <p><strong>Amazon DynamoDB</strong></p>
-<p>マネージド型のNoSQLサービスで、高速で予測可能なパフォーマンスとシームレスな拡張性が特長です。本ハンズオンでは照度センサーで測定したデータを格納する時系列データベースとして利用します。</p>
-<blockquote>
-<a class="reference external" href="https://aws.amazon.com/jp/dynamodb/">https://aws.amazon.com/jp/dynamodb/</a></blockquote>
+<dl class="docutils">
+<dt>マネージド型のNoSQLサービスで、高速で予測可能なパフォーマンスとシームレスな拡張性が特長です。本ハンズオンでは照度センサーで測定したデータを格納する時系列データベースとして利用します。</dt>
+<dd><a class="reference external" href="https://aws.amazon.com/jp/dynamodb/">https://aws.amazon.com/jp/dynamodb/</a></dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Amazon Elasticsearch Service</strong></p>
+<dl class="docutils">
+<dt>オープンソースのElasticsearchを利用できるマネージド型のサービスです。本ハンズオンではデータのストアとElasticsearchで利用できるKibanaを利用してデータの可視化に利用します。</dt>
+<dd><a class="reference external" href="https://aws.amazon.com/jp/elasticsearch-service/">https://aws.amazon.com/jp/elasticsearch-service/</a></dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Amazon SNS (Simple Notification Service)</strong></p>
+<dl class="docutils">
+<dt>メッセージを複数の方式でpub-subが行えるサービスです。本ハンズオンの1では簡易的なメール通知に利用します。</dt>
+<dd><a class="reference external" href="https://aws.amazon.com/jp/sns/">https://aws.amazon.com/jp/sns/</a></dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Amazon S3 (Simple Storage Service)</strong></p>
+<dl class="docutils">
+<dt>スケーラブルなクラウドストレージです。Webのコンテンツを配置してWebサーバとしても利用できます。本ハンズオンでは、HTMLファイル、画像ファイル、JavaScriptが保管された別途用意済みのS3を使用します。</dt>
+<dd><a class="reference external" href="https://aws.amazon.com/jp/sns/">https://aws.amazon.com/jp/sns/</a></dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Amazon Cognito</strong></p>
+<dl class="docutils">
+<dt>ユーザーアイデンティティおよびデータ同期の機能を提供するサービスです。本ハンズオンでは、Webブラウザからのアクセスに匿名ユーザとしてDynamoDBやLambdaにアクセスできる限定的な権限を付与するのに使用します。</dt>
+<dd><a class="reference external" href="https://aws.amazon.com/jp/cognito/">https://aws.amazon.com/jp/cognito/</a></dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>AWS Lambda</strong></p>
+<dl class="docutils">
+<dt>お客様のコードをイベント発生時やリクエストごとに実行できる管理不要なコンピューティングプラットフォームです。本ハンズオンでは、Webブラウザからのリクエストに応じてAWS IoTの情報を返したり、情報を伝えたりするのに使用します。</dt>
+<dd><a class="reference external" href="https://aws.amazon.com/jp/lambda/">https://aws.amazon.com/jp/lambda/</a></dd>
+</dl>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Amazon CloudWatch</strong></p>
-<p>AWSクラウドリソースとAWSで実行するアプリケーションのモニタリングサービスです。メトリクスの収集、ログファイルの収集が可能です。本ハンズオンではCloudWatch Logsを利用してAWS IoTのログを収集、閲覧します。</p>
-<blockquote>
-<a class="reference external" href="https://aws.amazon.com/jp/cloudwatch/">https://aws.amazon.com/jp/cloudwatch/</a></blockquote>
+<dl class="docutils">
+<dt>AWSクラウドリソースとAWSで実行するアプリケーションのモニタリングサービスです。メトリクスの収集、ログファイルの収集が可能です。本ハンズオンではCloudWatch Logsを利用してAWS IoTのログを収集、閲覧します。</dt>
+<dd><a class="reference external" href="https://aws.amazon.com/jp/cloudwatch/">https://aws.amazon.com/jp/cloudwatch/</a></dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </div>
 </div>
 
@@ -126,10 +170,10 @@
 
             <h4>前のトピックへ</h4>
             <p class="topless"><a href="index.html"
-                                  title="前の章へ">AWS IoT ハンズオン ~基本編~</a></p>
+                                  title="前の章へ">AWS IoT ハンズオン Dojo ~基本編~</a></p>
             <h4>次のトピックへ</h4>
             <p class="topless"><a href="02.html"
-                                  title="次の章へ">2. インテルEdisonの設定</a></p>
+                                  title="次の章へ">2. AWS環境の準備</a></p>
             <h3>このページ</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/01.txt"
@@ -159,10 +203,10 @@
           <a href="genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="02.html" title="2. インテルEdisonの設定"
+          <a href="02.html" title="2. AWS環境の準備"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="index.html" title="AWS IoT ハンズオン ~基本編~"
+          <a href="index.html" title="AWS IoT ハンズオン Dojo ~基本編~"
              >前へ</a> |</li>
         <li><a href="index.html">awsiot-handson-basic v0.0 documentation</a> &raquo;</li> 
       </ul>

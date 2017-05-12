@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>AWS IoT ハンズオン ~基本編~ &mdash; awsiot-handson-basic v0.0 documentation</title>
+    <title>AWS IoT ハンズオン Dojo ~基本編~ &mdash; awsiot-handson-basic v0.0 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -42,62 +42,65 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="aws-iot">
-<h1>AWS IoT ハンズオン ~基本編~<a class="headerlink" href="#aws-iot" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <div class="section" id="aws-iot-dojo">
+<h1>AWS IoT ハンズオン Dojo ~基本編~<a class="headerlink" href="#aws-iot-dojo" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>本書はAWS IoTおよびAWSの各サービスを利用してIoTの基本的なシステムを構築するためのハンズオン手順 について記述しております。</p>
 <div class="section" id="id1">
-<h2>最新情報<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>-AWS IoTの説明資料を公開しました。 <a class="reference external" href="http://bit.ly/1SrHtGf">http://bit.ly/1SrHtGf</a></p>
-</div>
-<div class="section" id="id2">
-<h2>前提条件<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>前提条件<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
-<li>インテルEdisonまたはRaspberry Piなどの機器で開発経験がある方</li>
+<li>Intel Edison Kit for Arduino、GROVE Starter Kit、電源アダプタ、USBケーブル</li>
+<li>Wi-Fiでインターネットに接続できる環境 (WPA-PSK)</li>
+<li>AWSアカウント</li>
+<li><dl class="first docutils">
+<dt>対象者として以下の方を想定</dt>
+<dd><ul class="first last">
 <li>IoTを活用したアプリケーション構築をご検討されているデベロッパーの方</li>
 <li>AWSクラウドを活用したシステム・アプリケーション開発に従事されている方</li>
 <li>UNIXの基本的なコマンドの利用経験がある方</li>
 </ul>
+</dd>
+</dl>
+</li>
+</ul>
 </div>
-<div class="section" id="id3">
-<h2>注意事項<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id2">
+<h2>注意事項<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
-<li>AWSのサービス利用料金は受講者の方にご負担いただきますよう、ご了承ください。</li>
+<li>複数の参加者で1つのAWSアカウントを共用する場合は「参加者番号」を 01 〜 99 で定めて、各自で重複しないようにして下さい。一人で1つのAWSアカウントを利用する場合は「参加者番号」は 01 としてください。</li>
+<li>AWSアカウントは作成後1年間ご利用頂ける無料枠があります。本ハンズオンはその通り実施頂き、ハンズオン終了後に削除することで無料利用枠の範囲で収まるようになっております。無料枠を越えたAWSサービスのご利用料金は受講者の方にご負担いただきますよう、ご了承ください。</li>
+<li>本番利用されているAWSアカウントでハンズオンを実施するのは避けて下さい。</li>
 <li>ハンズオンに必要な機材は貸出品となりますので、終了後は必ず返却をお願いします。</li>
 </ul>
 </div>
-<div class="section" id="id4">
-<h2>事前準備<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>以下のURLから必要なドライバをダウンロードし、インストールをお願いします。</p>
+<div class="section" id="id3">
+<h2>事前準備<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>EdisonにUSBでシリアル接続するのに必要なドライバを以下のURLからダウンロードし、インストールをお願いします。</p>
 <p><strong>Windowsの場合</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="https://s3-ap-northeast-1.amazonaws.com/toshiake-iot-handson/classmethod-devday/tools/win/IntelEdisonDriverSetup1.2.1.exe">Intel Edisonドライバのインストール</a></li>
 <li><a class="reference external" href="http://www.ftdichip.com/Drivers/CDM/CDM%20v2.10.00%20WHQL%20Certified.exe">Windows FTDI ドライバのインストール</a></li>
 </ul>
+<p>Windowsの設定によっては、インストール出来ない場合があります。
+その場合、インストーラーを&#8221;管理者として実行&#8221;してみて下さい。</p>
 <p><strong>MacOSの場合</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="https://s3-ap-northeast-1.amazonaws.com/toshiake-iot-handson/classmethod-devday/tools/mac/FTDIUSBSerialDriver_v2_2_18.dmg">MacOS FTDI ドライバのインストール</a></li>
 </ul>
 </div>
-<div class="section" id="id5">
-<h2>サンプルプログラム<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id4">
+<h2>サンプルプログラム<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>本ハンズオンで利用するサンプルプログラムです。Edison上で利用します。</p>
-<p><a class="reference external" href="https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-jp/awsiot-handson-fundamentals.zip">https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-jp/awsiot-handson-fundamentals.zip</a></p>
+<p><a class="reference external" href="https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojo-basic.zip">https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojo-basic.zip</a></p>
 </div>
-<div class="section" id="id6">
-<h2>よくあるトラブル<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p><strong>AWS IoTのupdate shadow CLIを実行時にSSLエラーとなる</strong></p>
-<p>python 2.7.10にアップデート、AWS CLIの再インストールでOK。</p>
-</div>
-<div class="section" id="id7">
-<h2>参考情報<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id5">
+<h2>参考情報<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="http://edison-lab.jp/flash/windows/">インテル Edisonの初期化とファームアップデート(Win)</a></li>
-<li><a class="reference external" href="http://edison-lab.jp/flash/mac/">インテル Edisonの初期化とファームアップデート(MacOS)</a></li>
+<li><a class="reference external" href="https://software.intel.com/en-us/iot/hardware/edison/downloads">Intel Edison Board Software Downloads</a></li>
+<li><a class="reference external" href="https://github.com/intel-iot-devkit/mraa">Intel libmraa (Low Level Skeleton Library for Communication on GNU/Linux platforms)</a></li>
+<li><a class="reference external" href="https://github.com/intel-iot-devkit/upm">Intel UPM (Useful Packages &amp; Modules) Sensor/Actuator repository for MRAA</a></li>
+<li><a class="reference external" href="https://github.com/aws/aws-iot-device-sdk-js">AWS IoT SDK for JavaScript</a></li>
+<li><a class="reference external" href="https://github.com/aws/aws-iot-device-sdk-embedded-C">AWS IoT Embedded-C SDK</a></li>
 </ul>
-</div>
-<div class="section" id="id8">
-<h2>ハッシュタグ<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>Twitterのハッシュタグはこちらになります。 <strong>#AWS_IoT_JP</strong></p>
 </div>
 </div>
 
@@ -109,15 +112,12 @@
         <div class="sphinxsidebarwrapper">
             <h3><a href="#">目次</a></h3>
             <ul>
-<li><a class="reference external" href="#">AWS IoT ハンズオン ~基本編~</a><ul>
-<li><a class="reference external" href="#id1">最新情報</a></li>
-<li><a class="reference external" href="#id2">前提条件</a></li>
-<li><a class="reference external" href="#id3">注意事項</a></li>
-<li><a class="reference external" href="#id4">事前準備</a></li>
-<li><a class="reference external" href="#id5">サンプルプログラム</a></li>
-<li><a class="reference external" href="#id6">よくあるトラブル</a></li>
-<li><a class="reference external" href="#id7">参考情報</a></li>
-<li><a class="reference external" href="#id8">ハッシュタグ</a></li>
+<li><a class="reference external" href="#">AWS IoT ハンズオン Dojo ~基本編~</a><ul>
+<li><a class="reference external" href="#id1">前提条件</a></li>
+<li><a class="reference external" href="#id2">注意事項</a></li>
+<li><a class="reference external" href="#id3">事前準備</a></li>
+<li><a class="reference external" href="#id4">サンプルプログラム</a></li>
+<li><a class="reference external" href="#id5">参考情報</a></li>
 </ul>
 </li>
 </ul>

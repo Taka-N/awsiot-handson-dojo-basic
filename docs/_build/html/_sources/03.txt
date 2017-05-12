@@ -1,137 +1,292 @@
-================
- ハンズオン準備
-================
+======================
+インテルEdisonの設定
+======================
 
-ハンズオンを始めるにあたり、事前の準備設定を行います。AWSマネージメン
-トコンソールにログインし、**東京リージョン** を選択してください。
+インテルEdisonの準備を行います。
 
-ハンズオン用CloudFormationのスタック作成
-========================================
+センサーの接続
+==============
 
-ハンズオンで利用するIAMユーザ、DynamoDBテーブルを作成を自動化するために、CloudFormationのスタックを作成します。IAMユーザはedisonの証明書を作成するための権限を与えるために作成します。また、DynamoDBテーブルはシナリオ１のセンサーデータの保存用のテーブルとなります。
-
-|
-
-マネージメントコンソールのAWSサービスで"CloudFormation"と入力しCloudFormationを選択します。
-
-.. image:: images/3-cf-1.png
+Grove Kitの中から照度センサーと温度センサー、ボタン、LED、LCDを取出します。
 
 |
 
-"Choose a template"から"Specify an Amazon S3 template URL"にチェックを入れ、以下のパスを入力し、[Next]をクリックします。
+照度センサーはこちらです。(LIGHTと書いてあります）
 
-https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-jp/awsiothandson.template
-
-|
-
-.. image:: images/3-cf-2.png
-
-"Stack Name"と"DynamoDBTableName"、"IAMUserName"に以下の値を入力し、
-[Next]をクリックします。
-(一つのAWSアカウントの複数のIAMユーザがいる場合、<任意の番号>は他のユー
-ザと被らないように設定してください)
-
-=================== ===============================
-項目                                設定
-=================== ===============================
-Stack Name                    awsiot-handson-stack<任意の番号>
-DynamoDBTableName   awsiot-handson-table<任意の番号>
-IAMUserName                awsiot-handson-user<任意の番号>
-=================== ===============================
-
-
-
-.. image:: images/3-cf-3-1.png
+.. image:: images/3-illuminance-1.png
 
 |
 
-"Options"で何も入力せずに[Next]をクリックします。
+温度センサーはこちらです。(裏にTemperature Sensorと書いてあります)
 
-.. image:: images/3-cf-4.png
+.. image:: images/3-temp-1.png
 
-|
-
-"Resource"の画面を下にスクロールし、"Capabilities"で"I acknowledge that this template..."にチェックを入れ、[Create]をクリックします。
-
-.. image:: images/3-cf-5.png
+.. image:: images/3-temp-2.png
 
 |
 
-Cloud Formationのスタックの一覧に自分が作成したスタックが表示されるのを確認します。Statusは"CREATE_IN_PROGRESS"から"CREATE_COMPLETE"になるのを確認します。
+ボタンはこちらです。(裏にButtonと書いてあります)
 
-.. image:: images/3-cf-6-1.png
-
-|           
-
-.. image:: images/3-cf-7-1.png
+.. image:: images/3-button.jpg
 
 |
 
-画面下の"Output"タブをクリックし、AccessKeyとSecretKeyが表示されていることを確認し、こちらの内容をメモ帳などにコピーしてください。
 
-.. image:: images/3-cf-8.png
+LEDは組み立て式となります。袋からLEDを取り出してボードに装着します。ピンが長い方が+です。+側の穴に刺します。
+
+.. image:: images/3-led-1.png
+
+.. image:: images/3-led-2.png
 
 |
 
-Edison用サンプルコードの準備
+LCDはこちらです。
+
+.. image:: images/3-lcd-1.png
+
+|
+
+次に、Arduino互換ボードをEdisonに装着します。(Arduino互換ボードの図)
+
+.. image:: images/3-arduino-1.png
+   :height: 585px
+   :width: 758px
+   :scale: 50%
+
+
+.. image:: images/3-arduino-2.png
+   :height: 718px
+   :width: 1061px
+   :scale: 50%
+
+
+|
+
+Arduino互換ボードにセンサーとLED、LCDを接続します。以下のように接続してください。
+
+|
+
+=============== ====================
+ポート              設定
+=============== ====================
+A0              照度センサー
+A1	            温度センサー
+D4	            ボタン
+D8              LED
+I2C(I2Cのどこでも)       LCD
+=============== ====================
+
+|
+
+.. image:: images/3-edison-1.png
+
+|
+
+
+シリアルポート接続
+==================
+
+Edisonへ接続します。まず、Edisonにシリアルポート経由で接続します。USBケーブルでPCとEdisonを接続し、シリアルコンソールを開きます。
+
+USBケーブルとACアダプタを図のように接続します。
+
+.. image:: images/usb-win.png
+
+ターミナルソフトでEdisonに接続してください。接続に必要な情報はこちらです。**特にBaud Rateにご注意ください!**
+
+========== =========================================================================
+設定       設定項目
+========== =========================================================================
+Port       EEdisonが接続されているUSBポート (Windowsはデバイスマネージャで、Macであれば”ls /dev/tty.usbserial-*”で確認)
+Baud Rate  115200
+Data Bits  8
+Stop Bits  1
+Parity     none
+========== =========================================================================
+
+Teratermをご利用の場合、メニューの[設定]-[シリアルポート]からスピードを”115200”に変更します。
+MacOSをご利用の場合は、ターミナルから以下のコマンドを入力することで接続が可能です。
+
+::
+
+   $ sudo screen /dev/tty.usbserial-XXXXXXX 115200
+
+または、
+
+::
+
+   $ sudo cu -s 115200 -l /dev/tty.usbserial-XXXXXXX
+    Password: ← MacOSのrootパスワードを入力
+|
+
+プロンプトが表示されれば接続成功です。loginのプロンプトで、ユーザ名”root”、パスワード”Password1”でログインします。
+
+::
+
+   edison login: root
+    Password: ******** ←パスワードを入力
+    root@edison1: ~#
+
+|
+
+WiFi設定
+========
+
+WiFiの設定を行います。ログイン後、**configure_edison --wifi** コマンドでSSIDとPSK(パスワード)の設定を実施してください。
+
+::
+
+   configure_edison --wifi
+
+    Configre Edison: WiFi Connection
+
+    Scanning: 8 seconds left..
+    1. Exit WiFi setup
+    2. Manually input a hidden SSID
+    3. Guest
+    4. xxxxxxxxx
+
+    Enter 0 to rescan for networks.
+    Enter 1 to exit.
+    Enter 2 to input a hidden network SSID.
+    Enter a number between 3 to N to choose one of the listed network SSIDs: ←Guestが表示されている番号を入力
+
+    Is Guest corrrect? [Y or N]: ←Yを入力
+
+    What is the network password?: ←WiFiのパスワードを入力
+    Initiating connection to Guest. Please wait...
+    Attempting to enable network access, please check 'wpa_cli status' after a minute to confirm.
+    Done. Please connect your laptop or PC to the same network as this device and go to http://x.x.x.x or http://edison.local in your browser.
+    (Doneが出力されたら成功）
+
+|
+
+WiFiのSSIDとPSKが明確な場合、下記のコマンドで一括設定できます。
+
+::
+
+   # wpa_passphrase __SSID__  ____PSK____ >/etc/wpa_supplicant/wpa_supplicant.conf
+
+|
+
+WiFiの接続が不安定な場合、再接続すれば回復することがあります。
+お使いのWiFiネットワークが5GHz帯をサポートしている場合は、安定して通信できますので、可能であれば2.4GHzではなく5GHzのWiFiを使用して下さい。
+
+インターネットに接続できるか確認します。IPアドレスが表示されれば成功です。
+
+::
+
+  # curl http://checkip.amazonaws.com/
+
+|
+
+接続の確認方法
+
+::
+
+  # iwconfig
+   wlan0    IEEE 802.11abgn  ESSID:"Guest"
+            Mode:Managed  Frequency:5.5 GHz  Access Point: 24:DE:C6:4C:CB:E9
+            Bit Rate=65 Mb/s   Tx-Power=31 dBm
+  ...
+
+|
+
+Frequency:X.X GHz のところで周波数を確認できます。
+
+再接続を行うには、下記を実行して下さい。
+
+::
+
+  # ifconfig wlan0 down      << WiFi OFF
+   # ifconfig wlan0 up        << WiFi ON
+
+|
+
+Edison環境のクリーンアップ
 ============================
 
-ハンズオンで利用するEdison用のサンプルコードのダウンロード、初期設定を行います。
+ハンズオンで利用するユーザーディレクトリのクリーンアップを行います。
+
+::
+
+    # cd
+     # rm -rf *
+     # rm -rf ./.aws
+     ＃rm -f ./.profile
 
 |
 
-Edison上で以下のコマンドを実行し、サンプルコードのダウンロード、zipファイルの解凍を行います。
+AWS SDKの準備
+========
+
+Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをインストールします。
 
 ::
-   
-   root@edison:~# wget https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-jp/awsiot-handson-fundamentals.zip
 
-   root@edison:~# unzip -q awsiot-handson-fundamentals.zip
+    # npm install aws-iot-device-sdk
+     # npm install aws-sdk
+     # npm install argv
+     # npm install moment
 
 |
 
-証明書を取得するためのスクリプトの設定を行います。解凍したサンプルコードのawsiot-handson-fundamentals/certsディレクトリに移動し、config.jsonの先ほどコピーしたCloudFormationのOutputのAccessKey/SecretKeyを入力します。
+環境変数の設定
+============
+
+参加者番号を設定します。以下の01となっている箇所を各自の参加者番号に変更して実行します。
 
 ::
-   
-   root@edison:~# cd awsiot-handson-fundamentals/certs
-   root@edison:~/awsiot-handson-fundamentals/certs# vi config.json
+
+    # echo "export HandsOnNumber=01" >> .profile
+     # source ./.profile
 
 |
 
+ハンズオン用コード、証明書の準備
+============================
+
+Edison上で以下のコマンドを実行し、本ハンズオン用に用意されているzipファイルのダウンロードと解凍を行います。
+
 ::
-   
-   {
-     "accessKeyId": "<your access key>",        ←<your access key>にAccessKeyを入力
-     "secretAccessKey": "<your secret key>",    ←<your secret key>にSecretKeyを入力
-     "region": "ap-northeast-1"
-   }
+
+    # cd
+     # wget https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojo-basic.zip
+     # unzip -q aws-iot-handson-dojo-basic.zip
 
 |
 
-証明書作成のスクリプトを実行します。certsディレクトリにはすでにプライ
-ベートキー(privatekey.pem)とCSR(cert.csr)が存在しており、CSRの内容を元
-に証明書を作成しています。出力されるcertificateIdの英数字文字列をメモ
-帳にコピーしてください。次章のAWS IoTの設定の中で証明書を特定するため
-に利用します。 **他のIAMユーザが作成した証明書が特定できなくなってしま
-う恐れがあるため、必ずメモを取得してください**
+デバイス用証明書の準備を行います。解凍して作成されたaws-iot-handson-dojo-basic/certsディレクトリに移動し、OpenSSLを使ってプライベートキー(privatekey.pem)と証明書リクエスト(cert.csr)を生成します。
 
 ::
-   
-   root@edison:~/awsiot-handson-fundamentals/certs# node create_cert.js
-   ~
-   { certificateArn: 'arn:aws:iot:ap-northeast-1:xxxxxxxxxxxxxx:cert/<英数字文字列>',
-  certificateId: '<英数字文字列>',
-  ~
- 
+
+    # cd ~/aws-iot-handson-dojo-basic/certs/
+     # openssl req -newkey rsa:2048 -new -nodes -keyout privatekey.pem -out cert.csr -subj "/CN=awshandson"
+
 |
 
-証明書ファイル(cert.pem)がcertsディレクトリ内に存在することを確認します。
-   
+スクリプトの実行に必要なモジュールのインストールし、「2. AWS環境の準備」の最後でコピーしたCloudFormationのOutputに表示されたAccessKeyとSecretKeyをパラメータに指定してスクリプトを実行します。AWS IoTで証明書の作成と登録が行われます。出力される「証明書ID」をメモ帳にコピーします。次章のAWS IoTの設定の中で証明書を特定するために利用します。
+
 ::
 
-   root@edison:~/awsiot-handson-fundamentals/certs# ls
-   cert.csr        config.json     node_modules    rootca.crt
-   cert.pem        create_cert.js  privatekey.pem
+    # node create_cert.js -a <your access key> -s <your secret key>
+     certificateId: '<証明書ID>'
 
+|
 
+デバイス用証明書ファイル(cert.crt)がcertsディレクトリ内に作成されたことを確認します。
+
+::
+
+    # ls
+     cert.csr         cert.pem         create_cert.js   get_endpoint.js  privatekey.pem
+
+|
+
+ルート証明書のダウンロードを行います。
+
+::
+
+  # wget https://www.symantec.com/content/en/us/enterprise/verisign/roots/VeriSign-Class%203-Public-Primary-Certification-Authority-G5.pem -O rootca.crt
+
+|

@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2. インテルEdisonの設定 &mdash; awsiot-handson-basic v0.0 documentation</title>
+    <title>2. AWS環境の準備 &mdash; awsiot-handson-basic v0.0 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="top" title="awsiot-handson-basic v0.0 documentation" href="index.html" />
-    <link rel="next" title="3. ハンズオン準備" href="03.html" />
+    <link rel="next" title="3. インテルEdisonの設定" href="03.html" />
     <link rel="prev" title="1. イントロダクション" href="01.html" /> 
   </head>
   <body>
@@ -32,7 +32,7 @@
           <a href="genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="03.html" title="3. ハンズオン準備"
+          <a href="03.html" title="3. インテルEdisonの設定"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
           <a href="01.html" title="1. イントロダクション"
@@ -46,148 +46,112 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="edison">
-<h1>2. インテルEdisonの設定<a class="headerlink" href="#edison" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>インテルEdisonの準備を行います。</p>
-<div class="section" id="id1">
-<h2>2.1. センサーの接続<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>Grove Kitの中から照度センサーとLED、LCDを取出してください。</p>
+  <div class="section" id="aws">
+<h1>2. AWS環境の準備<a class="headerlink" href="#aws" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="cloudformation">
+<h2>2.1. CloudFormationを使って自動作成<a class="headerlink" href="#cloudformation" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以下のハンズオンで必要なAWS IoT以外のサービスについてはCloudFormationを使って自動作成します。CloudFormationはスタックの中にこれらのリソースを作成し、一括して削除などができます。</p>
+<dl class="docutils">
+<dt>IAMユーザ</dt>
+<dd>Edisonで認証に利用する証明書の登録作業を実施する際に使用するユーザ</dd>
+<dt>IAMロール</dt>
+<dd>AWS IoTやブラウザがAWSサービスにアクセスするために使用するロール</dd>
+<dt>IAMポリシー</dt>
+<dd>AWS IoTやブラウザが使用する各ロールがどのサービスに、どのような操作を行って良いか定義するポリシー</dd>
+<dt>DynamoDBテーブル</dt>
+<dd>シナリオ１でセンサーデータを保存するためのテーブル</dd>
+<dt>SNSトピック/サブスクリプション</dt>
+<dd>シナリオ１でメール通知するためのSNS設定</dd>
+<dt>Lambdaファンクション</dt>
+<dd>WebブラウザからのリクエストでAWS IoTからデータを取得したり、データを設定するためのファンクション</dd>
+</dl>
+<p>マネージメントコンソールを開き、右上のリージョン一覧から[米国東部（バージニア北部）]を選択します。</p>
+<img alt="_images/2-regions-us&#64;2x.png" src="_images/2-regions-us&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>照度センサーはこちらです。(LIGHTと書いてあります）</p>
-<img alt="_images/2-illuminance-1.png" src="_images/2-illuminance-1.png" />
+<p>サービス一覧から[Cloud Formation]をクリックして開きます。[Create Stack]をクリックします。</p>
+<img alt="_images/2-cf-1&#64;2x.png" src="_images/2-cf-1&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>LEDは組み立て式となります。袋からLEDを取り出してボードに装着します。ピンが長い方が+となります。</p>
-<img alt="_images/2-led-1.png" src="_images/2-led-1.png" />
-<img alt="_images/2-led-2.png" src="_images/2-led-2.png" />
+<p>[Select Template]では[Choose a template]で[Specify an Amazon S3 template URL]を選択し、以下のパスを入力し、[Next]をクリックします。</p>
+<p><a class="reference external" href="https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojyo-basic.yml">https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojyo-basic.yml</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>LCDはこちらです。</p>
-<img alt="_images/2-lcd-1.png" src="_images/2-lcd-1.png" />
+<img alt="_images/2-cf-2&#64;2x.png" src="_images/2-cf-2&#64;2x.png" />
+<p>[Specify Details]で[Stack Name]に”AWSIoTHandsonStack-&lt;参加者番号&gt;”と入力し、[AdministratorEmail]にシナリオ１で使用するメールの通知先を入力します。そして[Next]をクリックします。</p>
+<img alt="_images/2-cf-3&#64;2x.png" src="_images/2-cf-3&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>次に、Arduino互換ボードをEdisonに装着します。(Arduino互換ボードの図)</p>
-<a class="reference external image-reference" href="_images/2-arduino-1.png"><img alt="_images/2-arduino-1.png" src="_images/2-arduino-1.png" style="width: 379.0px; height: 292.5px;" /></a>
-<a class="reference external image-reference" href="_images/2-arduino-2.png"><img alt="_images/2-arduino-2.png" src="_images/2-arduino-2.png" style="width: 530.5px; height: 359.0px;" /></a>
+<p>[Options]で何も入力せずに[Next]をクリックします。</p>
+<img alt="_images/2-cf-4&#64;2x.png" src="_images/2-cf-4&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Arduino互換ボードにセンサーとLED、LCDを接続します。以下のように接続してください。</p>
+<p>[Review]の画面を下にスクロールし、[Capabilities]で[I acknowledge that this template...]にチェックを入れ、[Create]をクリックします。</p>
+<img alt="_images/2-cf-5&#64;2x.png" src="_images/2-cf-5&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="43%" />
-<col width="57%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">ポート</th>
-<th class="head">設定</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>A0</td>
-<td>照度センサー</td>
-</tr>
-<tr><td>D8</td>
-<td>LED</td>
-</tr>
-<tr><td>I2C</td>
-<td>LCD</td>
-</tr>
-</tbody>
-</table>
+<p>Cloud Formationのスタックの一覧に作成したスタックが表示されるのを確認します。Statusが[CREATE_IN_PROGRESS]から[CREATE_COMPLETE]になるのを待ちます。</p>
+<img alt="_images/2-cf-6&#64;2x.png" src="_images/2-cf-6&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<img alt="_images/2-edison-1.png" src="_images/2-edison-1.png" />
+<img alt="_images/2-cf-7&#64;2x.png" src="_images/2-cf-7&#64;2x.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>画面下の[Output]タブを選択し、[Value]の内容を全てメモ帳などにコピーします。</p>
+<img alt="_images/2-cf-8&#64;2x.png" src="_images/2-cf-8&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h2>2.2. シリアルポート接続<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>Edisonへ接続します。まず、Edisonにシリアルポート経由で接続します。USBケーブルでPCとEdisonを接続し、シリアルコンソールを開きます。</p>
-<p><strong>Windowsの場合</strong></p>
-<p>USBケーブルとACアダプタを図のように接続してください。</p>
-<img alt="_images/usb-win.png" src="_images/usb-win.png" />
-<p><strong>MacOSの場合</strong></p>
-<p>USBケーブル2本を図のように接続してください。</p>
-<img alt="_images/usb-mac.png" src="_images/usb-mac.png" />
-<p>ターミナルソフトでEdisonに接続してください。接続に必要な情報はこちらです。<strong>特にBaud Rateにご注意ください!</strong></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="12%" />
-<col width="88%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">設定</th>
-<th class="head">設定項目</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>Port</td>
-<td>Edisonが接続されているUSBポート(Macであれば/dev/cu.usbserial-xxxx[FTDI])</td>
-</tr>
-<tr><td>Baud Rate</td>
-<td>115200</td>
-</tr>
-<tr><td>Data Bits</td>
-<td>8</td>
-</tr>
-<tr><td>Stop Bits</td>
-<td>1</td>
-</tr>
-<tr><td>Parity</td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
-<p>Teratermをご利用の場合、メニューの[設定]-[シリアルポート]からスピードを&#8221;115200&#8221;に変更するのを忘れないでください。</p>
-<p>MacOSをご利用の場合は、ターミナルから以下のコマンドを入力することで接続が可能です。</p>
-<div class="highlight-python"><pre>$ sudo screen /dev/tty.usbserial-XXXXXXX 115200</pre>
+<div class="section" id="cognito-identity">
+<h2>2.2. Cognito Identityを手動作成<a class="headerlink" href="#cognito-identity" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>シナリオ１，２で使用するWebアプリで匿名認証を行うために使用するCognito Identityを作成します。Cognitoは現時点でCloudFormationに対応していないため、手動で作成します。マネージメントコンソールのサービス一覧から[Cognito]をクリックして開き、[Manage Federated Identities]をクリックします。</p>
+<img alt="_images/2-cognito-1&#64;2x.png" src="_images/2-cognito-1&#64;2x.png" />
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
-<p>または、</p>
-<div class="highlight-python"><pre>$ sudo cu -s 115200 -l /dev/tty.usbserial-XXXXXXX
-Password: ← Macのユーザパスワードを入力</pre>
+<p>[Create new identity pool]の[Identity pool name]に”AWSIoTHandson &lt;参加者番号&gt;”と入力し、[Enable access to unauthenticated identities]にチェックを入れ、[Create Pool]をクリックします。</p>
+<img alt="_images/2-cognito-2&#64;2x.png" src="_images/2-cognito-2&#64;2x.png" />
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
-<p>プロンプトが表示されれば接続成功です。loginのプロンプトで、ユーザ名”root”、パスワード”Password1”でログインしてください。</p>
-<div class="highlight-python"><pre>edison login: root
-Password: ******** ←パスワードを入力
-root@edison1: ~#</pre>
+<p>[許可]をクリックします。</p>
+<img alt="_images/2-cognito-3&#64;2x.png" src="_images/2-cognito-3&#64;2x.png" />
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
+<p>以下のように[Get AWS Credetials]に表示されているIdentity Pool IDをメモ帳などにコピーします。</p>
+<img alt="_images/2-cognito-4-us&#64;2x.png" src="_images/2-cognito-4-us&#64;2x.png" />
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
-<div class="section" id="wifi">
-<h2>2.3. WiFi設定<a class="headerlink" href="#wifi" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>WiFiの設定を行います。ログイン後、<strong>configure_edison &#8211;wifi</strong> コマンドでSSIDとパスワードの設定を実施してください。</p>
-<div class="highlight-python"><pre>root@edison1: ~# configure_edison --wifi
-
-Configre Edison: WiFi Connection
-
-Scanning: 8 seconds left..
-1. Exit WiFi setup
-2. Manually input a hidden SSID
-3. Guest
-4. xxxxxxxxx
-
-Enter 0 to rescan for networks.
-Enter 1 to exit.
-Enter 2 to input a hidden network SSID.
-Enter a number between 3 to N to choose one of the listed network SSIDs: ←Guestが表示されている番号を入力
-
-Is Guest corrrect? [Y or N]: ←Yを入力
-
-What is the network password?: ←WiFiのパスワードを入力
-Initiating connection to Guest. Please wait...
-Attempting to enable network access, please check 'wpa_cli status' after a minute to confirm.
-Done. Please connect your laptop or PC to the same network as this device and go to http://x.x.x.x or http://edison.local in your browser.
-(Doneが出力されたら成功）</pre>
+<p>マネージメントコンソールのサービス一覧から[IAM]を開き、左側のメニューから[ロール]を選択します。ロールの一覧から”Cognito_AWSIoTHandson&lt;参加者番号&gt;Unauth_Role”をクリックします。</p>
+<img alt="_images/2-cognito-5&#64;2x.png" src="_images/2-cognito-5&#64;2x.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>[アクセス許可]のタブを選択し、管理ポリシーの[ポリシーのアタッチ]をクリックします。</p>
+<img alt="_images/2-cognito-6&#64;2x.png" src="_images/2-cognito-6&#64;2x.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>フィルタに”HandsonStack-&lt;参加者番号&gt;”と入力して絞込を行い、表示されたポリシー”AWSIoTHandsonStack-&lt;参加者番号&gt;-WebAppPolicy-&lt;英数字&gt;”を選択し、[ポリシーのアタッチ]をクリックします。</p>
+<img alt="_images/2-cognito-7&#64;2x.png" src="_images/2-cognito-7&#64;2x.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>[管理ポリシー]に”AWSIoTHandsonStack-&lt;参加者番号&gt;-WebAppPolicy-&lt;英数字&gt;”ポリシーが表示されていることを確認します。</p>
+<img alt="_images/2-cognito-8&#64;2x.png" src="_images/2-cognito-8&#64;2x.png" />
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 </div>
 </div>
@@ -200,10 +164,9 @@ Done. Please connect your laptop or PC to the same network as this device and go
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">目次</a></h3>
             <ul>
-<li><a class="reference external" href="#">2. インテルEdisonの設定</a><ul>
-<li><a class="reference external" href="#id1">2.1. センサーの接続</a></li>
-<li><a class="reference external" href="#id2">2.2. シリアルポート接続</a></li>
-<li><a class="reference external" href="#wifi">2.3. WiFi設定</a></li>
+<li><a class="reference external" href="#">2. AWS環境の準備</a><ul>
+<li><a class="reference external" href="#cloudformation">2.1. CloudFormationを使って自動作成</a></li>
+<li><a class="reference external" href="#cognito-identity">2.2. Cognito Identityを手動作成</a></li>
 </ul>
 </li>
 </ul>
@@ -213,7 +176,7 @@ Done. Please connect your laptop or PC to the same network as this device and go
                                   title="前の章へ">1. イントロダクション</a></p>
             <h4>次のトピックへ</h4>
             <p class="topless"><a href="03.html"
-                                  title="次の章へ">3. ハンズオン準備</a></p>
+                                  title="次の章へ">3. インテルEdisonの設定</a></p>
             <h3>このページ</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/02.txt"
@@ -243,7 +206,7 @@ Done. Please connect your laptop or PC to the same network as this device and go
           <a href="genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="03.html" title="3. ハンズオン準備"
+          <a href="03.html" title="3. インテルEdisonの設定"
              >次へ</a> |</li>
         <li class="right" >
           <a href="01.html" title="1. イントロダクション"

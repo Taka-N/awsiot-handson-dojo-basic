@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>6. LEDのリモート制御 &mdash; awsiot-handson-basic v0.0 documentation</title>
+    <title>6. シナリオ1＋: センサーデータの送信 &mdash; awsiot-handson-basic v0.0 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -21,8 +21,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="top" title="awsiot-handson-basic v0.0 documentation" href="index.html" />
-    <link rel="next" title="7. その他の設定（オプション）" href="07.html" />
-    <link rel="prev" title="5. センサーデータの送信" href="05.html" /> 
+    <link rel="next" title="7. シナリオ2: LEDのリモート制御" href="07.html" />
+    <link rel="prev" title="5. シナリオ1: センサーデータの送信" href="05.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,10 +32,10 @@
           <a href="genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="07.html" title="7. その他の設定（オプション）"
+          <a href="07.html" title="7. シナリオ2: LEDのリモート制御"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="05.html" title="5. センサーデータの送信"
+          <a href="05.html" title="5. シナリオ1: センサーデータの送信"
              accesskey="P">前へ</a> |</li>
         <li><a href="index.html">awsiot-handson-basic v0.0 documentation</a> &raquo;</li> 
       </ul>
@@ -46,48 +46,256 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="led">
-<h1>6. LEDのリモート制御<a class="headerlink" href="#led" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>AWS CLIを実行し、Intel Edisonに接続されたLEDのON/OFFを行います。AWS IoTのShadowを利用してブラウザからEdisonのステータスの変更リクエストを送信し、Edisonは変更通知を元にLEDをOFF/ONします。また、完了後は最新のステータスをShadowにアップデートします。</p>
-<img alt="_images/senario2.png" src="_images/senario2.png" />
-<div class="section" id="id1">
-<h2>6.1. プログラムの実行<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>Edison上で以下のプログラムを実行します。</p>
-<div class="highlight-python"><pre>root@edison:~# cd ~/awsiot-handson-fundamentals/led
-root@edison:~/awsiot-handson-fundamentals/led# node main.js edison&lt;任意の番号&gt;</pre>
+  <div class="section" id="id1">
+<h1>6. シナリオ1＋: センサーデータの送信<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Intel Edisonに接続された照度センサー、温度センサーのデータをEdison上のプログラムで定期的にAWS IoTに送信します。AWS IoTではルールに基づきElasticSearch ServiceやFirehose経由でS3に保存します。WebブラウザからはElasticSearch Service上のKibanaにアクセスして保管されているデータをグラフ表示できます。</p>
+<img alt="_images/scenario1-plus.png" src="_images/scenario1-plus.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>送信するセンサーデータは以下のJSONフォーマットとします。</p>
+<div class="highlight-python"><pre>{
+   "timestamp": "2015-10-24T14:16:37.305Z", ← ISO8601形式
+   "illuminace": "300",                     ← 照度 アナログ値
+   "temperature": "200"                     ← 温度 アナログ値
+ }</pre>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>マネージメントコンソールのAWS IoTを開き、メニューの&#8221;Registry&#8221; &gt; &#8220;things&#8221; をクリックし、&#8221;edison&lt;任
-意の番号&gt;&#8221;をクリックします。</p>
-<p>左のメニュー画面から&#8221;Shadow&#8221;をクリックし、&#8221;Shadow document&#8221;の&#8221;Edit&#8221;をクリックして編集モードにします。</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<img alt="_images/6-led-1.png" src="_images/6-led-1.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>”Shadow state:&#8221;に以下のJSONを入力してください。入力が終わったら&#8221;Save&#8221;をクリックします。クリック後、EdisonのLEDが点灯することを確認してください。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;reported&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;led&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span>
-  <span class="p">},</span>
-  <span class="s2">&quot;desired&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;led&quot;</span><span class="p">:</span> <span class="s2">&quot;on&quot;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<div class="section" id="id2">
+<h2>6.1. プログラムの実行<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>本ハンズオン用に用意されているzipファイルを解凍したaws-iot-handson-fundamentalsの配下scenario1-nodejsにシナリオ1用のNode.jsプログラムがあります。プログラムを実行すると、5秒ごとにメッセージが送られ続けます。このシナリオ終了時までそのまま動かし続けます。ハンズオン終了時にプログラムを終了させる場合はCtrl+Cを押します。</p>
+<div class="highlight-python"><pre># cd ~/aws-iot-handson-dojo-basic/scenario1/
+ # node main.js
+ Connected to Message Broker
+ Publishing: {"timestamp":"2016-03-27T09:29:19.725Z","illuminance":475,"temperature":467}
+ Publishing: {"timestamp":"2016-03-27T09:29:24.776Z","illuminance":476,"temperature":464}
+ Publishing: {"timestamp":"2016-03-27T09:29:29.837Z","illuminance":474,"temperature":466}
+ Publishing: {"timestamp":"2016-03-27T09:29:34.895Z","illuminance":475,"temperature":465}
+ Publishing: {"timestamp":"2016-03-27T09:29:39.956Z","illuminance":477,"temperature":463}</pre>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<img alt="_images/6-led-2.png" src="_images/6-led-2.png" />
+</div>
+<div class="section" id="elasticsearch-serviceaws-iot">
+<h2>6.2. ElasticSearch Serviceへ保存するAWS IoT ルールを作成<a class="headerlink" href="#elasticsearch-serviceaws-iot" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>マネージメントコンソールのサービス一覧から[AWS IoT]を開き、左側のメニューから[Rules]を選択します。</p>
+<img alt="_images/6-create-rule-1.png" src="_images/6-create-rule-1.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>&#8220;desired&#8221;内にある&#8221;led&#8221;アイテムの値をoff/onのように記述を変更することでLEDの消灯/点灯を行なうことができます。</p>
+<p>その後、[Create]をクリックします。</p>
+<p>スクリーンショットの赤枠で囲んだ部分について、以下の項目を入力し、[Add action]をクリックします。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">設定項目</th>
+<th class="head">値</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Name</td>
+<td>SaveToElasticsearch_&lt;参加者番号&gt;</td>
+</tr>
+<tr><td>Using SQL version</td>
+<td>2016-03-23</td>
+</tr>
+<tr><td>Attribute</td>
+<td><a href="#id3"><span class="problematic" id="id4">*</span></a>, topic(1) AS place, topic(2) AS position</td>
+</tr>
+<tr><td>Topic Filter</td>
+<td>place-a/position-&lt;参加者番号&gt;</td>
+</tr>
+</tbody>
+</table>
+<img alt="_images/6-create-rule-2.png" src="_images/6-create-rule-2.png" />
+<img alt="_images/6-create-rule-3.png" src="_images/6-create-rule-3.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Select an action画面で、[Send messages to the <strong>Amazon Elasticsearch Service</strong>]を選択し、[Configure action]をクリックします。</p>
+<img alt="_images/6-create-rule-4.png" src="_images/6-create-rule-4.png" />
+<img alt="_images/6-create-rule-5.png" src="_images/6-create-rule-5.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>[Configure action]画面にて、下記の項目を入力します。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="92%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">設定項目</th>
+<th class="head">値</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Domain name</td>
+<td>awsioth-sensor-&lt;英数字&gt; （「2.2. CloudFormationを使ってElasticsearch Searchを自動作成」の最後で確認したElasticSearchDomainを選択）</td>
+</tr>
+<tr><td>ID</td>
+<td>${timestamp()}</td>
+</tr>
+<tr><td>Index</td>
+<td>sensordata-&lt;参加者番号&gt;</td>
+</tr>
+<tr><td>Type</td>
+<td>scenario1</td>
+</tr>
+</tbody>
+</table>
+<img alt="_images/6-configure-action-1.png" src="_images/6-configure-action-1.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>&#8220;<a href="#id5"><span class="problematic" id="id6">*</span></a>IAM role name&#8221;横の[Create a new role]ボタンを押して、Elasticsearch Search用のロールを作成します。</p>
+<p>&#8220;<a href="#id7"><span class="problematic" id="id8">*</span></a>IAM role name&#8221; 欄に、SaveToElasticSearchRole-&lt;参加者番号&gt; を入力し、[Create a new role]ボタンを押します。</p>
+<p>新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-&lt;参加者番号&gt; を選択し、[Update role]ボタンを押し、最後に、[Add action]ボタンを押します。</p>
+<img alt="_images/6-configure-action-2.png" src="_images/6-configure-action-2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>最後に、確認画面が出ますので、[Create rule]ボタンを押して、ルールを作成して下さい。</p>
+<img alt="_images/6-rules.png" src="_images/6-rules.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="kibana">
+<h2>6.3. Kibanaでデータを確認<a class="headerlink" href="#kibana" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>マネージメントコンソールのサービス一覧から[Elasticsearch Service]を開きます。「2.2. CloudFormationを使ってElasticsearch Searchを自動作成」の最後で確認したElasticSearchDomainの[Searchable documents]の数字が0より大きくなっていることを確認します。[Cluster health]が[Yellow]になっていのはシングルノード構成のためでありハンズオンでは問題ありません。</p>
+<img alt="_images/6-searchable_documents.png" src="_images/6-searchable_documents.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>[Domain]のリンクをクリックして開きます。</p>
+<img alt="_images/6-kibana-link.png" src="_images/6-kibana-link.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Kibanaで表示させるindexを指定します。以下の値を入力して、[Create]をクリックします。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">設定項目</th>
+<th class="head">値</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Index name or pattern</td>
+<td>sensordata-&lt;参加者番号&gt;</td>
+</tr>
+<tr><td>Time-field names</td>
+<td>timestamp (リストから選択)</td>
+</tr>
+</tbody>
+</table>
+<img alt="_images/6-kibana-configure.png" src="_images/6-kibana-configure.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>[illuminance], [temperature], [timestamp]のフィールドが表示されている事を確認します。</p>
+<img alt="_images/6-kibana-settings.png" src="_images/6-kibana-settings.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>メニューにある[Discover]をクリックし、データが届いている事を確認します。</p>
+<img alt="_images/6-kibana-discover.png" src="_images/6-kibana-discover.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>メニューにある[Visualize]をクリックし、グラフの種類として[Area chart]を選択します。</p>
+<img alt="_images/6-kibana-visualize.png" src="_images/6-kibana-visualize.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>[From a new search]をクリックします。</p>
+<img alt="_images/6-kibana-new-search.png" src="_images/6-kibana-new-search.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>データに[sensordata-&lt;参加者番号&gt;]が選択され、Y軸にサンプル数(Count)が設定されている事を確認し、X軸の設定を開始するために[X-Axis]をクリックします。</p>
+<img alt="_images/6-kibana-visualize-2.png" src="_images/6-kibana-visualize-2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>[Aggregation]に[Data Histogram]を選択し[Apply]をクリックすると、右側にグラフが表示されることを確認します。</p>
+<img alt="_images/6-kibana-visualize-3.png" src="_images/6-kibana-visualize-3.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>保存ボタンをクリックし、[Title]に[Sensor Data - Sampling Count]と入力し、[Save]をクリックします。</p>
+<img alt="_images/6-kibana-visualize-4.png" src="_images/6-kibana-visualize-4.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>保存されたら、Y軸の設定を表示し、[Aggregation]を[Average]に変更し、[Field]に[illuminance]を指定します。[Apply]をクリックしてグラフに適切なデータが表示されることを確認します。</p>
+<img alt="_images/6-kibana-visualize-5.png" src="_images/6-kibana-visualize-5.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>保存ボタンをクリックし、[Title]を[Sensor Data - Illuminance]に変更し、[Save]をクリックします。</p>
+<img alt="_images/6-kibana-visualize-6.png" src="_images/6-kibana-visualize-6.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>保存されたら、Y軸の設定を表示し、[Field]を[temperature]を変更します。[Apply]をクリックしてグラフに適切なデータが表示されることを確認します。</p>
+<img alt="_images/6-kibana-visualize-7.png" src="_images/6-kibana-visualize-7.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>保存ボタンをクリックし、[Title]を[Sensor Data - Temperature]に変更し、[Save]をクリックします。</p>
+<img alt="_images/6-kibana-visualize-8.png" src="_images/6-kibana-visualize-8.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>メニューにある[Dashboard]をクリックし、追加ボタンをクリックします。</p>
+<img alt="_images/6-kibana-dashboard-1.png" src="_images/6-kibana-dashboard-1.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>[Sensor Data - Sampling Count]をクリックし、下側にグラフが追加されたのを確認します。</p>
+<img alt="_images/6-kibana-dashboard-2.png" src="_images/6-kibana-dashboard-2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>同様に、[Sensor Data - Illuminance]、[Sensor Data - Temperature]をクリックし、下側にグラフが追加されたのを確認します。確認したら、[＜]ボタンを押して閉じます。</p>
+<img alt="_images/6-kibana-dashboard-3.png" src="_images/6-kibana-dashboard-3.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>保存ボタンをクリックし、[Title]を[Sensor Data]と入力し、[Save]をクリックします。</p>
+<img alt="_images/6-kibana-dashboard-4.png" src="_images/6-kibana-dashboard-4.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>右上の[Last 15 minutes]をクリックすると、表示する期間や表示を自動更新する頻度を変更できます。</p>
+<img alt="_images/6-kibana-dashboard-5.png" src="_images/6-kibana-dashboard-5.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>グラフをマウスで操作して、位置やサイズを変更することもできます。</p>
+<img alt="_images/6-kibana-dashboard-6.png" src="_images/6-kibana-dashboard-6.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="firehose">
+<h2>6.4. Firehoseのストリームを作成<a class="headerlink" href="#firehose" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>マネージメントコンソールのサービス一覧から[Kinesis]を開きます。[Firehoseに進む]をクリックします。</p>
+<img alt="_images/6-kinesis-firehose-1.png" src="_images/6-kinesis-firehose-1.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </div>
 </div>
 
@@ -99,18 +307,21 @@ root@edison:~/awsiot-handson-fundamentals/led# node main.js edison&lt;任意の�
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">目次</a></h3>
             <ul>
-<li><a class="reference external" href="#">6. LEDのリモート制御</a><ul>
-<li><a class="reference external" href="#id1">6.1. プログラムの実行</a></li>
+<li><a class="reference external" href="#">6. シナリオ1＋: センサーデータの送信</a><ul>
+<li><a class="reference external" href="#id2">6.1. プログラムの実行</a></li>
+<li><a class="reference external" href="#elasticsearch-serviceaws-iot">6.2. ElasticSearch Serviceへ保存するAWS IoT ルールを作成</a></li>
+<li><a class="reference external" href="#kibana">6.3. Kibanaでデータを確認</a></li>
+<li><a class="reference external" href="#firehose">6.4. Firehoseのストリームを作成</a></li>
 </ul>
 </li>
 </ul>
 
             <h4>前のトピックへ</h4>
             <p class="topless"><a href="05.html"
-                                  title="前の章へ">5. センサーデータの送信</a></p>
+                                  title="前の章へ">5. シナリオ1: センサーデータの送信</a></p>
             <h4>次のトピックへ</h4>
             <p class="topless"><a href="07.html"
-                                  title="次の章へ">7. その他の設定（オプション）</a></p>
+                                  title="次の章へ">7. シナリオ2: LEDのリモート制御</a></p>
             <h3>このページ</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/06.txt"
@@ -140,10 +351,10 @@ root@edison:~/awsiot-handson-fundamentals/led# node main.js edison&lt;任意の�
           <a href="genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="07.html" title="7. その他の設定（オプション）"
+          <a href="07.html" title="7. シナリオ2: LEDのリモート制御"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="05.html" title="5. センサーデータの送信"
+          <a href="05.html" title="5. シナリオ1: センサーデータの送信"
              >前へ</a> |</li>
         <li><a href="index.html">awsiot-handson-basic v0.0 documentation</a> &raquo;</li> 
       </ul>

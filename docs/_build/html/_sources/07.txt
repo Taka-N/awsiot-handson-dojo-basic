@@ -1,47 +1,91 @@
-===================================
-その他の設定（オプション）
-===================================
+===================
+シナリオ2: LEDのリモート制御
+===================
 
+Intel Edison上のプログラムは接続されたボタンを監視してボタンが押されると、接続されたLEDをOn/Offし、LEDのOn/Off変化をAWS IoT Shadowに伝えます。同時に、AWS IoT ShadowからOn/Offの変更指示があれば接続されたLEDをOn/Offします。WebサイトはS3で別途用意済みで、Webブラウザで開きLambda経由でAWS IoT ShadowにLEDのOn/Offを指示できます。
 
-CloudWatch Logsの設定
-=====================
-
-AWS IoTのログはCloudWatch Logsで取得可能です。
-
-サービス:AWS IoTへ行き、"Settings"をクリックして下さい。
-
-
-.. image:: images/7-IoT-Settings.png
+.. image:: images/scenario2.png
 
 |
 
-次に、[Update]をクリックしてください。
+プログラムの実行
+================
 
-.. image:: images/7-IoT-Settings-Update.png
+E本ハンズオン用に用意されているzipファイルを解凍したaws-iot-handson-fundamentalsの配下scenario2にシナリオ2用のNode.jsプログラムがあります。プログラムを実行します。
 
-|
+::
 
-次に[Create a new role]をクリック
-
-.. image:: images/7-IoT-Settings-Update-create-a-new-role.png
-
-|
-
-次に"IAM role name"欄に、"AWSIoTCloudWatchLog"と入力し、[Create a new role]をクリックする。
-
-.. image:: images/7-IoT-Settings-Update-create-a-new-role2.png
+  # cd ~/aws-iot-handson-fundamentals/scenario2/
+   # node main.js
+   Connected to Shadow
+    -> Sending update {"state":{"reported":{"led":"off"}}}
+   Received status 'accepted' on 'edison-01': {"state":{"reported":{"led":"off"}},"metadata":{"reported":{"led":{"timestamp":1451963594}}},"timestamp":1451963594}
 
 |
 
-再度"IAM role name"欄から、"AWSIoTCloudWatchLog"を選択し、[Update role]をクリックする。
-"Successfully..."と表示されるので、"Log level"で"info"を選択し、[Save]をクリックする。
+ローカルから制御
+=============
 
-.. image:: images/7-IoT-Settings-Update-save.png
+Edisonに直接接続されたボタンを押すことでLEDをOn/Offできることを確認します。（あまり素早くボタンを押して離すと押された事がタイミングよっては検知できません。押してから少し間をおいてから離します。）
+
+
+リモートから制御
+=============
+
+LEDがOnになっている場合はボタンを押してOffの状態にしてから、今度はリモートからLEDをOnにします。マネージメントコンソールのサービス一覧から[AWS IoT]をクリックして開きます。
+
+.. image:: images/4-servicemenu@2x.png
 
 |
 
-サービス：CloudWatchに移動し、"ログ"というタブをクリックする。
+[Registry]-[Things]を選択します。デバイス(Thing)一覧から”edison-<参加者番号>”をクリックします。
 
-.. image:: images/7-CloudWatch-Log.png
+.. image:: images/6-led-1@2x.png
 
 |
+
+[Shadow]をクリックし、[Shadow Document]の[Edit]をクリックします。
+
+.. image:: images/6-led-2@2x.png
+
+|
+
+[Shadow state:]を以下のように変更し、[Save]をクリックします。
+
+::
+
+  {
+    "desired": {
+      "led": "on"
+    }
+  }
+
+|
+
+.. image:: images/6-led-3@2x.png
+
+|
+
+以下のメッセージが表示されます。
+
+.. image:: images/6-led-4@2x.png
+
+|
+
+
+LEDがOnになったことを確認します。同様の操作で、”desired”内にある”led”の値をoffやonに変更することで、LEDをOn/Offさせることができます。
+
+
+Shadowの確認や変更をS3に保存されているWebサイトでもLambdaを経由して行う事ができます。Webブラウザに読み込まれたJavaScriptはWebブラウザ上で動作して、CognitoでAWSにアクセスするための一時クレデンシャルを取得し、定期的にLambda経由でShadowの状態を確認して最新のLEDの状態を画像で表示させます。また、On/Offボタンが押されるとJavaScriptはLambdaを経由してShadowの内容を更新します。Shadowの内容が更新されると、AWS IoT Shadowは差分が発生したことをEdisonに通知して、Edison上のプログラムは通知を受けて実際のLEDをOn/Offさせます。
+
+以下のURLをブラウザで開きます。
+
+https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/scenario2/IoT+HandsOn+Dojo+Basic+-+Scenario+2_+LED+Remote+Button.html
+
+[Cognito Identity Pool ID]に「2.2. Cognito Identityを手動作成」で作成したCognito Identityの[Identity Pool ID]を、[Member ID]に参加者番号を入力し、[Cognito Unauth Login]をクリックします。
+
+.. image:: images/6-webapp-1@2x.png
+
+|
+
+Webサイト上のボタンの[LED ON][LED OFF]を押して、実際のLEDがOn/Offされることを確認します。

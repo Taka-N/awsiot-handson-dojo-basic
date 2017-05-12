@@ -1,5 +1,5 @@
 =============================
- AWS IoT ハンズオン ~基本編~
+ AWS IoT ハンズオン Dojo ~基本編~
 =============================
 
 .. toctree::
@@ -16,22 +16,16 @@
    07
    08
    09
+   10
 
 本書はAWS IoTおよびAWSの各サービスを利用してIoTの基本的なシステムを構築するためのハンズオン手順 について記述しております。
-
-最新情報
-========
-
--AWS IoTの説明資料を公開しました。 http://bit.ly/1SrHtGf
-
-
 
 前提条件
 ========
 * Intel Edison Kit for Arduino、GROVE Starter Kit、電源アダプタ、USBケーブル
 * Wi-Fiでインターネットに接続できる環境 (WPA-PSK)
+* AWSアカウント
 * 対象者として以下の方を想定
-	* AWSアカウントをお持ちの方
 	* IoTを活用したアプリケーション構築をご検討されているデベロッパーの方
 	* AWSクラウドを活用したシステム・アプリケーション開発に従事されている方
 	* UNIXの基本的なコマンドの利用経験がある方
@@ -68,31 +62,13 @@ Windowsの設定によっては、インストール出来ない場合があり�
 
 本ハンズオンで利用するサンプルプログラムです。Edison上で利用します。
 
-
-https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-jp/awsiot-handson-fundamentals.zip
-
+https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojo-basic.zip
 
 参考情報
 =======
-* `Intel Edison Board Software Downloads <https://software.intel.com/en-us/iot/hardware/edison/downloads>`
-* Intel libmraa (Low Level Skeleton Library for Communication on GNU/Linux platforms)
-* Intel UPM (Useful Packages & Modules) Sensor/Actuator repository for MRAA
-* AWS IoT SDK for JavaScript
-* AWS IoT Embedded-C SDK
 
-よくあるトラブル
-================
-
-**AWS IoTのupdate shadow CLIを実行時にSSLエラーとなる**
-
-python 2.7.10にアップデート、AWS CLIの再インストールでOK。
-
-
-参考情報
-========
-* `インテル Edisonの初期化とファームアップデート(Win) <http://edison-lab.jp/flash/windows/>`_
-* `インテル Edisonの初期化とファームアップデート(MacOS) <http://edison-lab.jp/flash/mac/>`_
-
-ハッシュタグ
-============
-Twitterのハッシュタグはこちらになります。 **#AWS_IoT_JP**
+* `Intel Edison Board Software Downloads <https://software.intel.com/en-us/iot/hardware/edison/downloads>`_
+* `Intel libmraa (Low Level Skeleton Library for Communication on GNU/Linux platforms) <https://github.com/intel-iot-devkit/mraa>`_
+* `Intel UPM (Useful Packages & Modules) Sensor/Actuator repository for MRAA <https://github.com/intel-iot-devkit/upm>`_
+* `AWS IoT SDK for JavaScript <https://github.com/aws/aws-iot-device-sdk-js>`_
+* `AWS IoT Embedded-C SDK <https://github.com/aws/aws-iot-device-sdk-embedded-C>`_

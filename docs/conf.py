@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# awsiot-handson-fundamentals documentation build configuration file, created by
+# aws-iot-handson-dojo-basic documentation build configuration file, created by
 # sphinx-quickstart on Sat Oct 31 23:27:37 2015.
 #
 # This file is execfile()d with the current directory set to its
@@ -176,7 +176,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'awsiot-handson-fundamentalsdoc'
+htmlhelp_basename = 'aws-iot-handson-dojo-basicdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -196,7 +196,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'awsiot-handson-fundamentals.tex', u'awsiot-handson-fundamentals Documentation',
+  ('index', 'aws-iot-handson-dojo-basic.tex', u'aws-iot-handson-dojo-basic Documentation',
    u'aquaviter', 'manual'),
 ]
 
@@ -226,7 +226,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'awsiot-handson-fundamentals', u'awsiot-handson-fundamentals Documentation',
+    ('index', 'aws-iot-handson-dojo-basic', u'aws-iot-handson-dojo-basic Documentation',
      [u'aquaviter'], 1)
 ]
 
@@ -240,8 +240,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'awsiot-handson-fundamentals', u'awsiot-handson-fundamentals Documentation',
-   u'aquaviter', 'awsiot-handson-fundamentals', 'One line description of project.',
+  ('index', 'aws-iot-handson-dojo-basic', u'aws-iot-handson-dojo-basic Documentation',
+   u'aquaviter', 'aws-iot-handson-dojo-basic', 'One line description of project.',
    'Miscellaneous'),
 ]
 
