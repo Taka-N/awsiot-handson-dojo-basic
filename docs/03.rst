@@ -231,7 +231,7 @@ Edison環境のクリーンアップ
 AWS SDKの準備
 ========
 
-Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをインストールします。
+Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをインストールします。インストールには、少し時間が掛かります。
 
 ::
 
@@ -254,7 +254,7 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
 
 |
 
-ハンズオン用コード、証明書、エンドポイントの準備
+ハンズオン用コード、証明書の準備
 ====================================================
 
 Edison上で以下のコマンドを実行し、本ハンズオン用に用意されているzipファイルのダウンロードと解凍を行います。
@@ -302,11 +302,13 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
 
 |
 
+
+エンドポイントの設定
+====================================================
+
 ::
 
-    # node get_endpoint.js -a <your access key> -s <your secret key> >>
-
+    # node get_endpoint2.js -a <your access key> -s <your secret key> >> ~/.endpoint
+    # source ~/.endpoint
 
 |
-
-エンドポイントの設定を行います。
