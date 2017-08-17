@@ -70,28 +70,28 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>サービス一覧から[Cloud Formation]をクリックして開きます。[Create Stack]をクリックします。</p>
+<p>サービス一覧から[Cloud Formation]をクリックして開きます。[スタックの作成] をクリックします。</p>
 <img alt="_images/2-cf-1&#64;2x.png" src="_images/2-cf-1&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>[Select Template]では[Choose a template]で[Specify an Amazon S3 template URL]を選択し、以下のパスを入力し、[Next]をクリックします。</p>
+<p>[テンプレートの選択] では [テンプレートの選択] で [Amazon S3 テンプレート URL の指定] を選択し、以下のパスを入力し、[Next]をクリックします。</p>
 <p><a class="reference external" href="https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojyo-basic.yml">https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojyo-basic.yml</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <img alt="_images/2-cf-2&#64;2x.png" src="_images/2-cf-2&#64;2x.png" />
-<p>[Specify Details]で[Stack Name]に”AWSIoTHandsonStack-&lt;参加者番号&gt;”と入力し、[AdministratorEmail]にシナリオ１で使用するメールの通知先を入力します。そして[Next]をクリックします。</p>
+<p>[詳細の指定] で [スタックの名前] に”AWSIoTHandsonStack-&lt;参加者番号&gt;”と入力し、[AdministratorEmail]にシナリオ１で使用するメールの通知先を入力します。そして[Next]をクリックします。</p>
 <img alt="_images/2-cf-3&#64;2x.png" src="_images/2-cf-3&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>[Options]で何も入力せずに[Next]をクリックします。</p>
+<p>[オプション] で何も入力せずに [次へ] をクリックします。</p>
 <img alt="_images/2-cf-4&#64;2x.png" src="_images/2-cf-4&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>[Review]の画面を下にスクロールし、[Capabilities]で[I acknowledge that this template...]にチェックを入れ、[Create]をクリックします。</p>
+<p>[確認] の画面を下にスクロールし、[CAPABILITY] で [AWS CloudFormation によって IAM リソースが作成される場合があることを承認します。] にチェックを入れ、[作成] をクリックします。</p>
 <img alt="_images/2-cf-5&#64;2x.png" src="_images/2-cf-5&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
@@ -105,7 +105,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>画面下の[Output]タブを選択し、[Value]の内容を全てメモ帳などにコピーします。</p>
+<p>[AWSIoTHandsonStack-&lt;参加者番号&gt;] をクリックして、[スタックの詳細] を表示します。[出力] をクリックして、[値] の内容を全てメモ帳などにコピーします。</p>
 <img alt="_images/2-cf-8&#64;2x.png" src="_images/2-cf-8&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
@@ -113,7 +113,7 @@
 </div>
 <div class="section" id="cognito-identity">
 <h2>2.2. Cognito Identityを手動作成<a class="headerlink" href="#cognito-identity" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>シナリオ１，２で使用するWebアプリで匿名認証を行うために使用するCognito Identityを作成します。Cognitoは現時点でCloudFormationに対応していないため、手動で作成します。マネージメントコンソールのサービス一覧から[Cognito]をクリックして開き、[Manage Federated Identities]をクリックします。</p>
+<p>シナリオ１，２で使用するWebアプリで匿名認証を行うために使用するCognito Identityを作成します。マネージメントコンソールのサービス一覧から[Cognito]をクリックして開き、[フェデレーテッドアイデンティティの管理] をクリックします。</p>
 <img alt="_images/2-cognito-1&#64;2x.png" src="_images/2-cognito-1&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>

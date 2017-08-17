@@ -75,17 +75,48 @@
 <div class="section" id="id3">
 <h2>事前準備<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>EdisonにUSBでシリアル接続するのに必要なドライバを以下のURLからダウンロードし、インストールをお願いします。</p>
-<p><strong>Windowsの場合</strong></p>
+<div class="section" id="windows">
+<h3>Windowsの場合<a class="headerlink" href="#windows" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><a class="reference external" href="https://s3-ap-northeast-1.amazonaws.com/toshiake-iot-handson/classmethod-devday/tools/win/IntelEdisonDriverSetup1.2.1.exe">Intel Edisonドライバのインストール</a></li>
 <li><a class="reference external" href="http://www.ftdichip.com/Drivers/CDM/CDM%20v2.10.00%20WHQL%20Certified.exe">Windows FTDI ドライバのインストール</a></li>
 </ul>
 <p>Windowsの設定によっては、インストール出来ない場合があります。
 その場合、インストーラーを&#8221;管理者として実行&#8221;してみて下さい。</p>
-<p><strong>MacOSの場合</strong></p>
+</div>
+<div class="section" id="macos">
+<h3>MacOSの場合<a class="headerlink" href="#macos" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><a class="reference external" href="https://s3-ap-northeast-1.amazonaws.com/toshiake-iot-handson/classmethod-devday/tools/mac/FTDIUSBSerialDriver_v2_2_18.dmg">MacOS FTDI ドライバのインストール</a></li>
 </ul>
+</div>
+<div class="section" id="aws">
+<h3>複数の参加者で1つのAWSアカウントを共用する場合<a class="headerlink" href="#aws" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>複数の参加者で1つのAWSアカウントを共用する場合は、他の参加者のためにIAMユーザーを作成して頂く必要があります。I</p>
+<p><strong>複数の参加者で1つのAWSアカウントを共用する場合のIAMユーザーの作成方法</strong></p>
+<ul class="simple">
+<li>AWS マネジメントコンソールのIAMから、「ユーザー」をクリックします。</li>
+<li>「ユーザーを追加」ボタンをクリックします。</li>
+<li>ユーザー名を &#8220;iot-subscribe-user&#8221; とします。</li>
+<li>「プログラムによるアクセス」、「AWS マネジメントコンソールへのアクセス」、「自動生成パスワード」にチェックを入れて、「次のステップ：アクセス権限」をクリックします。</li>
+<li>「既存のポリシーを直接アタッチ」をクリックします。</li>
+<li>「AdministratorAccess」にチェックを入れ、「次のステップ：確認」をクリックします。</li>
+<li>「ユーザーの作成」をクリックします。</li>
+<li>ユーザー名、アクセスキー ID、シークレットアクセスキーが表示されますので、「csvのダウンロード」をクリックし、CSVフィルをダウンロードします。</li>
+<li>閉じます。</li>
+</ul>
+<p>ルートユーザーの方は、IAMユーザーで参加される方に、下記の連絡をお願い致します。これらは、ダウンロードしたCSVファイルに記載されていますので、CSVファイルを配布されるのが良いでしょう。</p>
+<ul class="simple">
+<li>AWSマネジメントコンソールにログインするURL</li>
+<li>AWSのアカウントID (12桁の数字)</li>
+<li>IAMユーザー名</li>
+<li>IAMユーザー パスワード</li>
+<li>アクセスキーID</li>
+<li>シークレットアクセスキー</li>
+</ul>
+<p>参考：AWS アカウント内での IAM ユーザーの作成方法</p>
+<p><a class="reference external" href="http://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_users_create.html">http://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_users_create.html</a></p>
+</div>
 </div>
 <div class="section" id="id4">
 <h2>サンプルプログラム<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -115,7 +146,12 @@
 <li><a class="reference external" href="#">AWS IoT ハンズオン Dojo ~基本編~</a><ul>
 <li><a class="reference external" href="#id1">前提条件</a></li>
 <li><a class="reference external" href="#id2">注意事項</a></li>
-<li><a class="reference external" href="#id3">事前準備</a></li>
+<li><a class="reference external" href="#id3">事前準備</a><ul>
+<li><a class="reference external" href="#windows">Windowsの場合</a></li>
+<li><a class="reference external" href="#macos">MacOSの場合</a></li>
+<li><a class="reference external" href="#aws">複数の参加者で1つのAWSアカウントを共用する場合</a></li>
+</ul>
+</li>
 <li><a class="reference external" href="#id4">サンプルプログラム</a></li>
 <li><a class="reference external" href="#id5">参考情報</a></li>
 </ul>

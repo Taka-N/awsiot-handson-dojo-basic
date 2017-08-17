@@ -31,13 +31,13 @@ Lambdaファンクション
 
 |
 
-サービス一覧から[Cloud Formation]をクリックして開きます。[Create Stack]をクリックします。
+サービス一覧から[Cloud Formation]をクリックして開きます。[スタックの作成] をクリックします。
 
 .. image:: images/2-cf-1@2x.png
 
 |
 
-[Select Template]では[Choose a template]で[Specify an Amazon S3 template URL]を選択し、以下のパスを入力し、[Next]をクリックします。
+[テンプレートの選択] では [テンプレートの選択] で [Amazon S3 テンプレート URL の指定] を選択し、以下のパスを入力し、[Next]をクリックします。
 
 https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojyo-basic.yml
 
@@ -45,19 +45,19 @@ https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-d
 
 .. image:: images/2-cf-2@2x.png
 
-[Specify Details]で[Stack Name]に”AWSIoTHandsonStack-<参加者番号>”と入力し、[AdministratorEmail]にシナリオ１で使用するメールの通知先を入力します。そして[Next]をクリックします。
+[詳細の指定] で [スタックの名前] に”AWSIoTHandsonStack-<参加者番号>”と入力し、[AdministratorEmail]にシナリオ１で使用するメールの通知先を入力します。そして[Next]をクリックします。
 
 .. image:: images/2-cf-3@2x.png
 
 |
 
-[Options]で何も入力せずに[Next]をクリックします。
+[オプション] で何も入力せずに [次へ] をクリックします。
 
 .. image:: images/2-cf-4@2x.png
 
 |
 
-[Review]の画面を下にスクロールし、[Capabilities]で[I acknowledge that this template...]にチェックを入れ、[Create]をクリックします。
+[確認] の画面を下にスクロールし、[CAPABILITY] で [AWS CloudFormation によって IAM リソースが作成される場合があることを承認します。] にチェックを入れ、[作成] をクリックします。
 
 .. image:: images/2-cf-5@2x.png
 
@@ -73,7 +73,7 @@ Cloud Formationのスタックの一覧に作成したスタックが表示さ�
 
 |
 
-画面下の[Output]タブを選択し、[Value]の内容を全てメモ帳などにコピーします。
+[AWSIoTHandsonStack-<参加者番号>] をクリックして、[スタックの詳細] を表示します。[出力] をクリックして、[値] の内容を全てメモ帳などにコピーします。
 
 .. image:: images/2-cf-8@2x.png
 
@@ -81,11 +81,13 @@ Cloud Formationのスタックの一覧に作成したスタックが表示さ�
 
 Cognito Identityを手動作成
 ===========================
-シナリオ１，２で使用するWebアプリで匿名認証を行うために使用するCognito Identityを作成します。Cognitoは現時点でCloudFormationに対応していないため、手動で作成します。マネージメントコンソールのサービス一覧から[Cognito]をクリックして開き、[Manage Federated Identities]をクリックします。
+シナリオ１，２で使用するWebアプリで匿名認証を行うために使用するCognito Identityを作成します。マネージメントコンソールのサービス一覧から[Cognito]をクリックして開き、[フェデレーテッドアイデンティティの管理] をクリックします。
 
 .. image:: images/2-cognito-1@2x.png
 
 |
+
+
 
 [Create new identity pool]の[Identity pool name]に”AWSIoTHandson <参加者番号>”と入力し、[Enable access to unauthenticated identities]にチェックを入れ、[Create Pool]をクリックします。
 
