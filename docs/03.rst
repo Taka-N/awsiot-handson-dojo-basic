@@ -115,17 +115,18 @@ MacOSをご利用の場合は、ターミナルから以下のコマンドを入
 
 ::
 
-   $ sudo cu -s 115200 -l /dev/tty.usbserial-XXXXXXX
+    $ sudo cu -s 115200 -l /dev/tty.usbserial-XXXXXXX
     Password: ← MacOSのrootパスワードを入力
+
 |
 
 プロンプトが表示されれば接続成功です。loginのプロンプトで、ユーザ名”root”、パスワード”Password1”でログインします。
 
 ::
 
-  edison login: root
-  Password: ******** ←パスワードを入力
-  root@edison1: ~#
+    edison login: root
+    Password: ******** ←パスワードを入力
+    root@edison1: ~#
 
 |
 
@@ -207,8 +208,8 @@ Frequency:X.X GHz のところで周波数を確認できます。
 
 ::
 
-  # ifconfig wlan0 down
-  # ifconfig wlan0 up
+    # ifconfig wlan0 down
+    # ifconfig wlan0 up
 
 |
 
@@ -219,11 +220,11 @@ Edison環境のクリーンアップ
 
 ::
 
-  # cd
-  # rm -rf *
-  # rm -rf ./.aws
-  # rm -f ./.profile
-  # rm -f ./.endpoint
+    # cd
+    # rm -rf *
+    # rm -rf ./.aws
+    # rm -f ./.profile
+    # rm -f ./.endpoint
 
 |
 
