@@ -208,7 +208,7 @@ Frequency:X.X GHz のところで周波数を確認できます。
 ::
 
   # ifconfig wlan0 down
-   # ifconfig wlan0 up
+  # ifconfig wlan0 up
 
 |
 
@@ -234,9 +234,9 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
 ::
 
     # npm install aws-iot-device-sdk
-     # npm install aws-sdk
-     # npm install argv
-     # npm install moment
+    # npm install aws-sdk
+    # npm install argv
+    # npm install moment
 
 |
 
