@@ -59,13 +59,6 @@ Aruduinoなどの開発用ボードに接続可能なセンサーやケーブル
 
 |
 
-**Amazon Elasticsearch Service**
-
-オープンソースのElasticsearchを利用できるマネージド型のサービスです。本ハンズオンではデータのストアとElasticsearchで利用できるKibanaを利用してデータの可視化に利用します。
-    https://aws.amazon.com/jp/elasticsearch-service/
-
-|
-
 **Amazon SNS (Simple Notification Service)**
 
 メッセージを複数の方式でpub-subが行えるサービスです。本ハンズオンの1では簡易的なメール通知に利用します。
