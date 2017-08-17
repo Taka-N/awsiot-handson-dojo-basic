@@ -15,22 +15,22 @@ E本ハンズオン用に用意されているzipファイルを解凍したaws-
 
 ::
 
-  # cd ~/aws-iot-handson-fundamentals/scenario2/
-   # node main.js
-   Connected to Shadow
+    # cd ~/aws-iot-handson-fundamentals/scenario2/
+    # node main.js
+    Connected to Shadow
     -> Sending update {"state":{"reported":{"led":"off"}}}
-   Received status 'accepted' on 'edison-01': {"state":{"reported":{"led":"off"}},"metadata":{"reported":{"led":{"timestamp":1451963594}}},"timestamp":1451963594}
+    Received status 'accepted' on 'edison-01': {"state":{"reported":{"led":"off"}},"metadata":{"reported":{"led":{"timestamp":1451963594}}},"timestamp":1451963594}
 
 |
 
 ローカルから制御
-=============
+===========================
 
 Edisonに直接接続されたボタンを押すことでLEDをOn/Offできることを確認します。（あまり素早くボタンを押して離すと押された事がタイミングよっては検知できません。押してから少し間をおいてから離します。）
 
 
 リモートから制御
-=============
+===========================
 
 LEDがOnになっている場合はボタンを押してOffの状態にしてから、今度はリモートからLEDをOnにします。マネージメントコンソールのサービス一覧から[AWS IoT]をクリックして開きます。
 
@@ -38,19 +38,19 @@ LEDがOnになっている場合はボタンを押してOffの状態にしてか
 
 |
 
-[Registry]-[Things]を選択します。デバイス(Thing)一覧から”edison-<参加者番号>”をクリックします。
+[登録]-[モノ] を選択します。デバイス(Thing)一覧から”edison-<参加者番号>”をクリックします。
 
 .. image:: images/6-led-1@2x.png
 
 |
 
-[Shadow]をクリックし、[Shadow Document]の[Edit]をクリックします。
+[シャドウ] をクリックし、[シャドウドキュメント] の [編集] をクリックします。
 
 .. image:: images/6-led-2@2x.png
 
 |
 
-[Shadow state:]を以下のように変更し、[Save]をクリックします。
+[Sシャドウステータス:] を以下のように変更し、[保存] をクリックします。
 
 ::
 
