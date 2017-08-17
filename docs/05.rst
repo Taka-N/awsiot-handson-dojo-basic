@@ -180,21 +180,16 @@ CloudFormationでStack作成時にメール通知の宛先確認メールが届�
 
 |
 
+
 データの受信を確認する
 ==================
 
-AWS IoTのTestにて、"Subscription topic"に "place-a/position-<任意の番号>" を入力し、[Subscribe to topic]をクリックすれば、左側の"Subscribe to a topic"欄に、"place-a/position-<任意の番号>"が、表示されます。
-トピックが受信できていれば、"place-a/position-<任意の番号>"の左側に赤字で *●* が表示されます。
+AWS IoTの テスト にて、"発行"に "place-a/position-<任意の番号>" を入力し、[トピックに発行] をクリックすれば、左側の "サブスクリプション" 欄に、"place-a/position-<任意の番号>"が、表示されます。デバイスから送信されているセンサーデータがリアルタイムで表示されます。
 
 .. image:: images/5-test-1.png
 
 |
 
-"place-a/position-<任意の番号>"をクリックすると、デバイスから送信されているセンサーデータがリアルタイムで表示されます。
-
-.. image:: images/5-test-2.png
-
-|
 
 DynamoDBに保存されたデータの確認
 ============================
