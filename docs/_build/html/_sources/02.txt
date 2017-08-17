@@ -89,7 +89,13 @@ Cognito Identityを手動作成
 
 
 
-[Create new identity pool]の[Identity pool name]に”AWSIoTHandson <参加者番号>”と入力し、[Enable access to unauthenticated identities]にチェックを入れ、[Create Pool]をクリックします。
+[新しい ID プールの作成] をクリックします。
+
+.. image:: images/2-cognito-15@2x.png
+
+|
+
+[ID プール名] に ”AWSIoTHandson <参加者番号>”と入力し、[E認証されていない ID に対してアクセスを有効にする] にチェックを入れ、[プールの作成] をクリックします。
 
 .. image:: images/2-cognito-2@2x.png
 
@@ -101,7 +107,7 @@ Cognito Identityを手動作成
 
 |
 
-以下のように[Get AWS Credetials]に表示されているIdentity Pool IDをメモ帳などにコピーします。
+以下のように[AWS 認証情報の取得] に表示されている "ID プールの ID" をメモ帳などにコピーします。
 
 .. image:: images/2-cognito-4-us@2x.png
 
@@ -119,13 +125,13 @@ Cognito Identityを手動作成
 
 |
 
-フィルタに”HandsonStack-<参加者番号>”と入力して絞込を行い、表示されたポリシー”AWSIoTHandsonStack-<参加者番号>-WebAppPolicy-<英数字>”を選択し、[ポリシーのアタッチ]をクリックします。
+フィルタに”HandsonStack-<参加者番号>”と入力して絞込を行い、表示されたポリシー ”AWSIoTHandsonStack-<参加者番号>-WebAppPolicy-<英数字>” を選択し、[ポリシーのアタッチ]をクリックします。
 
 .. image:: images/2-cognito-7@2x.png
 
 |
 
-[管理ポリシー]に”AWSIoTHandsonStack-<参加者番号>-WebAppPolicy-<英数字>”ポリシーが表示されていることを確認します。
+[管理ポリシー]に ”AWSIoTHandsonStack-<参加者番号>-WebAppPolicy-<英数字>” ポリシーが表示されていることを確認します。
 
 .. image:: images/2-cognito-8@2x.png
 
