@@ -123,9 +123,9 @@ MacOSをご利用の場合は、ターミナルから以下のコマンドを入
 
 ::
 
-   edison login: root
-    Password: ******** ←パスワードを入力
-    root@edison1: ~#
+  edison login: root
+  Password: ******** ←パスワードを入力
+  root@edison1: ~#
 
 |
 
@@ -136,7 +136,7 @@ WiFiの設定を行います。ログイン後、**configure_edison --wifi** コ
 
 ::
 
-   configure_edison --wifi
+    configure_edison --wifi
 
     Configre Edison: WiFi Connection
 
@@ -208,7 +208,7 @@ Frequency:X.X GHz のところで周波数を確認できます。
 ::
 
   # ifconfig wlan0 down
-   # ifconfig wlan0 up
+  # ifconfig wlan0 up
 
 |
 
@@ -220,9 +220,10 @@ Edison環境のクリーンアップ
 ::
 
   # cd
-   # rm -rf *
-   # rm -rf ./.aws
-   # rm -f ./.profile
+  # rm -rf *
+  # rm -rf ./.aws
+  # rm -f ./.profile
+  # rm -f ./.endpoint
 
 |
 
@@ -234,9 +235,9 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
 ::
 
     # npm install aws-iot-device-sdk
-     # npm install aws-sdk
-     # npm install argv
-     # npm install moment
+    # npm install aws-sdk
+    # npm install argv
+    # npm install moment
 
 |
 
@@ -248,12 +249,12 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
 ::
 
     # echo "export HandsOnNumber=01" >> .profile
-     # source ./.profile
+    # source ./.profile
 
 |
 
-ハンズオン用コード、証明書の準備
-============================
+ハンズオン用コード、証明書、エンドポイントの準備
+====================================================
 
 Edison上で以下のコマンドを実行し、本ハンズオン用に用意されているzipファイルのダウンロードと解凍を行います。
 
@@ -299,3 +300,12 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
   # wget https://www.symantec.com/content/en/us/enterprise/verisign/roots/VeriSign-Class%203-Public-Primary-Certification-Authority-G5.pem -O rootca.crt
 
 |
+
+::
+
+    # node get_endpoint.js -a <your access key> -s <your secret key> >>
+
+
+|
+
+エンドポイントの設定を行います。
