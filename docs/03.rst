@@ -290,7 +290,8 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
 ::
 
     # ls
-    cert.csr         cert.pem         create_cert.js   get_endpoint.js  privatekey.pem
+    cert.csr  create_cert.js   get_endpoint2.js
+    cert.pem  get_endpoint.js  privatekey.pem
 
 |
 
@@ -306,9 +307,11 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
 エンドポイントの設定
 ====================================================
 
+CloudFormationのOutputに表示されたAccessKeyとSecretKeyをパラメータに指定してスクリプトを実行します。AWS IoTのエンドポイントが取得され、~/.endpoint に書き出されます。
+
 ::
 
-    # node get_endpoint2.js -a <your access key> -s <your secret key> >> ~/.endpoint
+    # node get_endpoint2.js -a <your access key> -s <your secret key>  > ~/.endpoint
     # source ~/.endpoint
 
 |
