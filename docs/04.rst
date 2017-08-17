@@ -107,13 +107,13 @@ AWS IoTのダッシュボードが表示されます。
 
 |
 
-[Actions] - [Attach thing]を選択します。
+[アタッチ] - [モノをアタッチする]を選択します。
 
 .. image:: images/4-create-policy-8@2x.png
 
 |
 
-“edison-<参加者番号>”を入力し、[Attach]をクリックします。
+“edison-<参加者番号>”を入力し、[アタッチ]をクリックします。
 
 .. image:: images/4-create-policy-9@2x.png
 
