@@ -169,6 +169,15 @@ WiFiのSSIDとPSKが明確な場合、下記のコマンドで一括設定でき
 
 |
 
+通常のハンズオンでは、この設定になります。
+
+::
+
+   # wpa_passphrase awshandson5 awshandson >/etc/wpa_supplicant/wpa_supplicant.conf
+
+|
+
+
 WiFiの接続が不安定な場合、再接続すれば回復することがあります。
 お使いのWiFiネットワークが5GHz帯をサポートしている場合は、安定して通信できますので、可能であれば2.4GHzではなく5GHzのWiFiを使用して下さい。
 
@@ -185,9 +194,9 @@ WiFiの接続が不安定な場合、再接続すれば回復することがあ�
 ::
 
   # iwconfig
-   wlan0    IEEE 802.11abgn  ESSID:"Guest"
-            Mode:Managed  Frequency:5.5 GHz  Access Point: 24:DE:C6:4C:CB:E9
-            Bit Rate=65 Mb/s   Tx-Power=31 dBm
+          wlan0     IEEE 802.11abgn  ESSID:"awshandson5"
+          Mode:Managed  Frequency:5.18 GHz  Access Point: 8A:D7:F6:00:BA:6C
+          Bit Rate=135 Mb/s   Tx-Power=31 dBm
   ...
 
 |
@@ -198,8 +207,8 @@ Frequency:X.X GHz のところで周波数を確認できます。
 
 ::
 
-  # ifconfig wlan0 down      << WiFi OFF
-   # ifconfig wlan0 up        << WiFi ON
+  # ifconfig wlan0 down
+   # ifconfig wlan0 up
 
 |
 
@@ -210,10 +219,10 @@ Edison環境のクリーンアップ
 
 ::
 
-    # cd
-     # rm -rf *
-     # rm -rf ./.aws
-     ＃rm -f ./.profile
+  # cd
+  # rm -rf *
+  # rm -rf ./.aws
+  ＃ rm -f ./.profile
 
 |
 
