@@ -260,8 +260,8 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
 ::
 
     # cd
-     # wget https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojo-basic.zip
-     # unzip -q aws-iot-handson-dojo-basic.zip
+    # wget https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojo-basic.zip
+    # unzip -q aws-iot-handson-dojo-basic.zip
 
 |
 
@@ -270,7 +270,7 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
 ::
 
     # cd ~/aws-iot-handson-dojo-basic/certs/
-     # openssl req -newkey rsa:2048 -new -nodes -keyout privatekey.pem -out cert.csr -subj "/CN=awshandson"
+    # openssl req -newkey rsa:2048 -new -nodes -keyout privatekey.pem -out cert.csr -subj "/CN=awshandson"
 
 |
 
@@ -279,7 +279,7 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
 ::
 
     # node create_cert.js -a <your access key> -s <your secret key>
-     certificateId: '<証明書ID>'
+    certificateId: '<証明書ID>'
 
 |
 
@@ -288,7 +288,7 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
 ::
 
     # ls
-     cert.csr         cert.pem         create_cert.js   get_endpoint.js  privatekey.pem
+    cert.csr         cert.pem         create_cert.js   get_endpoint.js  privatekey.pem
 
 |
 

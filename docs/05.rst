@@ -100,7 +100,7 @@ IAM ロール名           AWSIoTHandsonStack-<参加者番号>-SaveToDynamodbRo
 メール通知のAWS IoT ルールを作成
 ============================
 
-ルールの一覧が表示された画面で、[Create]をクリックします。
+ルールの一覧が表示された画面で、[作成] をクリックします。
 
 .. image:: images/5-create-rule-2@2x.png
 
@@ -109,38 +109,38 @@ IAM ロール名           AWSIoTHandsonStack-<参加者番号>-SaveToDynamodbRo
 以下の項目について値を入力します。[アクションの追加] をクリックします。
 
 ============= ============================
-項目            値
+項目             値
 ============= ============================
 名前	           NotifyToAdmin_<参加者番号>
-Attribute      *, topic(1) AS place, topic(2) AS position
-Topic Filter   place-a/position-<参加者番号>
-Condition      illuminance < 30
+属性             \*, topic(1) AS place, topic(2) AS position
+トピックフィルター    place-a/position-<参加者番号>
+条件             illuminance < 30
 ============= ============================
 
 .. image:: images/5-create-rule-9@2x.png
 
 |
 
-[Send a message as an SNS push notification]を選択し、[Configure action]をクリックします。
+[SNS プッシュ通知としてメッセージを送信する] を選択し、[アクションの設定] をクリックします。
 
 .. image:: images/5-create-rule-10@2x.png
 
 |
 
-以下の項目について値を入力します。[Role name]はリストから選択します。入力後[Add action]をクリックします。
+以下の項目について値を入力します。[Role name]はリストから選択します。入力後 [アクションの追加] をクリックします。
 
 ============= ============================
-項目            値
+項目              値
 ============= ============================
-SNS target     AWSIoTHandsonStack-<参加者番号>-NotifyToAdminTopic-<英数字> (リストから選択)
-IAM Role name   AWSIoTHandsonStack-<参加者番号>-NotifyToSNSRole-<英数字> (リストから選択)
+SNS ターゲット     AWSIoTHandsonStack-<参加者番号>-NotifyToAdminTopic-<英数字> (リストから選択)
+IAM ロール名       AWSIoTHandsonStack-<参加者番号>-NotifyToSNSRole-<英数字> (リストから選択)
 ============= ============================
 
 .. image:: images/5-create-rule-11@2x.png
 
 |
 
-[SNS Action]が追加されたことを確認し、[Create rule]をクリックします。
+[SNS プッシュ通知としてメッセージを送信する] が追加されたことを確認し、[ルールを作成する] をクリックします。
 
 .. image:: images/5-create-rule-12@2x.png
 
@@ -172,11 +172,11 @@ CloudFormationでStack作成時にメール通知の宛先確認メールが届�
 ::
 
   # cd ~/aws-iot-handson-dojo-basic/scenario1/
-   # node main.js
-   Connected to Message Broker
-   Publishing: {"timestamp":"2016-04-06T07:05:08.973Z","illuminance":343,"temperature":510}
-   Publishing: {"timestamp":"2016-04-06T07:05:14.035Z","illuminance":343,"temperature":512}
-   Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperature":512}
+  # node main.js
+  Connected to Message Broker
+  Publishing: {"timestamp":"2016-04-06T07:05:08.973Z","illuminance":343,"temperature":510}
+  Publishing: {"timestamp":"2016-04-06T07:05:14.035Z","illuminance":343,"temperature":512}
+  Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperature":512}
 
 |
 
