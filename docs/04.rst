@@ -71,12 +71,12 @@ AWS IoTのダッシュボードが表示されます。
 フォームにそれぞれ以下のパラメータを入力し、[Add Statement]をクリックします。
 
 ============= ============================
-項目          値
+項目             値
 ============= ============================
-Name	          awsiot-handson-policy-<参加者番号>
-Action	        iot:*
-Resource ARN	  \* (アスタリスク)
-Effect	        Allow
+名前  	         awsiot-handson-policy-<参加者番号>
+アクション	       iot:*
+リソース ARN      \*　　　　(アスタリスク)
+効果    	       許可
 ============= ============================
 
 .. image:: images/4-create-policy-3@2x.png
