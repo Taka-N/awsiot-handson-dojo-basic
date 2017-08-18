@@ -307,7 +307,7 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
 エンドポイントの設定
 ====================================================
 
-CloudFormationのOutputに表示されたAccessKeyとSecretKeyをパラメータに指定してスクリプトを実行します。AWS IoTのエンドポイントが取得され、~/.endpoint に書き出されます。
+CloudFormationのOutputに表示されたAccessKeyとSecretKeyをパラメータに指定してスクリプトを実行します。AWS IoTのエンドポイントが取得され、~/.endpoint に書き出されます。source ~/.endpoint で、endpoint情報を環境変数に登録し、デバイス用プログラムで使用します。
 
 ::
 
