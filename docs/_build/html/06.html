@@ -105,12 +105,12 @@ Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperatu
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>access policyが表示されるので、[Next]をクリックして下さい。</p>
+<p>アクセスポリシーが表示されるので、[次へ] をクリックして下さい。</p>
 <img alt="_images/domain-access-policy-2.png" src="_images/domain-access-policy-2.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>確認画面が出てきますので、[Confirm and create]をクリックして下さい。
+<p>確認画面が出てきますので、[確認] をクリックして下さい。
 Elasticsearch ドメインが出来るまで、数分かかります。</p>
 <img alt="_images/confirm-create.png" src="_images/confirm-create.png" />
 <div class="line-block">
@@ -128,35 +128,39 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
 <p>スクリーンショットの赤枠で囲んだ部分について、以下の項目を入力し、[Add action]をクリックします。</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="28%" />
-<col width="72%" />
+<col width="100%" />
 </colgroup>
-<thead valign="bottom">
-<tr><th class="head">設定項目</th>
-<th class="head">値</th>
-</tr>
-</thead>
 <tbody valign="top">
-<tr><td>Name</td>
-<td>SaveToElasticsearch_&lt;参加者番号&gt;</td>
-</tr>
-<tr><td>Using SQL version</td>
-<td>2016-03-23</td>
-</tr>
-<tr><td>Attribute</td>
-<td><a href="#id3"><span class="problematic" id="id4">*</span></a>, topic(1) AS place, topic(2) AS position</td>
-</tr>
-<tr><td>Topic Filter</td>
-<td>place-a/position-&lt;参加者番号&gt;</td>
+<tr><td><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">header-rows:</th><td class="field-body">1</td>
 </tr>
 </tbody>
 </table>
-<img alt="_images/6-create-rule-2.png" src="_images/6-create-rule-2.png" />
-<img alt="_images/6-create-rule-3.png" src="_images/6-create-rule-3.png" />
+</td>
+</tr>
+<tr><td><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">file:</th><td class="field-body">table/elasticSearch_rule.csv</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Select an action画面で、[Send messages to the <strong>Amazon Elasticsearch Service</strong>]を選択し、[Configure action]をクリックします。</p>
+<img alt="_images/6-create-rule-2.png" src="_images/6-create-rule-2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>[アクションを追加して下さい] 画面で、[Amazon Elasticsearch Service にメッセージを送信する] を選択し、[アクションの設定] をクリックします。</p>
 <img alt="_images/6-create-rule-4.png" src="_images/6-create-rule-4.png" />
 <img alt="_images/6-create-rule-5.png" src="_images/6-create-rule-5.png" />
 <div class="line-block">
@@ -192,8 +196,8 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>&#8220;<a href="#id5"><span class="problematic" id="id6">*</span></a>IAM role name&#8221; 横の[Create a new role] ボタンを押して、Elasticsearch Search用のロールを作成します。</p>
-<p>&#8220;<a href="#id7"><span class="problematic" id="id8">*</span></a>IAM role name&#8221; 欄に、SaveToElasticSearchRole-&lt;参加者番号&gt; を入力し、[Create a new role]ボタンを押します。</p>
+<p>&#8220;<a href="#id3"><span class="problematic" id="id4">*</span></a>IAM role name&#8221; 横の[Create a new role] ボタンを押して、Elasticsearch Search用のロールを作成します。</p>
+<p>&#8220;<a href="#id5"><span class="problematic" id="id6">*</span></a>IAM role name&#8221; 欄に、SaveToElasticSearchRole-&lt;参加者番号&gt; を入力し、[Create a new role]ボタンを押します。</p>
 <p>新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-&lt;参加者番号&gt; を選択し、[Update role]ボタンを押し、最後に、[Add action]ボタンを押します。</p>
 <img alt="_images/6-configure-action-2.png" src="_images/6-configure-action-2.png" />
 <div class="line-block">
