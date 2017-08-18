@@ -1,0 +1,6 @@
+設定項目, 値
+テーブル名, AWSIoTHandsonStack-<参加者番号>-SensorDataTable-<英数字>
+ハッシュキー値, ${topic()}
+レンジキーの値, ${timestamp()}
+この列にメッセージデータを書き込む, value
+IAM ロール名, AWSIoTHandsonStack-<参加者番号>-SaveToDynamodbRole-<英数字> (リストから選択)

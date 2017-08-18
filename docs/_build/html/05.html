@@ -97,7 +97,7 @@
 <td>SaveToDynamoDB_&lt;参加者番号&gt;</td>
 </tr>
 <tr><td>属性</td>
-<td><a href="#id2"><span class="problematic" id="id3">*</span></a>　　(アスタリスク)</td>
+<td><a href="#id2"><span class="problematic" id="id3">*</span></a>　(アスタリスク)</td>
 </tr>
 <tr><td>トピックフィルター</td>
 <td>place-a/position-&lt;参加者番号&gt;</td>
@@ -113,7 +113,38 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>以下の項目について値を入力します。[Role name]はリストから選択します。入力後 [アクションの追加] をクリックします。</p>
+<p>以下の項目について値を入力します。[テーブル名] は、リストから選択します。入力後 [アクションの追加] をクリックします。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">設定項目</th>
+<th class="head">値</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>テーブル名</td>
+<td>AWSIoTHandsonStack-&lt;参加者番号&gt;-SensorDataTable-&lt;英数字&gt;</td>
+</tr>
+<tr><td>ハッシュキー値</td>
+<td>${topic()}</td>
+</tr>
+<tr><td>レンジキーの値</td>
+<td>${timestamp()}</td>
+</tr>
+<tr><td>この列にメッセージデータを書き込む</td>
+<td>value</td>
+</tr>
+<tr><td>IAM ロール名</td>
+<td>AWSIoTHandsonStack-&lt;参加者番号&gt;-SaveToDynamodbRole-&lt;英数字&gt; (リストから選択)</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <img alt="_images/5-create-rule-5&#64;2x.png" src="_images/5-create-rule-5&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
