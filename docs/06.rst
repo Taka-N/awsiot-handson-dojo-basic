@@ -110,7 +110,7 @@ SQL バージョンの使用     2016-03-23
 
 |
 
-Select an action画面で、[Send messages to the **Amazon Elasticsearch Service**]を選択し、[Configure action]をクリックします。
+[アクションを追加して下さい] 画面で、[Amazon Elasticsearch Service にメッセージを送信する] を選択し、[アクションの設定] をクリックします。
 
 .. image:: images/6-create-rule-4.png
 
