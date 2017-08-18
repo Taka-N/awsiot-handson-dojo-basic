@@ -22,7 +22,7 @@ AWS IoTのログはCloudWatch Logsで取得可能です。トラブルシュー�
 
 ロールが正常に更新されると、下記のメッセージが表示されます。
 
-.. image:: images/7-IoT-Settings-Updated.png
+.. image:: images/role-successfully-updated.png
 
 |
 
