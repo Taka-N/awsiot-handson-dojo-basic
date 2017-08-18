@@ -196,14 +196,20 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>&#8220;<a href="#id3"><span class="problematic" id="id4">*</span></a>IAM role name&#8221; 横の[Create a new role] ボタンを押して、Elasticsearch Search用のロールを作成します。</p>
-<p>&#8220;<a href="#id5"><span class="problematic" id="id6">*</span></a>IAM role name&#8221; 欄に、SaveToElasticSearchRole-&lt;参加者番号&gt; を入力し、[Create a new role]ボタンを押します。</p>
-<p>新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-&lt;参加者番号&gt; を選択し、[Update role]ボタンを押し、最後に、[Add action]ボタンを押します。</p>
+<p>&#8220;<a href="#id3"><span class="problematic" id="id4">*</span></a>IAM ロール名&#8221; 横の[新しいロールの作成] ボタンを押して、Elasticsearch Search用のロールを作成します。</p>
+<p>&#8220;<a href="#id5"><span class="problematic" id="id6">*</span></a>IAM ロール名&#8221; 欄に、SaveToElasticSearchRole-&lt;参加者番号&gt; を入力し、[新しいロールの作成] ボタンを押します。</p>
+<p>新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-&lt;参加者番号&gt; を選択し、[ロールの更新] ボタンを押します。</p>
 <img alt="_images/6-configure-action-2.png" src="_images/6-configure-action-2.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>最後に、確認画面が出ますので、[Create rule]ボタンを押して、ルールを作成して下さい。</p>
+<p>ロールが正常に更新されると、下記のメッセージが表示されます。</p>
+<img alt="_images/role-successfully-updated.png" src="_images/role-successfully-updated.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>その後、[アクションの追加] ボタンを押します。</p>
+<p>最後に、確認画面が出ますので、[ルールを作成する] ボタンを押して、ルールを作成して下さい。</p>
 <img alt="_images/6-rules.png" src="_images/6-rules.png" />
 <div class="line-block">
 <div class="line"><br /></div>
@@ -211,12 +217,12 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
 </div>
 <div class="section" id="kibana">
 <h2>6.4. Kibanaでデータを確認<a class="headerlink" href="#kibana" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>マネージメントコンソールのサービス一覧から[Elasticsearch Service]を開きます。「2.2. CloudFormationを使ってElasticsearch Searchを自動作成」の最後で確認したElasticSearchDomainの[Searchable documents]の数字が0より大きくなっていることを確認します。[Cluster health]が[Yellow]になっていのはシングルノード構成のためでありハンズオンでは問題ありません。</p>
+<p>マネージメントコンソールのサービス一覧から[Elasticsearch Service]を開きます。[検索可能なドキュメント] の数字が0より大きくなっていることを確認します。[クラスターの状態] が [黄色] になっていのはシングルノード構成のためでありハンズオンでは問題ありません。</p>
 <img alt="_images/6-searchable_documents.png" src="_images/6-searchable_documents.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>[Domain]のリンクをクリックして開きます。</p>
+<p>[ドメイン] のリンクをクリックして開きます。</p>
 <img alt="_images/6-kibana-link.png" src="_images/6-kibana-link.png" />
 <div class="line-block">
 <div class="line"><br /></div>
@@ -255,7 +261,12 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>メニューにある[Visualize]をクリックし、グラフの種類として[Area chart]を選択します。</p>
+<p>メニューにある[Visualize]をクリックし、[+ Create a visualization]をクリックします。</p>
+<img alt="_images/6-kibana-create-a-visualization.png" src="_images/6-kibana-create-a-visualization.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>グラフの種類として[Area chart]を選択します。</p>
 <img alt="_images/6-kibana-visualize.png" src="_images/6-kibana-visualize.png" />
 <div class="line-block">
 <div class="line"><br /></div>

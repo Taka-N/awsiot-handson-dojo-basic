@@ -103,6 +103,7 @@ ElasticSearch Serviceへ保存するAWS IoT ルールを作成
 
 |
 
+
 .. image:: images/6-create-rule-2.png
 
 |
@@ -132,17 +133,25 @@ Type           scenario1
 |
 
 
-"*IAM role name" 横の[Create a new role] ボタンを押して、Elasticsearch Search用のロールを作成します。
+"*IAM ロール名" 横の[新しいロールの作成] ボタンを押して、Elasticsearch Search用のロールを作成します。
 
-"*IAM role name" 欄に、SaveToElasticSearchRole-<参加者番号> を入力し、[Create a new role]ボタンを押します。
+"*IAM ロール名" 欄に、SaveToElasticSearchRole-<参加者番号> を入力し、[新しいロールの作成] ボタンを押します。
 
-新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-<参加者番号> を選択し、[Update role]ボタンを押し、最後に、[Add action]ボタンを押します。
+新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-<参加者番号> を選択し、[ロールの更新] ボタンを押します。
 
 .. image:: images/6-configure-action-2.png
 
 |
 
-最後に、確認画面が出ますので、[Create rule]ボタンを押して、ルールを作成して下さい。
+ロールが正常に更新されると、下記のメッセージが表示されます。
+
+.. image:: images/role-successfully-updated.png
+
+|
+
+その後、[アクションの追加] ボタンを押します。
+
+最後に、確認画面が出ますので、[ルールを作成する] ボタンを押して、ルールを作成して下さい。
 
 .. image:: images/6-rules.png
 
@@ -151,13 +160,13 @@ Type           scenario1
 Kibanaでデータを確認
 ===================================
 
-マネージメントコンソールのサービス一覧から[Elasticsearch Service]を開きます。「2.2. CloudFormationを使ってElasticsearch Searchを自動作成」の最後で確認したElasticSearchDomainの[Searchable documents]の数字が0より大きくなっていることを確認します。[Cluster health]が[Yellow]になっていのはシングルノード構成のためでありハンズオンでは問題ありません。
+マネージメントコンソールのサービス一覧から[Elasticsearch Service]を開きます。[検索可能なドキュメント] の数字が0より大きくなっていることを確認します。[クラスターの状態] が [黄色] になっていのはシングルノード構成のためでありハンズオンでは問題ありません。
 
 .. image:: images/6-searchable_documents.png
 
 |
 
-[Domain]のリンクをクリックして開きます。
+[ドメイン] のリンクをクリックして開きます。
 
 .. image:: images/6-kibana-link.png
 
@@ -188,7 +197,13 @@ Time-field names               timestamp (リストから選択)
 
 |
 
-メニューにある[Visualize]をクリックし、グラフの種類として[Area chart]を選択します。
+メニューにある[Visualize]をクリックし、[+ Create a visualization]をクリックします。
+
+.. image:: images/6-kibana-create-a-visualization.png
+
+|
+
+グラフの種類として[Area chart]を選択します。
 
 .. image:: images/6-kibana-visualize.png
 
