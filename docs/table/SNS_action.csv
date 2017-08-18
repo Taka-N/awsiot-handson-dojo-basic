@@ -1,3 +1,3 @@
 項目, 値
-SNS ターゲット, AWSIoTHandsonStack-<参加者番号>-NotifyToAdminTopic-<英数字> (リストから選択)
-IAM ロール名, AWSIoTHandsonStack-<参加者番号>-NotifyToSNSRole-<英数字> (リストから選択)
+SNS ターゲット, AWSIoTHandsonStack-<参加者番号>-NotifyToAdminTopic-<英数字>
+IAM ロール名, AWSIoTHandsonStack-<参加者番号>-NotifyToSNSRole-<英数字>
