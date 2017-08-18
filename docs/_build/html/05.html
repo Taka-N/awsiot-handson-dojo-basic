@@ -84,8 +84,8 @@
 <p>以下の項目について値を入力します。[アクションの追加] をクリックします。</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col width="42%" />
+<col width="58%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">設定項目</th>
@@ -97,7 +97,7 @@
 <td>SaveToDynamoDB_&lt;参加者番号&gt;</td>
 </tr>
 <tr><td>属性</td>
-<td>*　　　(アスタリスク)</td>
+<td><a href="#id2"><span class="problematic" id="id3">*</span></a>　　(アスタリスク)</td>
 </tr>
 <tr><td>トピックフィルター</td>
 <td>place-a/position-&lt;参加者番号&gt;</td>
@@ -177,8 +177,8 @@
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h2>5.3. プログラムの実行<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id4">
+<h2>5.3. プログラムの実行<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>本ハンズオン用に用意されているzipファイルを解凍したaws-iot-handson-dojo-basicの配下scenario1にシナリオ1用のNode.jsプログラムがあります。プログラムを実行します。5秒ごとにメッセージが送られ続けます。このシナリオ終了時までそのまま動かし続けます。ハンズオン終了時にプログラムを終了させる場合はCtrl+Cを押します。</p>
 <div class="highlight-python"><pre># cd ~/aws-iot-handson-dojo-basic/scenario1/
 # node main.js
@@ -191,8 +191,8 @@ Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperatu
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>5.4. データの受信を確認する<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id5">
+<h2>5.4. データの受信を確認する<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>AWS IoTの テスト にて、&#8221;発行&#8221;に &#8220;place-a/position-&lt;任意の番号&gt;&#8221; を入力し、[トピックに発行] をクリックすれば、左側の &#8220;サブスクリプション&#8221; 欄に、&#8221;place-a/position-&lt;任意の番号&gt;&#8221;が、表示されます。デバイスから送信されているセンサーデータがリアルタイムで表示されます。</p>
 <img alt="_images/5-test-1.png" src="_images/5-test-1.png" />
 <div class="line-block">
@@ -215,8 +215,8 @@ Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperatu
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>5.6. メール通知の確認<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id6">
+<h2>5.6. メール通知の確認<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>照度センサーを手で覆い、30以下の照度になることをLCDで待ちます。その後、通知メールが届いている事を確認します。</p>
 </div>
 </div>
@@ -232,10 +232,10 @@ Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperatu
 <li><a class="reference external" href="#">5. シナリオ1: センサーデータの送信</a><ul>
 <li><a class="reference external" href="#dynamodbaws-iot">5.1. DynamoDB保存のAWS IoT ルールを作成</a></li>
 <li><a class="reference external" href="#aws-iot">5.2. メール通知のAWS IoT ルールを作成</a></li>
-<li><a class="reference external" href="#id2">5.3. プログラムの実行</a></li>
-<li><a class="reference external" href="#id3">5.4. データの受信を確認する</a></li>
+<li><a class="reference external" href="#id4">5.3. プログラムの実行</a></li>
+<li><a class="reference external" href="#id5">5.4. データの受信を確認する</a></li>
 <li><a class="reference external" href="#dynamodb">5.5. DynamoDBに保存されたデータの確認</a></li>
-<li><a class="reference external" href="#id4">5.6. メール通知の確認</a></li>
+<li><a class="reference external" href="#id6">5.6. メール通知の確認</a></li>
 </ul>
 </li>
 </ul>
