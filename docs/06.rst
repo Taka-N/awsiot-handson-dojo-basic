@@ -108,7 +108,6 @@ Topic Filter          place-a/position-<参加者番号>
 =================== =================================================
 
 .. image:: images/6-create-rule-2.png
-
 .. image:: images/6-create-rule-3.png
 
 |
