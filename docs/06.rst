@@ -137,7 +137,7 @@ Type           scenario1
 
 "*IAM ロール名" 欄に、SaveToElasticSearchRole-<参加者番号> を入力し、[新しいロールの作成] ボタンを押します。
 
-新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-<参加者番号> を選択し、[ロールの更新] ボタンを押し、最後に、[Add action]ボタンを押します。
+新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-<参加者番号> を選択し、[ロールの更新] ボタンを押し、最後に、[アクションの追加] ボタンを押します。
 
 .. image:: images/6-configure-action-2.png
 
