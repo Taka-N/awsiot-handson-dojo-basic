@@ -90,14 +90,14 @@ MacOSの場合
 http://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_users_create.html
 
 サンプルプログラム
-==================
+========================
 
 本ハンズオンで利用するサンプルプログラムです。Edison上で利用します。
 
 https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojo-basic.zip
 
 参考情報
-=======
+=========================
 
 * `Intel Edison Board Software Downloads <https://software.intel.com/en-us/iot/hardware/edison/downloads>`_
 * `Intel libmraa (Low Level Skeleton Library for Communication on GNU/Linux platforms) <https://github.com/intel-iot-devkit/mraa>`_
