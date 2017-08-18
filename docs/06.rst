@@ -103,6 +103,7 @@ ElasticSearch Serviceへ保存するAWS IoT ルールを作成
 
 |
 
+
 .. image:: images/6-create-rule-2.png
 
 |
