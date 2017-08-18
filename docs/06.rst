@@ -133,17 +133,17 @@ Type           scenario1
 |
 
 
-"*IAM role name" 横の[Create a new role] ボタンを押して、Elasticsearch Search用のロールを作成します。
+"*IAM ロール名" 横の[新しいロールの作成] ボタンを押して、Elasticsearch Search用のロールを作成します。
 
-"*IAM role name" 欄に、SaveToElasticSearchRole-<参加者番号> を入力し、[Create a new role]ボタンを押します。
+"*IAM ロール名" 欄に、SaveToElasticSearchRole-<参加者番号> を入力し、[新しいロールの作成] ボタンを押します。
 
-新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-<参加者番号> を選択し、[Update role]ボタンを押し、最後に、[Add action]ボタンを押します。
+新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-<参加者番号> を選択し、[ロールの更新] ボタンを押し、最後に、[Add action]ボタンを押します。
 
 .. image:: images/6-configure-action-2.png
 
 |
 
-最後に、確認画面が出ますので、[Create rule]ボタンを押して、ルールを作成して下さい。
+最後に、確認画面が出ますので、[ルールを作成する] ボタンを押して、ルールを作成して下さい。
 
 .. image:: images/6-rules.png
 
