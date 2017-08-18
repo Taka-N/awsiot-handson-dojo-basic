@@ -160,7 +160,7 @@ Type           scenario1
 Kibanaでデータを確認
 ===================================
 
-マネージメントコンソールのサービス一覧から[Elasticsearch Service]を開きます。「2.2. CloudFormationを使ってElasticsearch Searchを自動作成」の最後で確認したElasticSearchDomainの[Searchable documents]の数字が0より大きくなっていることを確認します。[Cluster health]が[Yellow]になっていのはシングルノード構成のためでありハンズオンでは問題ありません。
+マネージメントコンソールのサービス一覧から[Elasticsearch Service]を開きます。[検索可能なドキュメント] の数字が0より大きくなっていることを確認します。[Cluster health]が[Yellow]になっていのはシングルノード構成のためでありハンズオンでは問題ありません。
 
 .. image:: images/6-searchable_documents.png
 
