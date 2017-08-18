@@ -51,22 +51,20 @@ Elasticsearch Serviceの画面が開きますので、[新しいドメインの�
 
 |
 
-「Elasticsearch ドメインの作成」画面に移動します。
-
 [Elasticsearch ドメイン名] に、"awsioth-sensor-<参加者番号>" と入力して、[次へ] をクリックして下さい。
 
 .. image:: images/cretate-es-domain.png
 
 |
 
-次の画面では、何も入力せずに、[Next]をクリックして下さい。
-Set the domain access policy toで、"Allow open access to the domain"を選択して下さい。
+次の画面では、何も入力せずに、[次へ] をクリックして下さい。
+[テンプレートを選択] で、 "ドメインへのオープンアクセスを許可" を選択して下さい。
 
 .. image:: images/domain-access-policy.png
 
 |
 
-確認画面が表示されるので、I accept the risk をチェックし、[OK] を押して下さい。
+確認画面が表示されるので、"リスクに同意します" をチェックし、[OK] を押して下さい。
 
 .. image:: images/domain-access-policy-risk-confirm.png
 
@@ -107,8 +105,8 @@ Attribute             *, topic(1) AS place, topic(2) AS position
 Topic Filter          place-a/position-<参加者番号>
 =================== =================================================
 
-.. image:: images/6-create-rule-2.png
 
+.. image:: images/6-create-rule-2.png
 .. image:: images/6-create-rule-3.png
 
 |

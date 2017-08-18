@@ -57,14 +57,14 @@ Elasticsearch Serviceの画面が開きますので、[新しいドメインの�
 
 |
 
-次の画面では、何も入力せずに、[Next]をクリックして下さい。
-Set the domain access policy toで、"Allow open access to the domain"を選択して下さい。
+次の画面では、何も入力せずに、[次へ] をクリックして下さい。
+[テンプレートを選択] で、 "ドメインへのオープンアクセスを許可" を選択して下さい。
 
 .. image:: images/domain-access-policy.png
 
 |
 
-確認画面が表示されるので、I accept the risk をチェックし、[OK] を押して下さい。
+確認画面が表示されるので、"リスクに同意します" をチェックし、[OK] を押して下さい。
 
 .. image:: images/domain-access-policy-risk-confirm.png
 
