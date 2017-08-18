@@ -126,9 +126,11 @@ Index          sensordata-<参加者番号>
 Type           scenario1
 ===========  ==============================================
 
+
 .. image:: images/6-configure-action-1.png
 
 |
+
 
 "*IAM role name" 横の[Create a new role] ボタンを押して、Elasticsearch Search用のロールを作成します。
 
