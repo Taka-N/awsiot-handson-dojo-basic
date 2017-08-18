@@ -1,0 +1,5 @@
+設定項目, 値
+名前, "SaveToElasticsearch_<参加者番号>""
+SQL バージョンの使用, 2016-03-23
+属性, "*, topic(1) AS place, topic(2) AS position"
+トピックフィルター, "place-a/position-<参加者番号>"
