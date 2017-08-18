@@ -48,7 +48,7 @@
             
   <div class="section" id="id1">
 <h1>6. シナリオ1＋: センサーデータの送信<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>Intel Edisonに接続された照度センサー、温度センサーのデータをEdison上のプログラムで定期的にAWS IoTに送信します。AWS IoTではルールに基づきElasticSearch ServiceやFirehose経由でS3に保存します。WebブラウザからはElasticSearch Service上のKibanaにアクセスして保管されているデータをグラフ表示できます。</p>
+<p>Intel Edisonに接続された照度センサーと温度センサーのデータをEdison上のプログラムで定期的にAWS IoTに送信します。AWS IoTではルールに基づきElasticSearch ServiceやFirehose経由でS3に保存します。WebブラウザからはElasticSearch Service上のKibanaにアクセスして保管されているデータをグラフ表示できます。</p>
 <img alt="_images/scenario1-plus.png" src="_images/scenario1-plus.png" />
 <div class="line-block">
 <div class="line"><br /></div>
@@ -56,8 +56,8 @@
 <p>送信するセンサーデータは以下のJSONフォーマットとします。</p>
 <div class="highlight-python"><pre>{
    "timestamp": "2015-10-24T14:16:37.305Z", ← ISO8601形式
-   "illuminace": "300",                     ← 照度 アナログ値
-   "temperature": "200"                     ← 温度 アナログ値
+   "illuminance": "300",                    ← 照度センサーのアナログ値
+   "temperature": "200"                     ← 温度センサーのアナログ値
  }</pre>
 </div>
 <div class="line-block">
@@ -65,22 +65,61 @@
 </div>
 <div class="section" id="id2">
 <h2>6.1. プログラムの実行<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>本ハンズオン用に用意されているzipファイルを解凍したaws-iot-handson-fundamentalsの配下scenario1-nodejsにシナリオ1用のNode.jsプログラムがあります。プログラムを実行すると、5秒ごとにメッセージが送られ続けます。このシナリオ終了時までそのまま動かし続けます。ハンズオン終了時にプログラムを終了させる場合はCtrl+Cを押します。</p>
+<p>本ハンズオン用に用意されているzipファイルを解凍したaws-iot-handson-dojo-basicの配下scenario1にシナリオ1用のNode.jsプログラムがあります。プログラムを実行すると、5秒ごとにメッセージが送られ続けます。このシナリオ終了時までそのまま動かし続けます。ハンズオン終了時にプログラムを終了させる場合はCtrl+Cを押します。</p>
 <div class="highlight-python"><pre># cd ~/aws-iot-handson-dojo-basic/scenario1/
- # node main.js
- Connected to Message Broker
- Publishing: {"timestamp":"2016-03-27T09:29:19.725Z","illuminance":475,"temperature":467}
- Publishing: {"timestamp":"2016-03-27T09:29:24.776Z","illuminance":476,"temperature":464}
- Publishing: {"timestamp":"2016-03-27T09:29:29.837Z","illuminance":474,"temperature":466}
- Publishing: {"timestamp":"2016-03-27T09:29:34.895Z","illuminance":475,"temperature":465}
- Publishing: {"timestamp":"2016-03-27T09:29:39.956Z","illuminance":477,"temperature":463}</pre>
+# node main.js
+Connected to Message Broker
+Publishing: {"timestamp":"2016-04-06T07:05:08.973Z","illuminance":343,"temperature":510}
+Publishing: {"timestamp":"2016-04-06T07:05:14.035Z","illuminance":343,"temperature":512}
+Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperature":512}</pre>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
+<div class="section" id="elasticsearch-service">
+<h2>6.2. ElasticSearch Serviceのドメインを作成する<a class="headerlink" href="#elasticsearch-service" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>サービス一覧から[ElasticSearch Service] をクリックして開きます。</p>
+<img alt="_images/es.png" src="_images/es.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Elasticsearch Serviceの画面が開きますので、[Get started] をクリックして下さい。</p>
+<img alt="_images/es-get-started.png" src="_images/es-get-started.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Create Elasticsearch domain画面になります。</p>
+<p>Elasticsearch domain nameに、&#8221;firehose-to-es-domain-&lt;参加者番号&gt;&#8221; と入力して、[Next]をクリックして下さい。</p>
+<img alt="_images/cretate-es-domain.png" src="_images/cretate-es-domain.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>次の画面では、何も入力せずに、[Next]をクリックして下さい。
+Set the domain access policy toで、&#8221;Allow open access to the domain&#8221;を選択して下さい。</p>
+<img alt="_images/domain-access-policy.png" src="_images/domain-access-policy.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>確認画面が表示されるので、I accept the risk をチェックし、[OK] を押して下さい。</p>
+<img alt="_images/domain-access-policy-risk-confirm.png" src="_images/domain-access-policy-risk-confirm.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>access policyが表示されるので、[Next]をクリックして下さい。</p>
+<img alt="_images/domain-access-policy-2.png" src="_images/domain-access-policy-2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>確認画面が出てきますので、[Confirm and create]をクリックして下さい。
+Elasticsearch ドメインが出来るまで、数分かかります。</p>
+<img alt="_images/confirm-create.png" src="_images/confirm-create.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
 <div class="section" id="elasticsearch-serviceaws-iot">
-<h2>6.2. ElasticSearch Serviceへ保存するAWS IoT ルールを作成<a class="headerlink" href="#elasticsearch-serviceaws-iot" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>6.3. ElasticSearch Serviceへ保存するAWS IoT ルールを作成<a class="headerlink" href="#elasticsearch-serviceaws-iot" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>マネージメントコンソールのサービス一覧から[AWS IoT]を開き、左側のメニューから[Rules]を選択します。</p>
 <img alt="_images/6-create-rule-1.png" src="_images/6-create-rule-1.png" />
 <div class="line-block">
@@ -90,8 +129,8 @@
 <p>スクリーンショットの赤枠で囲んだ部分について、以下の項目を入力し、[Add action]をクリックします。</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col width="28%" />
+<col width="72%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">設定項目</th>
@@ -127,8 +166,8 @@
 <p>[Configure action]画面にて、下記の項目を入力します。</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="8%" />
-<col width="92%" />
+<col width="19%" />
+<col width="81%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">設定項目</th>
@@ -137,7 +176,7 @@
 </thead>
 <tbody valign="top">
 <tr><td>Domain name</td>
-<td>awsioth-sensor-&lt;英数字&gt; （「2.2. CloudFormationを使ってElasticsearch Searchを自動作成」の最後で確認したElasticSearchDomainを選択）</td>
+<td>awsioth-sensor-&lt;英数字&gt;</td>
 </tr>
 <tr><td>ID</td>
 <td>${timestamp()}</td>
@@ -168,7 +207,7 @@
 </div>
 </div>
 <div class="section" id="kibana">
-<h2>6.3. Kibanaでデータを確認<a class="headerlink" href="#kibana" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>6.4. Kibanaでデータを確認<a class="headerlink" href="#kibana" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>マネージメントコンソールのサービス一覧から[Elasticsearch Service]を開きます。「2.2. CloudFormationを使ってElasticsearch Searchを自動作成」の最後で確認したElasticSearchDomainの[Searchable documents]の数字が0より大きくなっていることを確認します。[Cluster health]が[Yellow]になっていのはシングルノード構成のためでありハンズオンでは問題ありません。</p>
 <img alt="_images/6-searchable_documents.png" src="_images/6-searchable_documents.png" />
 <div class="line-block">
@@ -290,7 +329,7 @@
 </div>
 </div>
 <div class="section" id="firehose">
-<h2>6.4. Firehoseのストリームを作成<a class="headerlink" href="#firehose" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>6.5. Firehoseのストリームを作成<a class="headerlink" href="#firehose" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>マネージメントコンソールのサービス一覧から[Kinesis]を開きます。[Firehoseに進む]をクリックします。</p>
 <img alt="_images/6-kinesis-firehose-1.png" src="_images/6-kinesis-firehose-1.png" />
 <div class="line-block">
@@ -309,9 +348,10 @@
             <ul>
 <li><a class="reference external" href="#">6. シナリオ1＋: センサーデータの送信</a><ul>
 <li><a class="reference external" href="#id2">6.1. プログラムの実行</a></li>
-<li><a class="reference external" href="#elasticsearch-serviceaws-iot">6.2. ElasticSearch Serviceへ保存するAWS IoT ルールを作成</a></li>
-<li><a class="reference external" href="#kibana">6.3. Kibanaでデータを確認</a></li>
-<li><a class="reference external" href="#firehose">6.4. Firehoseのストリームを作成</a></li>
+<li><a class="reference external" href="#elasticsearch-service">6.2. ElasticSearch Serviceのドメインを作成する</a></li>
+<li><a class="reference external" href="#elasticsearch-serviceaws-iot">6.3. ElasticSearch Serviceへ保存するAWS IoT ルールを作成</a></li>
+<li><a class="reference external" href="#kibana">6.4. Kibanaでデータを確認</a></li>
+<li><a class="reference external" href="#firehose">6.5. Firehoseのストリームを作成</a></li>
 </ul>
 </li>
 </ul>

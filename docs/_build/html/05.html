@@ -56,7 +56,7 @@
 <p>送信するセンサーデータは以下のJSONフォーマットとします。</p>
 <div class="highlight-python"><pre>{
    "timestamp": "2015-10-24T14:16:37.305Z", ← ISO8601形式
-   "illuminance": "300"                     ← 照度センサーのアナログ値
+   "illuminance": "300",                    ← 照度センサーのアナログ値
    "temperature": "200"                     ← 温度センサーのアナログ値
  }</pre>
 </div>
@@ -319,7 +319,7 @@ Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperatu
 <p>DynamoDBに保存されたデータをS3に保存されているWebサイトでも確認する事ができます。Webブラウザに読み込まれたJavaScriptはWebブラウザ上で動作して、CognitoでAWSにアクセスするための一時クレデンシャルを取得し、DynamoDBに直接アクセスしてデータを取得しグラフ表示します。</p>
 <p>以下のURLをブラウザで開きます。</p>
 <p><a class="reference external" href="https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/scenario1/IoT+HandsOn+Dojo+Basic+-+Scenario+1_+Sensor+Graph.html">https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/scenario1/IoT+HandsOn+Dojo+Basic+-+Scenario+1_+Sensor+Graph.html</a></p>
-<p>[Cognito Identity Pool ID]に「2.2. Cognito Identityを手動作成」で作成したCognito Identityの[Identity Pool ID]を入力し、[Cognito Unauth Login]をクリックします。JavaScriptがバックグラウンドで定期的にDynamoDBにアクセスして新しいセンサー情報が得られればグラフは自動更新されます。</p>
+<p>[Cognito Identity Pool ID]に「Cognito Identityを手動作成」の章で作成したCognito Identityの[Identity Pool ID]を入力し、[Member ID] に参加者番号を入力し、[Cognito Unauth Login]をクリックします。JavaScriptがバックグラウンドで定期的にDynamoDBにアクセスして新しいセンサー情報が得られればグラフは自動更新されます。</p>
 <img alt="_images/5-webapp-1&#64;2x.png" src="_images/5-webapp-1&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
