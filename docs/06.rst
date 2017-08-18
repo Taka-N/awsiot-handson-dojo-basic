@@ -197,7 +197,13 @@ Time-field names               timestamp (リストから選択)
 
 |
 
-メニューにある[Visualize]をクリックし、グラフの種類として[Area chart]を選択します。
+メニューにある[Visualize]をクリックし、[+ Create a visualization]をクリックします。
+
+.. image:: images/6-kibana-create-a-visualization.png
+
+|
+
+グラフの種類として[Area chart]を選択します。
 
 .. image:: images/6-kibana-visualize.png
 
