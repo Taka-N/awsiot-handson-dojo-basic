@@ -48,8 +48,49 @@
             
   <div class="section" id="aws">
 <h1>2. AWS環境の準備<a class="headerlink" href="#aws" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>2.1. AWS マネジメントコンソールにサインイン<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>まずは、WiFiに接続して、AWS マネジメントコンソールにサインインして下さい。</p>
+<div class="section" id="iam">
+<h3>2.1.1. IAMユーザーではなく、ルートアカウントを使用する場合<a class="headerlink" href="#iam" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>ルートアカウントでログインする場合は、下記のURLからAWSにサインインして下さい。</p>
+<p><a class="reference external" href="https://console.aws.amazon.com/console/home">https://console.aws.amazon.com/console/home</a></p>
+</div>
+<div class="section" id="id2">
+<h3>2.1.2. 複数の参加者で1つのAWSアカウントを共用する場合<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>下記のURLにアクセスし、アカウントID、ユーザー名、パスワードを入力し、AWSマネージメントコンソールにサインインして下さい。</p>
+<p>複数の参加者で1つのAWSアカウントを共用している場合、ルートユーザーにAWSマネジメントコンソールにログインするURLを教えてもらってください。通常、下記の様なURLになっています。</p>
+<p><a class="reference external" href="https:/">https:/</a>/&lt;12桁のAWS ID&gt;.signin.aws.amazon.com/console</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">項目</th>
+<th class="head">値</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>アカウント</td>
+<td>AWSのアカウントID (12桁の数字)</td>
+</tr>
+<tr><td>ユーザー名</td>
+<td>IAMユーザー名</td>
+</tr>
+<tr><td>パスワード</td>
+<td>IAMユーザー パスワード</td>
+</tr>
+</tbody>
+</table>
+<img alt="_images/aws-login.png" src="_images/aws-login.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
 <div class="section" id="cloudformation">
-<h2>2.1. CloudFormationを使って自動作成<a class="headerlink" href="#cloudformation" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>2.2. CloudFormationを使って自動作成<a class="headerlink" href="#cloudformation" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>以下のハンズオンで必要なAWS IoT以外のサービスについてはCloudFormationを使って自動作成します。CloudFormationはスタックの中にこれらのリソースを作成し、一括して削除などができます。</p>
 <dl class="docutils">
 <dt>IAMユーザ</dt>
@@ -112,7 +153,7 @@
 </div>
 </div>
 <div class="section" id="cognito-identity">
-<h2>2.2. Cognito Identityを手動作成<a class="headerlink" href="#cognito-identity" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>2.3. Cognito Identityを手動作成<a class="headerlink" href="#cognito-identity" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>シナリオ１，２で使用するWebアプリで匿名認証を行うために使用するCognito Identityを作成します。マネージメントコンソールのサービス一覧から[Cognito]をクリックして開き、[フェデレーテッドアイデンティティの管理] をクリックします。</p>
 <img alt="_images/2-cognito-1&#64;2x.png" src="_images/2-cognito-1&#64;2x.png" />
 <div class="line-block">
@@ -170,8 +211,13 @@
             <h3><a href="index.html">目次</a></h3>
             <ul>
 <li><a class="reference external" href="#">2. AWS環境の準備</a><ul>
-<li><a class="reference external" href="#cloudformation">2.1. CloudFormationを使って自動作成</a></li>
-<li><a class="reference external" href="#cognito-identity">2.2. Cognito Identityを手動作成</a></li>
+<li><a class="reference external" href="#id1">2.1. AWS マネジメントコンソールにサインイン</a><ul>
+<li><a class="reference external" href="#iam">2.1.1. IAMユーザーではなく、ルートアカウントを使用する場合</a></li>
+<li><a class="reference external" href="#id2">2.1.2. 複数の参加者で1つのAWSアカウントを共用する場合</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#cloudformation">2.2. CloudFormationを使って自動作成</a></li>
+<li><a class="reference external" href="#cognito-identity">2.3. Cognito Identityを手動作成</a></li>
 </ul>
 </li>
 </ul>

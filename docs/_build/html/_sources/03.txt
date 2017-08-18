@@ -115,15 +115,16 @@ MacOSをご利用の場合は、ターミナルから以下のコマンドを入
 
 ::
 
-   $ sudo cu -s 115200 -l /dev/tty.usbserial-XXXXXXX
+    $ sudo cu -s 115200 -l /dev/tty.usbserial-XXXXXXX
     Password: ← MacOSのrootパスワードを入力
+
 |
 
 プロンプトが表示されれば接続成功です。loginのプロンプトで、ユーザ名”root”、パスワード”Password1”でログインします。
 
 ::
 
-   edison login: root
+    edison login: root
     Password: ******** ←パスワードを入力
     root@edison1: ~#
 
@@ -136,7 +137,7 @@ WiFiの設定を行います。ログイン後、**configure_edison --wifi** コ
 
 ::
 
-   configure_edison --wifi
+    configure_edison --wifi
 
     Configre Edison: WiFi Connection
 
@@ -169,6 +170,15 @@ WiFiのSSIDとPSKが明確な場合、下記のコマンドで一括設定でき
 
 |
 
+通常のハンズオンでは、この設定になります。
+
+::
+
+   # wpa_passphrase awshandson5 awshandson >/etc/wpa_supplicant/wpa_supplicant.conf
+
+|
+
+
 WiFiの接続が不安定な場合、再接続すれば回復することがあります。
 お使いのWiFiネットワークが5GHz帯をサポートしている場合は、安定して通信できますので、可能であれば2.4GHzではなく5GHzのWiFiを使用して下さい。
 
@@ -185,9 +195,9 @@ WiFiの接続が不安定な場合、再接続すれば回復することがあ�
 ::
 
   # iwconfig
-   wlan0    IEEE 802.11abgn  ESSID:"Guest"
-            Mode:Managed  Frequency:5.5 GHz  Access Point: 24:DE:C6:4C:CB:E9
-            Bit Rate=65 Mb/s   Tx-Power=31 dBm
+          wlan0     IEEE 802.11abgn  ESSID:"awshandson5"
+          Mode:Managed  Frequency:5.18 GHz  Access Point: 8A:D7:F6:00:BA:6C
+          Bit Rate=135 Mb/s   Tx-Power=31 dBm
   ...
 
 |
@@ -198,8 +208,8 @@ Frequency:X.X GHz のところで周波数を確認できます。
 
 ::
 
-  # ifconfig wlan0 down      << WiFi OFF
-   # ifconfig wlan0 up        << WiFi ON
+    # ifconfig wlan0 down
+    # ifconfig wlan0 up
 
 |
 
@@ -211,23 +221,24 @@ Edison環境のクリーンアップ
 ::
 
     # cd
-     # rm -rf *
-     # rm -rf ./.aws
-     ＃rm -f ./.profile
+    # rm -rf *
+    # rm -rf ./.aws
+    # rm -f ./.profile
+    # rm -f ./.endpoint
 
 |
 
 AWS SDKの準備
 ========
 
-Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをインストールします。
+Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをインストールします。インストールには、少し時間が掛かります。
 
 ::
 
     # npm install aws-iot-device-sdk
-     # npm install aws-sdk
-     # npm install argv
-     # npm install moment
+    # npm install aws-sdk
+    # npm install argv
+    # npm install moment
 
 |
 
@@ -239,20 +250,20 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
 ::
 
     # echo "export HandsOnNumber=01" >> .profile
-     # source ./.profile
+    # source ./.profile
 
 |
 
 ハンズオン用コード、証明書の準備
-============================
+====================================================
 
 Edison上で以下のコマンドを実行し、本ハンズオン用に用意されているzipファイルのダウンロードと解凍を行います。
 
 ::
 
     # cd
-     # wget https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojo-basic.zip
-     # unzip -q aws-iot-handson-dojo-basic.zip
+    # wget https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojo-basic.zip
+    # unzip -q aws-iot-handson-dojo-basic.zip
 
 |
 
@@ -261,7 +272,7 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
 ::
 
     # cd ~/aws-iot-handson-dojo-basic/certs/
-     # openssl req -newkey rsa:2048 -new -nodes -keyout privatekey.pem -out cert.csr -subj "/CN=awshandson"
+    # openssl req -newkey rsa:2048 -new -nodes -keyout privatekey.pem -out cert.csr -subj "/CN=awshandson"
 
 |
 
@@ -270,7 +281,7 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
 ::
 
     # node create_cert.js -a <your access key> -s <your secret key>
-     certificateId: '<証明書ID>'
+    certificateId: '<証明書ID>'
 
 |
 
@@ -279,7 +290,8 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
 ::
 
     # ls
-     cert.csr         cert.pem         create_cert.js   get_endpoint.js  privatekey.pem
+    cert.csr  create_cert.js   get_endpoint2.js
+    cert.pem  get_endpoint.js  privatekey.pem
 
 |
 
@@ -288,5 +300,18 @@ Edison上で以下のコマンドを実行し、本ハンズオン用に用意�
 ::
 
   # wget https://www.symantec.com/content/en/us/enterprise/verisign/roots/VeriSign-Class%203-Public-Primary-Certification-Authority-G5.pem -O rootca.crt
+
+|
+
+
+エンドポイントの設定
+====================================================
+
+CloudFormationのOutputに表示されたAccessKeyとSecretKeyをパラメータに指定してスクリプトを実行します。AWS IoTのエンドポイントが取得され、~/.endpoint に書き出されます。source ~/.endpoint で、endpoint情報を環境変数に登録し、デバイス用プログラムで使用します。
+
+::
+
+    # node get_endpoint2.js -a <your access key> -s <your secret key>  > ~/.endpoint
+    # source ~/.endpoint
 
 |

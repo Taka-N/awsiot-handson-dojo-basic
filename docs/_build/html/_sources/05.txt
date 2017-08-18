@@ -1,8 +1,8 @@
-====================
+========================================
 シナリオ1: センサーデータの送信
-====================
+========================================
 
-ntel Edisonに接続された照度センサーと温度センサーのデータをEdison上のプログラムで定期的にAWS IoTに送信します。AWS IoTではルールに基づきDynamoDBへ保存します。また、AWS IoTはルールに基づき、しきい値を下回った場合はSNSを使ってE-mailでアラートを送信します。WebサイトはS3で別途用意済みで、Webブラウザで開きDynamoDBに保存されたデータを確認できます。
+Intel Edisonに接続された照度センサーと温度センサーのデータをEdison上のプログラムで定期的にAWS IoTに送信します。AWS IoTではルールに基づきDynamoDBへ保存します。また、AWS IoTはルールに基づき、しきい値を下回った場合はSNSを使ってE-mailでアラートを送信します。WebサイトはS3で別途用意済みで、Webブラウザで開きDynamoDBに保存されたデータを確認できます。
 
 .. image:: images/scenario1.png
 
@@ -23,7 +23,7 @@ ntel Edisonに接続された照度センサーと温度センサーのデータ
 
 
 DynamoDB保存のAWS IoT ルールを作成
-===============================
+===================================================
 
 マネージメントコンソールのサービス一覧から[AWS IoT]をクリックして開きます。
 
@@ -31,55 +31,55 @@ DynamoDB保存のAWS IoT ルールを作成
 
 |
 
-DynamoDBに保存するルールを作成します。メニューから[Rules]を選択します。以下の様な画面が表示された場合は、[Create a rule]をクリックします。
+DynamoDBに保存するルールを作成します。メニューから [ルール] を選択します。以下の様な画面が表示された場合は、[ルールを作成する] をクリックします。
 
 .. image:: images/5-create-rule-1@2x.png
 
 |
 
-あるいは、ルールの一覧が表示された場合は[Create]をクリックします。
+あるいは、ルールの一覧が表示された場合は [作成] をクリックします。
 
 .. image:: images/5-create-rule-2@2x.png
 
 |
 
-以下の項目について値を入力します。[Add action]をクリックします。
+以下の項目について値を入力します。[アクションの追加] をクリックします。
 
-============= ============================
-設定項目          値
-============= ============================
-Name    	      SaveToDynamoDB_<参加者番号>
-Attribute  	    *
-Topic Filter	  place-a/position-<参加者番号>
-============= ============================
+==================== ============================
+設定項目                 値
+==================== ============================
+名前     	              SaveToDynamoDB_<参加者番号>
+属性       	            \*　　　(アスタリスク)
+トピックフィルター	       place-a/position-<参加者番号>
+==================== ============================
 
 .. image:: images/5-create-rule-3@2x.png
 
 |
 
-[Insert a message into a DynamoDB table]を選択し、[Configure action]をクリックします。
+[DynamoDB テーブルにメッセージを挿入する] を選択し、[アクションの設定] をクリックします。
 
 .. image:: images/5-create-rule-4@2x.png
 
 |
 
-以下の項目について値を入力します。[Role name]はリストから選択します。入力後[Add action]をクリックします。
+以下の項目について値を入力します。[Role name]はリストから選択します。入力後 [アクションの追加] をクリックします。
 
-================= ============================
-設定項目              値
-================= ============================
-Table name    	   AWSIoTHandsonStack-<参加者番号>-SensorDataTable-<英数字>
-Hash key value     ${topic()}
-Range key value    ${timestamp()}
-Write message data to this column     value
-IAM Role name      AWSIoTHandsonStack-<参加者番号>-SaveToDynamodbRole-<英数字> (リストから選択)
-================= ============================
+============================= ============================
+設定項目                          値
+============================= ============================
+テーブル名      	                 AWSIoTHandsonStack-<参加者番号>-SensorDataTable-<英数字>
+ハッシュキー値                     ${topic()}
+レンジキーの値                     ${timestamp()}
+この列にメッセージデータを書き込む     value
+IAM ロール名                       AWSIoTHandsonStack-<参加者番号>-SaveToDynamodbRole-<英数字> (リストから選択)
+============================= ============================
 
 .. image:: images/5-create-rule-5@2x.png
 
 |
 
-[Insert a message into a DynamoDB table]が追加されたことを確認し、[Create rule]をクリックします。
+[DynamoDB テーブルにメッセージを挿入する] が追加されたことを確認し、[ルールを作成] をクリックします。
 
 .. image:: images/5-create-rule-6@2x.png
 
@@ -100,47 +100,47 @@ IAM Role name      AWSIoTHandsonStack-<参加者番号>-SaveToDynamodbRole-<英�
 メール通知のAWS IoT ルールを作成
 ============================
 
-ルールの一覧が表示された画面で、[Create]をクリックします。
+ルールの一覧が表示された画面で、[作成] をクリックします。
 
 .. image:: images/5-create-rule-2@2x.png
 
 |
 
-以下の項目について値を入力します。[Add action]をクリックします。
+以下の項目について値を入力します。[アクションの追加] をクリックします。
 
 ============= ============================
-項目            値
+項目             値
 ============= ============================
-Name	         NotifyToAdmin_<参加者番号>
-Attribute      *, topic(1) AS place, topic(2) AS position
-Topic Filter   place-a/position-<参加者番号>
-Condition      illuminance < 30
+名前	           NotifyToAdmin_<参加者番号>
+属性             \*, topic(1) AS place, topic(2) AS position
+トピックフィルター    place-a/position-<参加者番号>
+条件             illuminance < 30
 ============= ============================
 
 .. image:: images/5-create-rule-9@2x.png
 
 |
 
-[Send a message as an SNS push notification]を選択し、[Configure action]をクリックします。
+[SNS プッシュ通知としてメッセージを送信する] を選択し、[アクションの設定] をクリックします。
 
 .. image:: images/5-create-rule-10@2x.png
 
 |
 
-以下の項目について値を入力します。[Role name]はリストから選択します。入力後[Add action]をクリックします。
+以下の項目について値を入力します。[Role name]はリストから選択します。入力後 [アクションの追加] をクリックします。
 
 ============= ============================
-項目            値
+項目              値
 ============= ============================
-SNS target     AWSIoTHandsonStack-<参加者番号>-NotifyToAdminTopic-<英数字> (リストから選択)
-IAM Role name   AWSIoTHandsonStack-<参加者番号>-NotifyToSNSRole-<英数字> (リストから選択)
+SNS ターゲット     AWSIoTHandsonStack-<参加者番号>-NotifyToAdminTopic-<英数字> (リストから選択)
+IAM ロール名       AWSIoTHandsonStack-<参加者番号>-NotifyToSNSRole-<英数字> (リストから選択)
 ============= ============================
 
 .. image:: images/5-create-rule-11@2x.png
 
 |
 
-[SNS Action]が追加されたことを確認し、[Create rule]をクリックします。
+[SNS プッシュ通知としてメッセージを送信する] が追加されたことを確認し、[ルールを作成する] をクリックします。
 
 .. image:: images/5-create-rule-12@2x.png
 
@@ -158,7 +158,7 @@ IAM Role name   AWSIoTHandsonStack-<参加者番号>-NotifyToSNSRole-<英数字>
 
 |
 
-CloudFormationでStack作成時にメール通知の宛先確認メールが届いているため、メール内の確認リンク[Confirm subscription]をクリックします。
+CloudFormationでStack作成時にメール通知の宛先確認メールが届いているため、メール内の確認リンク[Confirm subscription]をクリックし、メールの受け取りを承認して下さい。
 
 .. image:: images/5-email@2x.png
 
@@ -172,34 +172,29 @@ CloudFormationでStack作成時にメール通知の宛先確認メールが届�
 ::
 
   # cd ~/aws-iot-handson-dojo-basic/scenario1/
-   # node main.js
-   Connected to Message Broker
-   Publishing: {"timestamp":"2016-04-06T07:05:08.973Z","illuminance":343,"temperature":510}
-   Publishing: {"timestamp":"2016-04-06T07:05:14.035Z","illuminance":343,"temperature":512}
-   Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperature":512}
+  # node main.js
+  Connected to Message Broker
+  Publishing: {"timestamp":"2016-04-06T07:05:08.973Z","illuminance":343,"temperature":510}
+  Publishing: {"timestamp":"2016-04-06T07:05:14.035Z","illuminance":343,"temperature":512}
+  Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperature":512}
 
 |
+
 
 データの受信を確認する
 ==================
 
-AWS IoTのTestにて、"Subscription topic"に "place-a/position-<任意の番号>" を入力し、[Subscribe to topic]をクリックすれば、左側の"Subscribe to a topic"欄に、"place-a/position-<任意の番号>"が、表示されます。
-トピックが受信できていれば、"place-a/position-<任意の番号>"の左側に赤字で *●* が表示されます。
+AWS IoTの テスト にて、"発行"に "place-a/position-<任意の番号>" を入力し、[トピックに発行] をクリックすれば、左側の "サブスクリプション" 欄に、"place-a/position-<任意の番号>"が、表示されます。デバイスから送信されているセンサーデータがリアルタイムで表示されます。
 
 .. image:: images/5-test-1.png
 
 |
 
-"place-a/position-<任意の番号>"をクリックすると、デバイスから送信されているセンサーデータがリアルタイムで表示されます。
-
-.. image:: images/5-test-2.png
-
-|
 
 DynamoDBに保存されたデータの確認
 ============================
 
-AWSマネージメントコンソールのサービス一覧から[DynamoDB]をクリックして開きます。左側のメニューから[テーブル]をクリックし、テーブル一覧から”AWSIoTHandsonStack-<参加者番号>-SensorDataTable-<英数字>”をクリックします。タブの[項目]を選択すると、テーブル内のデータが表示されます。
+AWSマネージメントコンソールのサービス一覧から[DynamoDB]をクリックして開きます。左側のメニューから[テーブル]をクリックし、テーブル一覧から ”AWSIoTHandsonStack-<参加者番号>-SensorDataTable-<英数字>” をクリックします。タブの[項目]を選択すると、テーブル内のデータが表示されます。
 
 .. image:: images/5-dynamodb-1@2x.png
 

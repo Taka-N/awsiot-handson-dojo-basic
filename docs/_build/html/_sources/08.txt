@@ -8,40 +8,35 @@ CloudWatch Logsの設定
 
 AWS IoTのログはCloudWatch Logsで取得可能です。トラブルシューティングなどに使用する事ができます。
 
-マネージメントコンソールのAWS IoTを開き、[Settings]を選択し、[Update]をクリックします。
-
-
-.. image:: images/7-IoT-Settings.png
-
-|
-
-次に、[Update]をクリックしてください。
+マネージメントコンソールのAWS IoTを開き、[設定] を選択し、[更新] をクリックします。
 
 .. image:: images/7-IoT-Settings-Update.png
 
 |
 
-次に[Create a new role]をクリック
+次に、[ログレベル] を [情報] を選択し、[IAM ロール名] に、"AWSIoTHandsonStack-<参加者番号>-IoTLoggingRole-..." を選択し、[ロールの更新] をクリックします。
 
-.. image:: images/7-IoT-Settings-Update-create-a-new-role.png
-
-|
-
-次に"IAM role name"欄に、"AWSIoTCloudWatchLog"と入力し、[Create a new role]をクリックする。
-
-.. image:: images/7-IoT-Settings-Update-create-a-new-role2.png
+.. image:: images/7-IoT-Settings-Update2.png
 
 |
 
-再度"IAM role name"欄から、"AWSIoTCloudWatchLog"を選択し、[Update role]をクリックする。
-"Successfully..."と表示されるので、"Log level"で"info"を選択し、[Save]をクリックする。
+ロールが正常に更新されると、下記のメッセージが表示されます。
 
-.. image:: images/7-IoT-Settings-Update-save.png
+.. image:: images/7-IoT-Settings-Updated.png
 
 |
 
-サービス：CloudWatchに移動し、"ログ"というタブをクリックする。
+最後に [終了] をクリックします。
+
+
+サービス：CloudWatchに移動し、"ログ"というタブをクリックします。
 
 .. image:: images/7-CloudWatch-Log.png
+
+|
+
+ロググループが表示されるので、[AWSIotLogs] をクリックすると、ログが表示されます。
+
+.. image:: images/7-CloudWatch-Log-2.png
 
 |
