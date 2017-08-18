@@ -51,8 +51,6 @@ Elasticsearch Serviceの画面が開きますので、[新しいドメインの�
 
 |
 
-「Elasticsearch ドメインの作成」画面に移動します。
-
 [Elasticsearch ドメイン名] に、"awsioth-sensor-<参加者番号>" と入力して、[次へ] をクリックして下さい。
 
 .. image:: images/cretate-es-domain.png
@@ -106,6 +104,7 @@ Using SQL version     2016-03-23
 Attribute             *, topic(1) AS place, topic(2) AS position
 Topic Filter          place-a/position-<参加者番号>
 =================== =================================================
+
 
 .. image:: images/6-create-rule-2.png
 .. image:: images/6-create-rule-3.png
