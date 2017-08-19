@@ -47,7 +47,6 @@ DynamoDBに保存するルールを作成します。メニューから [ルー�
 以下の項目について値を入力します。[アクションの追加] をクリックします。
 
 .. csv-table::
-
     :header-rows: 1
     :file: table/dynamoDB_rule.csv
 
@@ -66,7 +65,6 @@ DynamoDBに保存するルールを作成します。メニューから [ルー�
 以下の項目について値を入力します。[テーブル名]、[IAM ロール名] は、リストから選択します。
 
 .. csv-table::
-
     :header-rows: 1
     :file: table/dynamoDB_action.csv
 
@@ -114,7 +112,6 @@ DynamoDBに保存するルールを作成します。メニューから [ルー�
 以下の項目について値を入力します。[アクションの追加] をクリックします。
 
 .. csv-table::
-
     :header-rows: 1
     :file: table/SNS_rule.csv
 
@@ -133,7 +130,6 @@ DynamoDBに保存するルールを作成します。メニューから [ルー�
 以下の項目について値を入力します。[SNS ターゲット]、[IAM ロール名] をリストから選択します。
 
 .. csv-table::
-
     :header-rows: 1
     :file: table/SNS_action.csv
 

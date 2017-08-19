@@ -120,28 +120,26 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
 <p>スクリーンショットの赤枠で囲んだ部分について、以下の項目を入力し、[Add action]をクリックします。</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="100%" />
+<col width="50%" />
+<col width="50%" />
 </colgroup>
-<tbody valign="top">
-<tr><td><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field"><th class="field-name">header-rows:</th><td class="field-body">1</td>
+<thead valign="bottom">
+<tr><th class="head">設定項目</th>
+<th class="head">値</th>
 </tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr><td><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+</thead>
 <tbody valign="top">
-<tr class="field"><th class="field-name">file:</th><td class="field-body">table/elasticSearch_rule.csv</td>
+<tr><td>名前</td>
+<td>SaveToElasticsearch_&lt;参加者番号&gt;</td>
 </tr>
-</tbody>
-</table>
-</td>
+<tr><td>SQL バージョンの使用</td>
+<td>2016-03-23</td>
+</tr>
+<tr><td>属性</td>
+<td><a href="#id3"><span class="problematic" id="id4">*</span></a>, topic(1) AS place, topic(2) AS position</td>
+</tr>
+<tr><td>トピックフィルター</td>
+<td>place-a/position-&lt;参加者番号&gt;</td>
 </tr>
 </tbody>
 </table>
@@ -188,8 +186,8 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>&#8220;<a href="#id3"><span class="problematic" id="id4">*</span></a>IAM ロール名&#8221; 横の[新しいロールの作成] ボタンを押して、Elasticsearch Search用のロールを作成します。</p>
-<p>&#8220;<a href="#id5"><span class="problematic" id="id6">*</span></a>IAM ロール名&#8221; 欄に、SaveToElasticSearchRole-&lt;参加者番号&gt; を入力し、[新しいロールの作成] ボタンを押します。</p>
+<p>&#8220;<a href="#id5"><span class="problematic" id="id6">*</span></a>IAM ロール名&#8221; 横の[新しいロールの作成] ボタンを押して、Elasticsearch Search用のロールを作成します。</p>
+<p>&#8220;<a href="#id7"><span class="problematic" id="id8">*</span></a>IAM ロール名&#8221; 欄に、SaveToElasticSearchRole-&lt;参加者番号&gt; を入力し、[新しいロールの作成] ボタンを押します。</p>
 <p>新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-&lt;参加者番号&gt; を選択し、[ロールの更新] ボタンを押します。</p>
 <img alt="_images/6-configure-action-2.png" src="_images/6-configure-action-2.png" />
 <div class="line-block">
