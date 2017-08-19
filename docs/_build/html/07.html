@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>7. シナリオ2: LEDのリモート制御 &mdash; awsiot-handson-basic v0.0 documentation</title>
+    <title>6. シナリオ2: LEDのリモート制御 &mdash; awsiot-handson-basic v0.0 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -21,8 +21,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="top" title="awsiot-handson-basic v0.0 documentation" href="index.html" />
-    <link rel="next" title="8. その他の設定（オプション）" href="08.html" />
-    <link rel="prev" title="6. シナリオ1＋: センサーデータの送信" href="06.html" /> 
+    <link rel="next" title="7. その他の設定（オプション）" href="08.html" />
+    <link rel="prev" title="5. シナリオ1: センサーデータの送信" href="05.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,10 +32,10 @@
           <a href="genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="08.html" title="8. その他の設定（オプション）"
+          <a href="08.html" title="7. その他の設定（オプション）"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="06.html" title="6. シナリオ1＋: センサーデータの送信"
+          <a href="05.html" title="5. シナリオ1: センサーデータの送信"
              accesskey="P">前へ</a> |</li>
         <li><a href="index.html">awsiot-handson-basic v0.0 documentation</a> &raquo;</li> 
       </ul>
@@ -47,14 +47,14 @@
           <div class="body">
             
   <div class="section" id="led">
-<h1>7. シナリオ2: LEDのリモート制御<a class="headerlink" href="#led" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>6. シナリオ2: LEDのリモート制御<a class="headerlink" href="#led" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>Intel Edison上のプログラムは接続されたボタンを監視してボタンが押されると、接続されたLEDをOn/Offし、LEDのOn/Off変化をAWS IoT Shadowに伝えます。同時に、AWS IoT ShadowからOn/Offの変更指示があれば接続されたLEDをOn/Offします。WebサイトはS3で別途用意済みで、Webブラウザで開きLambda経由でAWS IoT ShadowにLEDのOn/Offを指示できます。</p>
 <img alt="_images/scenario2.png" src="_images/scenario2.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <div class="section" id="id1">
-<h2>7.1. プログラムの実行<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>6.1. プログラムの実行<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>E本ハンズオン用に用意されているzipファイルを解凍したaws-iot-handson-fundamentalsの配下scenario2にシナリオ2用のNode.jsプログラムがあります。プログラムを実行します。</p>
 <div class="highlight-python"><pre># cd ~/aws-iot-handson-fundamentals/scenario2/
 # node main.js
@@ -67,11 +67,11 @@ Received status 'accepted' on 'edison-01': {"state":{"reported":{"led":"off"}},"
 </div>
 </div>
 <div class="section" id="id2">
-<h2>7.2. ローカルから制御<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>6.2. ローカルから制御<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Edisonに直接接続されたボタンを押すことでLEDをOn/Offできることを確認します。（あまり素早くボタンを押して離すと押された事がタイミングよっては検知できません。押してから少し間をおいてから離します。）</p>
 </div>
 <div class="section" id="id3">
-<h2>7.3. リモートから制御<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>6.3. リモートから制御<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>LEDがOnになっている場合はボタンを押してOffの状態にしてから、今度はリモートからLEDをOnにします。マネージメントコンソールのサービス一覧から[AWS IoT]をクリックして開きます。</p>
 <img alt="_images/4-servicemenu&#64;2x.png" src="_images/4-servicemenu&#64;2x.png" />
 <div class="line-block">
@@ -128,20 +128,20 @@ Received status 'accepted' on 'edison-01': {"state":{"reported":{"led":"off"}},"
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">目次</a></h3>
             <ul>
-<li><a class="reference external" href="#">7. シナリオ2: LEDのリモート制御</a><ul>
-<li><a class="reference external" href="#id1">7.1. プログラムの実行</a></li>
-<li><a class="reference external" href="#id2">7.2. ローカルから制御</a></li>
-<li><a class="reference external" href="#id3">7.3. リモートから制御</a></li>
+<li><a class="reference external" href="#">6. シナリオ2: LEDのリモート制御</a><ul>
+<li><a class="reference external" href="#id1">6.1. プログラムの実行</a></li>
+<li><a class="reference external" href="#id2">6.2. ローカルから制御</a></li>
+<li><a class="reference external" href="#id3">6.3. リモートから制御</a></li>
 </ul>
 </li>
 </ul>
 
             <h4>前のトピックへ</h4>
-            <p class="topless"><a href="06.html"
-                                  title="前の章へ">6. シナリオ1＋: センサーデータの送信</a></p>
+            <p class="topless"><a href="05.html"
+                                  title="前の章へ">5. シナリオ1: センサーデータの送信</a></p>
             <h4>次のトピックへ</h4>
             <p class="topless"><a href="08.html"
-                                  title="次の章へ">8. その他の設定（オプション）</a></p>
+                                  title="次の章へ">7. その他の設定（オプション）</a></p>
             <h3>このページ</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/07.txt"
@@ -171,10 +171,10 @@ Received status 'accepted' on 'edison-01': {"state":{"reported":{"led":"off"}},"
           <a href="genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="08.html" title="8. その他の設定（オプション）"
+          <a href="08.html" title="7. その他の設定（オプション）"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="06.html" title="6. シナリオ1＋: センサーデータの送信"
+          <a href="05.html" title="5. シナリオ1: センサーデータの送信"
              >前へ</a> |</li>
         <li><a href="index.html">awsiot-handson-basic v0.0 documentation</a> &raquo;</li> 
       </ul>

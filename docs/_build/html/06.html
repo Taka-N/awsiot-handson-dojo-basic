@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>6. シナリオ1＋: センサーデータの送信 &mdash; awsiot-handson-basic v0.0 documentation</title>
+    <title>シナリオ1＋: センサーデータの送信 &mdash; awsiot-handson-basic v0.0 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -20,9 +20,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
-    <link rel="top" title="awsiot-handson-basic v0.0 documentation" href="index.html" />
-    <link rel="next" title="7. シナリオ2: LEDのリモート制御" href="07.html" />
-    <link rel="prev" title="5. シナリオ1: センサーデータの送信" href="05.html" /> 
+    <link rel="top" title="awsiot-handson-basic v0.0 documentation" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -31,12 +29,6 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
-        <li class="right" >
-          <a href="07.html" title="7. シナリオ2: LEDのリモート制御"
-             accesskey="N">次へ</a> |</li>
-        <li class="right" >
-          <a href="05.html" title="5. シナリオ1: センサーデータの送信"
-             accesskey="P">前へ</a> |</li>
         <li><a href="index.html">awsiot-handson-basic v0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -47,7 +39,7 @@
           <div class="body">
             
   <div class="section" id="id1">
-<h1>6. シナリオ1＋: センサーデータの送信<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>シナリオ1＋: センサーデータの送信<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>Intel Edisonに接続された照度センサーと温度センサーのデータをEdison上のプログラムで定期的にAWS IoTに送信します。AWS IoTではルールに基づきElasticSearch ServiceやFirehose経由でS3に保存します。WebブラウザからはElasticSearch Service上のKibanaにアクセスして保管されているデータをグラフ表示できます。</p>
 <img alt="_images/scenario1-plus.png" src="_images/scenario1-plus.png" />
 <div class="line-block">
@@ -64,7 +56,7 @@
 <div class="line"><br /></div>
 </div>
 <div class="section" id="id2">
-<h2>6.1. プログラムの実行<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>プログラムの実行<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>本ハンズオン用に用意されているzipファイルを解凍したaws-iot-handson-dojo-basicの配下scenario1にシナリオ1用のNode.jsプログラムがあります。プログラムを実行すると、5秒ごとにメッセージが送られ続けます。このシナリオ終了時までそのまま動かし続けます。ハンズオン終了時にプログラムを終了させる場合はCtrl+Cを押します。</p>
 <div class="highlight-python"><pre># cd ~/aws-iot-handson-dojo-basic/scenario1/
 # node main.js
@@ -78,7 +70,7 @@ Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperatu
 </div>
 </div>
 <div class="section" id="elasticsearch-service">
-<h2>6.2. ElasticSearch Serviceのドメインを作成する<a class="headerlink" href="#elasticsearch-service" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>ElasticSearch Serviceのドメインを作成する<a class="headerlink" href="#elasticsearch-service" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>サービス一覧から[ElasticSearch Service] をクリックして開きます。</p>
 <img alt="_images/es.png" src="_images/es.png" />
 <div class="line-block">
@@ -118,7 +110,7 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
 </div>
 </div>
 <div class="section" id="elasticsearch-serviceaws-iot">
-<h2>6.3. ElasticSearch Serviceへ保存するAWS IoT ルールを作成<a class="headerlink" href="#elasticsearch-serviceaws-iot" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>ElasticSearch Serviceへ保存するAWS IoT ルールを作成<a class="headerlink" href="#elasticsearch-serviceaws-iot" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>マネージメントコンソールのサービス一覧から[AWS IoT]を開き、左側のメニューから[Rules]を選択します。</p>
 <img alt="_images/6-create-rule-1.png" src="_images/6-create-rule-1.png" />
 <div class="line-block">
@@ -216,7 +208,7 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
 </div>
 </div>
 <div class="section" id="kibana">
-<h2>6.4. Kibanaでデータを確認<a class="headerlink" href="#kibana" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>Kibanaでデータを確認<a class="headerlink" href="#kibana" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>マネージメントコンソールのサービス一覧から[Elasticsearch Service]を開きます。[検索可能なドキュメント] の数字が0より大きくなっていることを確認します。[クラスターの状態] が [黄色] になっていのはシングルノード構成のためでありハンズオンでは問題ありません。</p>
 <img alt="_images/6-searchable_documents.png" src="_images/6-searchable_documents.png" />
 <div class="line-block">
@@ -271,21 +263,22 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>[From a new search]をクリックします。</p>
+<p>[sensordata-&lt;参加者番号&gt;] をクリックします。</p>
 <img alt="_images/6-kibana-new-search.png" src="_images/6-kibana-new-search.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>データに[sensordata-&lt;参加者番号&gt;]が選択され、Y軸にサンプル数(Count)が設定されている事を確認し、X軸の設定を開始するために[X-Axis]をクリックします。</p>
+<p>Y軸にサンプル数(Count)が設定されている事を確認し、X軸の設定を開始するために[X-Axis]をクリックします。</p>
 <img alt="_images/6-kibana-visualize-2.png" src="_images/6-kibana-visualize-2.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>[Aggregation]に[Data Histogram]を選択し[Apply]をクリックすると、右側にグラフが表示されることを確認します。</p>
+<p>[Aggregation]に[Data Histogram]を選択し、画面上部の [▶] をクリックすると、右側にグラフが表示されることを確認します。</p>
 <img alt="_images/6-kibana-visualize-3.png" src="_images/6-kibana-visualize-3.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; ここまで &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</p>
 <p>保存ボタンをクリックし、[Title]に[Sensor Data - Sampling Count]と入力し、[Save]をクリックします。</p>
 <img alt="_images/6-kibana-visualize-4.png" src="_images/6-kibana-visualize-4.png" />
 <div class="line-block">
@@ -343,7 +336,7 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
 </div>
 </div>
 <div class="section" id="firehose">
-<h2>6.5. Firehoseのストリームを作成<a class="headerlink" href="#firehose" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>Firehoseのストリームを作成<a class="headerlink" href="#firehose" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>マネージメントコンソールのサービス一覧から[Kinesis]を開きます。[Firehoseに進む]をクリックします。</p>
 <img alt="_images/6-kinesis-firehose-1.png" src="_images/6-kinesis-firehose-1.png" />
 <div class="line-block">
@@ -360,22 +353,16 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">目次</a></h3>
             <ul>
-<li><a class="reference external" href="#">6. シナリオ1＋: センサーデータの送信</a><ul>
-<li><a class="reference external" href="#id2">6.1. プログラムの実行</a></li>
-<li><a class="reference external" href="#elasticsearch-service">6.2. ElasticSearch Serviceのドメインを作成する</a></li>
-<li><a class="reference external" href="#elasticsearch-serviceaws-iot">6.3. ElasticSearch Serviceへ保存するAWS IoT ルールを作成</a></li>
-<li><a class="reference external" href="#kibana">6.4. Kibanaでデータを確認</a></li>
-<li><a class="reference external" href="#firehose">6.5. Firehoseのストリームを作成</a></li>
+<li><a class="reference external" href="#">シナリオ1＋: センサーデータの送信</a><ul>
+<li><a class="reference external" href="#id2">プログラムの実行</a></li>
+<li><a class="reference external" href="#elasticsearch-service">ElasticSearch Serviceのドメインを作成する</a></li>
+<li><a class="reference external" href="#elasticsearch-serviceaws-iot">ElasticSearch Serviceへ保存するAWS IoT ルールを作成</a></li>
+<li><a class="reference external" href="#kibana">Kibanaでデータを確認</a></li>
+<li><a class="reference external" href="#firehose">Firehoseのストリームを作成</a></li>
 </ul>
 </li>
 </ul>
 
-            <h4>前のトピックへ</h4>
-            <p class="topless"><a href="05.html"
-                                  title="前の章へ">5. シナリオ1: センサーデータの送信</a></p>
-            <h4>次のトピックへ</h4>
-            <p class="topless"><a href="07.html"
-                                  title="次の章へ">7. シナリオ2: LEDのリモート制御</a></p>
             <h3>このページ</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/06.txt"
@@ -404,12 +391,6 @@ Elasticsearch ドメインが出来るまで、数分かかります。</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="総合索引"
              >索引</a></li>
-        <li class="right" >
-          <a href="07.html" title="7. シナリオ2: LEDのリモート制御"
-             >次へ</a> |</li>
-        <li class="right" >
-          <a href="05.html" title="5. シナリオ1: センサーデータの送信"
-             >前へ</a> |</li>
         <li><a href="index.html">awsiot-handson-basic v0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>

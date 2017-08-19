@@ -209,23 +209,25 @@ Time-field names               timestamp (リストから選択)
 
 |
 
-[From a new search]をクリックします。
+[sensordata-<参加者番号>] をクリックします。
 
 .. image:: images/6-kibana-new-search.png
 
 |
 
-データに[sensordata-<参加者番号>]が選択され、Y軸にサンプル数(Count)が設定されている事を確認し、X軸の設定を開始するために[X-Axis]をクリックします。
+Y軸にサンプル数(Count)が設定されている事を確認し、X軸の設定を開始するために[X-Axis]をクリックします。
 
 .. image:: images/6-kibana-visualize-2.png
 
 |
 
-[Aggregation]に[Data Histogram]を選択し[Apply]をクリックすると、右側にグラフが表示されることを確認します。
+[Aggregation]に[Data Histogram]を選択し、画面上部の [▶] をクリックすると、右側にグラフが表示されることを確認します。
 
 .. image:: images/6-kibana-visualize-3.png
 
 |
+
+<<<<<<<<<< ここまで >>>>>>>>>>>
 
 保存ボタンをクリックし、[Title]に[Sensor Data - Sampling Count]と入力し、[Save]をクリックします。
 
