@@ -308,3 +308,81 @@ Firehoseのストリームを作成
 .. image:: images/6-kinesis-firehose-2.png
 
 |
+
+Step 1 で、Delivery stream nameとして、FromIotToS3-<参加者番号> を設定し、他の設定は、そのままにして [Next] をクリックします。
+
+====================== ===========================
+設定項目                   値
+====================== ===========================
+Delivery stream name      FromIotToS3-<参加者番号>
+====================== ===========================
+
+.. image:: images/6-kinesis-firehose-3.png
+
+|
+
+
+.. image:: images/6-kinesis-firehose-4.png
+
+
+|
+
+Step 2 は、そのままにして [Next] をクリックします。
+
+Step 3 で、Destination を Amazon S3 として、S3バケットを撰び、[Next] をクリックします。
+
+====================== ===========================
+設定項目                   値
+====================== ===========================
+Destination	              Amazon S3 (ディフォルトでS3になっています。)
+S3 bucket	                awsiothandsonstack-<参加者番号>-sensorstoragebucket-<英数字>
+====================== ===========================
+
+.. image:: images/6-kinesis-firehose-5.png
+
+|
+
+Step 4 で、S3のバッファーの設定を行います。
+
+
+==================== ================
+設定項目                 値
+==================== ================
+Buffer size	            1
+Buffer Interval	        60
+==================== ================
+
+.. image:: images/6-kinesis-firehose-6.png
+
+|
+
+IAM role で、[Create new, or Choose] をクリックすると、IAMの画面が開きます。
+
+.. image:: images/6-kinesis-firehose-7.png
+
+|
+
+AWSIoTHandsonStack-<参加者番号>-FirehoseDeliveryRole-<英数字> を選択し、[許可] をクリックします。
+
+.. image:: images/6-kinesis-firehose-IAM.png
+.. image:: images/6-kinesis-firehose-8.png
+
+|
+
+IAMの設定画面が閉じますので、[Next] をクリックします。
+
+.. image:: images/6-kinesis-firehose-9.png
+
+|
+
+Step 5 で確認画面が表示されますので、[Create delivery stream] をクリックします。
+
+.. image:: images/6-kinesis-firehose-confirm.png
+
+|
+
+S3 Delivery Streams が作成されました。[FromIotToS3-<参加者番号>] の [Status] が [ACTIVE]になるのを待ちます。
+
+.. image:: images/6-kinesis-firehose-confirm-2.png
+
+|
