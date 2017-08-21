@@ -327,9 +327,9 @@ Delivery stream name      FromIotToS3-<参加者番号>
 
 |
 
-Step 2 は、そのままにして [Next] をクリックします。
+Step 2 は、なにも設定せず [Next] をクリックします。
 
-Step 3 で、Destination を Amazon S3 として、S3バケットを撰び、[Next] をクリックします。
+Step 3 で、Destination を Amazon S3 として、S3バケットを選択し、[Next] をクリックします。
 
 ====================== ===========================
 設定項目                   値
@@ -405,7 +405,6 @@ Firehoseに送信するAWS IoT ルールを作成
     :file: table/Firehose_rule.csv
 
 |
-
 
 .. image:: images/6-create-rule-2.png
 
