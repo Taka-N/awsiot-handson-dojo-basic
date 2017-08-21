@@ -419,29 +419,19 @@ Firehoseに送信するAWS IoT ルールを作成
 [アクションの設定] 画面にて、下記の項目を入力します。
 
 ===============  ==============================================================================
-設定項目            値
+設定項目              値
 ===============  ==============================================================================
-ストリーム名	       FromIotToS3-<参加者番号>
-IAM ロール名        AWSIoTHandsonStack-<参加者番号>-SaveToFirehoseRole-<英数字> (リストから選択)
+ストリーム名	         FromIotToS3-<参加者番号>
+IAM ロール名          AWSIoTHandsonStack-<参加者番号>-SaveToFirehoseRole-<英数字> (リストから選択)
 ===============  ==============================================================================
 
 
-.. image:: images/6-configure-action-1.png
+.. image:: images/6-configure-firehose-action-1.png
 
 |
 
 
-"*IAM ロール名" 横の[新しいロールの作成] ボタンを押して、Elasticsearch Search用のロールを作成します。
-
-"*IAM ロール名" 欄に、SaveToElasticSearchRole-<参加者番号> を入力し、[新しいロールの作成] ボタンを押します。
-
-新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-<参加者番号> を選択し、[ロールの更新] ボタンを押します。
-
-.. image:: images/6-configure-action-2.png
-
-|
-
-ロールが正常に更新されると、下記のメッセージが表示されます。
+"IAM ロール名" から、AWSIoTHandsonStack-<参加者番号>-SaveToFirehoseRole-<英数字>] を選択し、[ロールの更新] ボタンを押します。ロールが正常に更新されると、下記のメッセージが表示されます。
 
 .. image:: images/role-successfully-updated.png
 
@@ -451,6 +441,15 @@ IAM ロール名        AWSIoTHandsonStack-<参加者番号>-SaveToFirehoseRole-
 
 最後に、確認画面が出ますので、[ルールを作成する] ボタンを押して、ルールを作成して下さい。
 
-.. image:: images/6-rules.png
+.. image:: images/6-rules-firehose.png
+
+|
+
+S3に保存されたデータを確認する
+=======================================
+
+サービス一覧から[S3]をクリックして開きます。
+
+.. image:: images/6-s3.png
 
 |
