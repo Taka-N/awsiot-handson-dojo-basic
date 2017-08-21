@@ -286,7 +286,7 @@ Y軸にサンプル数(Count)が設定されている事を確認し、X軸の�
 
 |
 
-右上の ①[Save] ボタンをクリックし、タイトルを ②[Sensor Data] と入力し、③[Save]をクリックします。
+右上の ①[Save] ボタンをクリックし、タイトルを ②[Sensor Data] と入力し、③[Store time with dashboard] にチェックを入れ、④[Save]をクリックします。
 
 .. image:: images/6-kibana-dashboard-4.png
 
