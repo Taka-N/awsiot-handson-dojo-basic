@@ -55,20 +55,20 @@ ElsticSearch Serviceの設定を削除
 ElsticSearch Serviceは、オプションシナリオで使用したものです。オプションシナリオ未実施の方は削除する必要はありません。スキップして下さい。
 
 マネージメントコンソールのサービス一覧から[ElsticSearch Service]をクリックして開きます。
-Domain ”awsioth-sensor-<参加者番号>”をクリックします。
+ドメイン ”awsioth-sensor-<参加者番号>”をクリックします。
 
 .. image:: images/6-searchable_documents.png
 
 |
 
-画面の下までスクロールし、"Delete Elasticsearch domain"をクリックすると、[Delete domain] ボタンが表示されるので、クリックします。
+画面の下までスクロールし、"Elasticsearch ドメインの削除" をクリックすると、[ドメインの削除] ボタンが表示されるので、クリックします。
 
-.. image:: images/09/elasticsearch-delete-2.png
+.. image:: images/9-elasticsearch-delete-2.png
 
 |
 
-確認画面が表示されますので、"Delete the domain ...."のチェックを入れ、[Delete] ボタンをクリックします。
+確認画面が表示されますので、"ドメインの削除 ...." にェックを入れ、[削除] ボタンをクリックします。
 
-.. image:: images/09/elasticsearch-delete-fonfirm.png
+.. image:: images/9-elasticsearch-delete-fonfirm.png
 
 |
