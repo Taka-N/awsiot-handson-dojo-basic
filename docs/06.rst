@@ -262,9 +262,15 @@ Y軸にサンプル数(Count)が設定されている事を確認し、X軸の�
 
 |
 
-メニューにある[Dashboard]をクリックし、追加ボタンをクリックします。
+メニューにある[Dashboard]をクリックし、[Create a dashboard] をクリックします。
 
 .. image:: images/6-kibana-dashboard-1.png
+
+|
+
+[Add] ボタンをクリックします。
+
+.. image:: images/6-kibana-dashboard-add.png
 
 |
 
@@ -280,7 +286,7 @@ Y軸にサンプル数(Count)が設定されている事を確認し、X軸の�
 
 |
 
-保存ボタンをクリックし、[Title]を[Sensor Data]と入力し、[Save]をクリックします。
+右上の ①[Save] ボタンをクリックし、タイトルを ②[Sensor Data] と入力し、③[Save]をクリックします。
 
 .. image:: images/6-kibana-dashboard-4.png
 
