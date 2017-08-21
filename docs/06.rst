@@ -86,15 +86,15 @@ Elasticsearch ドメインが出来るまで、数分かかります。
 ElasticSearch Serviceへ保存するAWS IoT ルールを作成
 ===============================================================
 
-マネージメントコンソールのサービス一覧から[AWS IoT]を開き、左側のメニューから[Rules]を選択します。
+マネージメントコンソールのサービス一覧から[AWS IoT]を開き、左側のメニューから [ルール] を選択します。
 
 .. image:: images/6-create-rule-1.png
 
 |
 
-その後、[Create]をクリックします。
+その後、[作成] をクリックします。
 
-スクリーンショットの赤枠で囲んだ部分について、以下の項目を入力し、[Add action]をクリックします。
+スクリーンショットの赤枠で囲んだ部分について、以下の項目を入力し、[アクションの追加] をクリックします。
 
 .. csv-table::
     :header-rows: 1
@@ -384,5 +384,78 @@ Step 5 で確認画面が表示されますので、[Create delivery stream] を
 S3 Delivery Streams が作成されました。[FromIotToS3-<参加者番号>] の [Status] が [ACTIVE]になるのを待ちます。
 
 .. image:: images/6-kinesis-firehose-confirm-2.png
+
+|
+
+Firehoseに送信するAWS IoT ルールを作成
+===========================================
+
+マネージメントコンソールのサービス一覧から [AWS IoT] を開き、左側のメニューから [ルール] を選択します。
+
+.. image:: images/6-create-rule-1.png
+
+|
+
+その後、[作成] をクリックします。
+
+スクリーンショットの赤枠で囲んだ部分について、以下の項目を入力し、[アクションの追加] をクリックします。
+
+.. csv-table::
+    :header-rows: 1
+    :file: table/Firehose_rule.csv
+
+|
+
+
+.. image:: images/6-create-rule-2.png
+
+|
+
+[アクションを追加して下さい] 画面で、[Amazon Elasticsearch Service にメッセージを送信する] を選択し、[アクションの設定] をクリックします。
+
+.. image:: images/6-create-rule-4.png
+
+.. image:: images/6-create-rule-5.png
+
+|
+
+[Configure action]画面にて、下記の項目を入力します。
+
+===========  ==============================================
+設定項目          値
+===========  ==============================================
+Domain name    awsioth-sensor-<英数字>
+ID             ${timestamp()}
+Index          sensordata-<参加者番号>
+Type           scenario1
+===========  ==============================================
+
+
+.. image:: images/6-configure-action-1.png
+
+|
+
+
+"*IAM ロール名" 横の[新しいロールの作成] ボタンを押して、Elasticsearch Search用のロールを作成します。
+
+"*IAM ロール名" 欄に、SaveToElasticSearchRole-<参加者番号> を入力し、[新しいロールの作成] ボタンを押します。
+
+新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-<参加者番号> を選択し、[ロールの更新] ボタンを押します。
+
+.. image:: images/6-configure-action-2.png
+
+|
+
+ロールが正常に更新されると、下記のメッセージが表示されます。
+
+.. image:: images/role-successfully-updated.png
+
+|
+
+その後、[アクションの追加] ボタンを押します。
+
+最後に、確認画面が出ますので、[ルールを作成する] ボタンを押して、ルールを作成して下さい。
+
+.. image:: images/6-rules.png
 
 |
