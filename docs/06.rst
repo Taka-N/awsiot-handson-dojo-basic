@@ -232,9 +232,7 @@ Y軸にサンプル数(Count)が設定されている事を確認し、X軸の�
 
 |
 
-<<<<<<<<<< ここまで >>>>>>>>>>>
-
-保存ボタンをクリックし、[Title]に[Sensor Data - Sampling Count]と入力し、[Save]をクリックします。
+右上の ①[Save] ボタンをクリックし、[Save Visualization] に ②[Sensor Data - Sampling Count]と入力し、③[Save] をクリックします。
 
 .. image:: images/6-kibana-visualize-4.png
 
@@ -246,7 +244,7 @@ Y軸にサンプル数(Count)が設定されている事を確認し、X軸の�
 
 |
 
-保存ボタンをクリックし、[Title]を[Sensor Data - Illuminance]に変更し、[Save]をクリックします。
+[Save] 保存ボタンをクリックし、[Title]を[Sensor Data - Illuminance]に変更し、[Save]をクリックします。
 
 .. image:: images/6-kibana-visualize-6.png
 
