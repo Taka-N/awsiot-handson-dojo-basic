@@ -250,13 +250,13 @@ Y軸にサンプル数(Count)が設定されている事を確認し、X軸の�
 
 |
 
-保存されたら、Y軸の設定を表示し、[Field]を[temperature]を変更します。[Apply]をクリックしてグラフに適切なデータが表示されることを確認します。
+保存されたら、Y軸の設定の [Field] を [temperature]① に変更し、[▶]②(Apply)をクリックしてグラフに適切なデータが表示されることを確認します。
 
 .. image:: images/6-kibana-visualize-7.png
 
 |
 
-保存ボタンをクリックし、[Title]を[Sensor Data - Temperature]に変更し、[Save]をクリックします。
+右上の ①[Save] ボタンをクリックし、タイトルを ②[Sensor Data - Temperature] に変更し、③[Save]をクリックします。
 
 .. image:: images/6-kibana-visualize-8.png
 
