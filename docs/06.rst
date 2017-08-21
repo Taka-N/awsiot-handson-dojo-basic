@@ -238,13 +238,13 @@ Y軸にサンプル数(Count)が設定されている事を確認し、X軸の�
 
 |
 
-保存されたら、Y軸の設定を表示し、[Aggregation]を[Average]に変更し、[Field]に[illuminance]を指定します。[Apply]をクリックしてグラフに適切なデータが表示されることを確認します。
+保存されたら、[▼ Y-Axis]①を押しY軸の設定を表示します。[Aggregation] を [Average]② に変更し、[Field] に [illuminance]③ を指定します。[▶]④(Apply)をクリックしてグラフに適切なデータが表示されることを確認します。
 
 .. image:: images/6-kibana-visualize-5.png
 
 |
 
-[Save] 保存ボタンをクリックし、[Title]を[Sensor Data - Illuminance]に変更し、[Save]をクリックします。
+[Save] 保存ボタンをクリックし、タイトル [Sensor Data - Illuminance]に変更し、[Save]をクリックします。
 
 .. image:: images/6-kibana-visualize-6.png
 
