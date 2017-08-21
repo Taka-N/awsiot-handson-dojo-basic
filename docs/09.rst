@@ -31,3 +31,44 @@ CloudFormationスタックの削除
 
 .. image:: images/8-delete-cf-stack-1.png
 
+
+Kinesis Firehoseの設定を削除
+========================================================
+
+マネージメントコンソールのサービス一覧から[Kinesis]をクリックして開きます。[Firehose コンソールに移動]をクリックし、Kinesis Firehoseの設定画面に移動します。
+
+S3 Delivery Streamsから、"FromIotToS3-<参加者番号>" をチェックし、[アクション]から、"Delete"を選びます。
+
+.. image:: images/6-firehose-delete.png
+
+|
+
+確認画面が表示されるので、delivery stream 名を入力し、[Delete]をクリックします。
+
+.. image:: images/6-firehose-delete-confirm.png
+
+|
+
+ElsticSearch Serviceの設定を削除
+========================================================
+
+ElsticSearch Serviceは、オプションシナリオで使用したものです。オプションシナリオ未実施の方は削除する必要はありません。スキップして下さい。
+
+マネージメントコンソールのサービス一覧から[ElsticSearch Service]をクリックして開きます。
+Domain ”awsioth-sensor-<参加者番号>”をクリックします。
+
+.. image:: images/6-searchable_documents.png
+
+|
+
+画面の下までスクロールし、"Delete Elasticsearch domain"をクリックすると、[Delete domain] ボタンが表示されるので、クリックします。
+
+.. image:: images/09/elasticsearch-delete-2.png
+
+|
+
+確認画面が表示されますので、"Delete the domain ...."のチェックを入れ、[Delete] ボタンをクリックします。
+
+.. image:: images/09/elasticsearch-delete-fonfirm.png
+
+|
