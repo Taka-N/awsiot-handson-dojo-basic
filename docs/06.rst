@@ -297,8 +297,14 @@ Y軸にサンプル数(Count)が設定されている事を確認し、X軸の�
 Firehoseのストリームを作成
 =======================================
 
-マネージメントコンソールのサービス一覧から[Kinesis]を開きます。[Firehoseに進む]をクリックします。
+マネージメントコンソールのサービス一覧から[Kinesis]を開きます。[Firehoseに移動]をクリックします。
 
 .. image:: images/6-kinesis-firehose-1.png
+
+|
+
+[Create Delivery System]をクリックして、Firehoseのストリームを作成します。
+
+.. image:: images/6-kinesis-firehose-2.png
 
 |
