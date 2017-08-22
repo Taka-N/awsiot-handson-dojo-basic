@@ -86,7 +86,7 @@ Elasticsearch ドメイン名        awsioth-sensor-<参加者番号>
 
 |
 
-Iアドレスの入力画面が表示されるので、先ほど記録したグローバルIPアドレスを入力し、[OK] を押して下さい。
+IPアドレスの入力画面が表示されるので、先ほど記録したグローバルIPアドレスを入力し、[OK] を押して下さい。
 
 .. image:: images/domain-access-ip_input.png
 
