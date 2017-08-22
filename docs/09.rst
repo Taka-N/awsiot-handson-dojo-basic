@@ -178,7 +178,7 @@ IAMロールを削除
 
 本ハンズオンで作成した下記のロールのみにチェックを入れ、[ロールの削除]をクリックして下さい。
 
-* SaveToElasticSearchRole-<参加者番号>
+SaveToElasticSearchRole-<参加者番号>
 
 .. image:: images/9-IAM-role-delete.png
 
