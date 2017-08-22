@@ -85,7 +85,7 @@ https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-d
 
 
 ===================== ================================================
-
+項目                      値
 ===================== ================================================
 スタックの名前             AWSIoTHandsonStack-<参加者番号>
 AdministratorEmail       通知先のE-mailアドレス
