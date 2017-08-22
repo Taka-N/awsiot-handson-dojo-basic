@@ -154,17 +154,6 @@ Congnite IDプールを削除
 |
 
 
-CloudFormationスタックの削除
-============================
-
-- マネージメントコンソールのサービス一覧から[CloudFormation]をクリックします。
-- リストから"AWSIoTHandsonStack"のスタックを選択し、"Actions"から[Delete Stack]をクリックします。
-
-.. image:: images/8-delete-cf-stack-1.png
-
-|
-
-
 IAMロールを削除
 ===================================
 
@@ -187,5 +176,16 @@ SaveToElasticSearchRole-<参加者番号>
 確認画面が表示されますので、[はい、削除する]をクリックして下さい。
 
 .. image:: images/9-IAM-role-delete-confirm.png
+
+|
+
+
+CloudFormationスタックの削除
+============================
+
+- マネージメントコンソールのサービス一覧から[CloudFormation]をクリックします。
+- リストから"AWSIoTHandsonStack"のスタックを選択し、"Actions"から[Delete Stack]をクリックします。
+
+.. image:: images/8-delete-cf-stack-1.png
 
 |
