@@ -82,7 +82,7 @@ Kinesis Firehoseの設定を削除
 
 マネージメントコンソールのサービス一覧から[Kinesis]をクリックして開きます。[Firehose コンソールに移動]をクリックし、Kinesis Firehoseの設定画面に移動します。
 
-S3 Delivery Streamsから、"FromIotToS3-<参加者番号>" をチェックし、[アクション]から、"Delete"を選びます。
+S3 Delivery Streamsから、"FromIotToS3-<参加者番号>" をチェックし、[Actions] から、"Delete" を選びます。
 
 .. image:: images/6-firehose-delete.png
 
