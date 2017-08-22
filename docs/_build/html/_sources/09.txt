@@ -2,7 +2,37 @@
  ハンズオン終了後
 ==================
 
-ハンズオン終了後には以下の設定を削除してください。
+ハンズオン終了後のAWSの課金発生を無くすために、今回のハンズオンで使用したハードウェアの後片付けと、作成したAWSのリソースの削除を行います。
+
+ハードウェアの後片付け
+============================
+
+プログラムを停止する
+-------------------------------
+
+プログラムが動作している場合、Ctrl+C でプログラムを終了します。
+
+ユーザーディレクトリのクリーンアップ
+--------------------------------------------------
+
+::
+
+    # cd
+    # rm -rf *
+    # rm -rf ./.aws
+    # rm -f ./.profile
+    # rm -f ./.endpoint
+    # rm -f ./.reasion
+
+|
+
+Edisonの電源を切る
+-------------------------------
+
+Edisonから、DCプラグを抜き、電源を切って下さい。
+
+
+ハンズオン終了後には以下のAWSの設定を削除してください。
 
 AWS IoTのリソース削除
 =====================
@@ -23,6 +53,28 @@ AWS IoTの証明書、ポリシー、デバイスを削除するためには、�
 |
 
 
+S3バケットの削除
+==============================
+
+サービス一覧から[S3]をクリックして開きます。
+
+.. image:: images/6-s3.png
+
+|
+
+“awsiothandsonstack-<参加者番号>-sensorstoragebucket-<英数字>” のバケットをクリックします。
+
+.. image:: images/9-s3-delete.png
+
+|
+
+バケットの名前を入力して、[確認] をクリックします。
+
+.. image:: images/9-s3-delete-2.png
+
+|
+
+
 CloudFormationスタックの削除
 ============================
 
@@ -31,3 +83,79 @@ CloudFormationスタックの削除
 
 .. image:: images/8-delete-cf-stack-1.png
 
+|
+
+Kinesis Firehoseの設定を削除
+========================================================
+
+マネージメントコンソールのサービス一覧から[Kinesis]をクリックして開きます。[Firehose コンソールに移動]をクリックし、Kinesis Firehoseの設定画面に移動します。
+
+S3 Delivery Streamsから、"FromIotToS3-<参加者番号>" をチェックし、[アクション]から、"Delete"を選びます。
+
+.. image:: images/6-firehose-delete.png
+
+|
+
+確認画面が表示されるので、delivery stream 名を入力し、[Delete]をクリックします。
+
+.. image:: images/6-firehose-delete-confirm.png
+
+|
+
+ElsticSearch Serviceの設定を削除
+========================================================
+
+ElsticSearch Serviceは、オプションシナリオで使用したものです。オプションシナリオ未実施の方は削除する必要はありません。スキップして下さい。
+
+マネージメントコンソールのサービス一覧から[ElsticSearch Service]をクリックして開きます。
+ドメイン ”awsioth-sensor-<参加者番号>”をクリックします。
+
+.. image:: images/6-searchable_documents.png
+
+|
+
+画面の下までスクロールし、"Elasticsearch ドメインの削除" をクリックすると、[ドメインの削除] ボタンが表示されるので、クリックします。
+
+.. image:: images/9-elasticsearch-delete-2.png
+
+|
+
+確認画面が表示されますので、"ドメインの削除 ...." にェックを入れ、[削除] ボタンをクリックします。
+
+.. image:: images/9-elasticsearch-delete-fonfirm.png
+
+|
+
+
+Congnite IDプールを削除
+========================================================
+
+マネージメントコンソールのサービス一覧から [Cognito] をクリックして開き、[フェデレーテッドアイデンティティの管理] をクリックします。
+
+.. image:: images/2-cognito-1@2x.png
+
+|
+
+”AWSIoTHandson <参加者番号>” をクリックします。
+
+.. image:: images/9-cognite-delete.png
+
+|
+
+[IDプールの編集] をクリックします。
+
+.. image:: images/9-cognite-delete-2.png
+
+|
+
+[IDプールの削除] をクリックします。
+
+.. image:: images/9-cognite-delete-3.png
+
+|
+
+確認画面が表示されるので、[プールの削除] をクリックします。
+
+.. image:: images/9-cognite-delete-4.png
+
+|

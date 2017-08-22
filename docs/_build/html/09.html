@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8. ハンズオン終了後 &mdash; awsiot-handson-basic v0.0 documentation</title>
+    <title>9. ハンズオン終了後 &mdash; awsiot-handson-basic v0.0 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -21,8 +21,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="top" title="awsiot-handson-basic v0.0 documentation" href="index.html" />
-    <link rel="next" title="9. AWS IoT Device SDK解説" href="10.html" />
-    <link rel="prev" title="7. その他の設定（オプション）" href="08.html" /> 
+    <link rel="next" title="10. AWS IoT Device SDK解説" href="10.html" />
+    <link rel="prev" title="8. その他の設定（オプション）" href="08.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,10 +32,10 @@
           <a href="genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="10.html" title="9. AWS IoT Device SDK解説"
+          <a href="10.html" title="10. AWS IoT Device SDK解説"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="08.html" title="7. その他の設定（オプション）"
+          <a href="08.html" title="8. その他の設定（オプション）"
              accesskey="P">前へ</a> |</li>
         <li><a href="index.html">awsiot-handson-basic v0.0 documentation</a> &raquo;</li> 
       </ul>
@@ -47,10 +47,36 @@
           <div class="body">
             
   <div class="section" id="id1">
-<h1>8. ハンズオン終了後<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>ハンズオン終了後には以下の設定を削除してください。</p>
+<h1>9. ハンズオン終了後<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>ハンズオン終了後のAWSの課金発生を無くすために、今回のハンズオンで使用したハードウェアの後片付けと、作成したAWSのリソースの削除を行います。</p>
+<div class="section" id="id2">
+<h2>9.1. ハードウェアの後片付け<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id3">
+<h3>9.1.1. プログラムを停止する<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>プログラムが動作している場合、Ctrl+C でプログラムを終了します。</p>
+</div>
+<div class="section" id="id4">
+<h3>9.1.2. ユーザーディレクトリのクリーンアップ<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># cd</span>
+<span class="c1"># rm -rf *</span>
+<span class="c1"># rm -rf ./.aws</span>
+<span class="c1"># rm -f ./.profile</span>
+<span class="c1"># rm -f ./.endpoint</span>
+<span class="c1"># rm -f ./.reasion</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="edison">
+<h3>9.1.3. Edisonの電源を切る<a class="headerlink" href="#edison" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Edisonから、DCプラグを抜き、電源を切って下さい。</p>
+<p>ハンズオン終了後には以下のAWSの設定を削除してください。</p>
+</div>
+</div>
 <div class="section" id="aws-iot">
-<h2>8.1. AWS IoTのリソース削除<a class="headerlink" href="#aws-iot" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>9.2. AWS IoTのリソース削除<a class="headerlink" href="#aws-iot" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>AWS IoTの証明書、ポリシー、デバイスを削除するためには、削除前にアタッチされているリソースをデタッチする必要があります。（ルールは他のリソースとの関連性はありません）</p>
 <ul class="simple">
 <li>マネージメントコンソールのサービスから[AWS IoT]を選択します。</li>
@@ -69,13 +95,96 @@
 <div class="line"><br /></div>
 </div>
 </div>
+<div class="section" id="s3">
+<h2>9.3. S3バケットの削除<a class="headerlink" href="#s3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>サービス一覧から[S3]をクリックして開きます。</p>
+<img alt="_images/6-s3.png" src="_images/6-s3.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>“awsiothandsonstack-&lt;参加者番号&gt;-sensorstoragebucket-&lt;英数字&gt;” のバケットをクリックします。</p>
+<img alt="_images/9-s3-delete.png" src="_images/9-s3-delete.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>バケットの名前を入力して、[確認] をクリックします。</p>
+<img alt="_images/9-s3-delete-2.png" src="_images/9-s3-delete-2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
 <div class="section" id="cloudformation">
-<h2>8.2. CloudFormationスタックの削除<a class="headerlink" href="#cloudformation" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>9.4. CloudFormationスタックの削除<a class="headerlink" href="#cloudformation" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li>マネージメントコンソールのサービス一覧から[CloudFormation]をクリックします。</li>
 <li>リストから&#8221;AWSIoTHandsonStack&#8221;のスタックを選択し、&#8221;Actions&#8221;から[Delete Stack]をクリックします。</li>
 </ul>
 <img alt="_images/8-delete-cf-stack-1.png" src="_images/8-delete-cf-stack-1.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="kinesis-firehose">
+<h2>9.5. Kinesis Firehoseの設定を削除<a class="headerlink" href="#kinesis-firehose" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>マネージメントコンソールのサービス一覧から[Kinesis]をクリックして開きます。[Firehose コンソールに移動]をクリックし、Kinesis Firehoseの設定画面に移動します。</p>
+<p>S3 Delivery Streamsから、&#8221;FromIotToS3-&lt;参加者番号&gt;&#8221; をチェックし、[アクション]から、&#8221;Delete&#8221;を選びます。</p>
+<img alt="_images/6-firehose-delete.png" src="_images/6-firehose-delete.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>確認画面が表示されるので、delivery stream 名を入力し、[Delete]をクリックします。</p>
+<img alt="_images/6-firehose-delete-confirm.png" src="_images/6-firehose-delete-confirm.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="elsticsearch-service">
+<h2>9.6. ElsticSearch Serviceの設定を削除<a class="headerlink" href="#elsticsearch-service" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ElsticSearch Serviceは、オプションシナリオで使用したものです。オプションシナリオ未実施の方は削除する必要はありません。スキップして下さい。</p>
+<p>マネージメントコンソールのサービス一覧から[ElsticSearch Service]をクリックして開きます。
+ドメイン ”awsioth-sensor-&lt;参加者番号&gt;”をクリックします。</p>
+<img alt="_images/6-searchable_documents.png" src="_images/6-searchable_documents.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>画面の下までスクロールし、&#8221;Elasticsearch ドメインの削除&#8221; をクリックすると、[ドメインの削除] ボタンが表示されるので、クリックします。</p>
+<img alt="_images/9-elasticsearch-delete-2.png" src="_images/9-elasticsearch-delete-2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>確認画面が表示されますので、&#8221;ドメインの削除 ....&#8221; にェックを入れ、[削除] ボタンをクリックします。</p>
+<img alt="_images/9-elasticsearch-delete-fonfirm.png" src="_images/9-elasticsearch-delete-fonfirm.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="congnite-id">
+<h2>9.7. Congnite IDプールを削除<a class="headerlink" href="#congnite-id" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>マネージメントコンソールのサービス一覧から [Cognito] をクリックして開き、[フェデレーテッドアイデンティティの管理] をクリックします。</p>
+<img alt="_images/2-cognito-1&#64;2x.png" src="_images/2-cognito-1&#64;2x.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>”AWSIoTHandson &lt;参加者番号&gt;” をクリックします。</p>
+<img alt="_images/9-cognite-delete.png" src="_images/9-cognite-delete.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>[IDプールの編集] をクリックします。</p>
+<img alt="_images/9-cognite-delete-2.png" src="_images/9-cognite-delete-2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>[IDプールの削除] をクリックします。</p>
+<img alt="_images/9-cognite-delete-3.png" src="_images/9-cognite-delete-3.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>確認画面が表示されるので、[プールの削除] をクリックします。</p>
+<img alt="_images/9-cognite-delete-4.png" src="_images/9-cognite-delete-4.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </div>
 </div>
 
@@ -87,19 +196,29 @@
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">目次</a></h3>
             <ul>
-<li><a class="reference external" href="#">8. ハンズオン終了後</a><ul>
-<li><a class="reference external" href="#aws-iot">8.1. AWS IoTのリソース削除</a></li>
-<li><a class="reference external" href="#cloudformation">8.2. CloudFormationスタックの削除</a></li>
+<li><a class="reference external" href="#">9. ハンズオン終了後</a><ul>
+<li><a class="reference external" href="#id2">9.1. ハードウェアの後片付け</a><ul>
+<li><a class="reference external" href="#id3">9.1.1. プログラムを停止する</a></li>
+<li><a class="reference external" href="#id4">9.1.2. ユーザーディレクトリのクリーンアップ</a></li>
+<li><a class="reference external" href="#edison">9.1.3. Edisonの電源を切る</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#aws-iot">9.2. AWS IoTのリソース削除</a></li>
+<li><a class="reference external" href="#s3">9.3. S3バケットの削除</a></li>
+<li><a class="reference external" href="#cloudformation">9.4. CloudFormationスタックの削除</a></li>
+<li><a class="reference external" href="#kinesis-firehose">9.5. Kinesis Firehoseの設定を削除</a></li>
+<li><a class="reference external" href="#elsticsearch-service">9.6. ElsticSearch Serviceの設定を削除</a></li>
+<li><a class="reference external" href="#congnite-id">9.7. Congnite IDプールを削除</a></li>
 </ul>
 </li>
 </ul>
 
             <h4>前のトピックへ</h4>
             <p class="topless"><a href="08.html"
-                                  title="前の章へ">7. その他の設定（オプション）</a></p>
+                                  title="前の章へ">8. その他の設定（オプション）</a></p>
             <h4>次のトピックへ</h4>
             <p class="topless"><a href="10.html"
-                                  title="次の章へ">9. AWS IoT Device SDK解説</a></p>
+                                  title="次の章へ">10. AWS IoT Device SDK解説</a></p>
             <h3>このページ</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/09.txt"
@@ -129,10 +248,10 @@
           <a href="genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="10.html" title="9. AWS IoT Device SDK解説"
+          <a href="10.html" title="10. AWS IoT Device SDK解説"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="08.html" title="7. その他の設定（オプション）"
+          <a href="08.html" title="8. その他の設定（オプション）"
              >前へ</a> |</li>
         <li><a href="index.html">awsiot-handson-basic v0.0 documentation</a> &raquo;</li> 
       </ul>

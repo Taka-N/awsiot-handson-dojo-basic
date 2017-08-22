@@ -234,6 +234,7 @@ Done. Please connect your laptop or PC to the same network as this device and go
 <span class="c1"># rm -rf ./.aws</span>
 <span class="c1"># rm -f ./.profile</span>
 <span class="c1"># rm -f ./.endpoint</span>
+<span class="c1"># rm -f ./.region</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -255,6 +256,8 @@ Done. Please connect your laptop or PC to the same network as this device and go
 </div>
 <div class="section" id="id6">
 <h2>3.6. 環境変数の設定<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id7">
+<h3>3.6.1. 参加者番号<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>参加者番号を設定します。以下の01となっている箇所を各自の参加者番号に変更して実行します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># echo &quot;export HandsOnNumber=01&quot; &gt;&gt; .profile</span>
 <span class="c1"># source ./.profile</span>
@@ -264,8 +267,44 @@ Done. Please connect your laptop or PC to the same network as this device and go
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id7">
-<h2>3.7. ハンズオン用コード、証明書の準備<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id8">
+<h3>3.6.2. リージョン<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>リージョンを設定します。</p>
+<p>バージニア北部の場合</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># echo &quot;export region=us-east-1&quot; &gt;&gt; .region</span>
+<span class="c1"># source ./.region</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>オレゴンの場合</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># echo &quot;export region=us-west-2&quot; &gt;&gt; .region</span>
+<span class="c1"># source ./.region</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>アイルランドの場合</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># echo &quot;export region=eu-west-1&quot; &gt;&gt; .region</span>
+<span class="c1"># source ./.region</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>環境変数に登録します。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># source ./.region</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>3.7. ハンズオン用コード、証明書の準備<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Edison上で以下のコマンドを実行し、本ハンズオン用に用意されているzipファイルのダウンロードと解凍を行います。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># cd</span>
 <span class="c1"># wget https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojo-basic.zip</span>
@@ -306,8 +345,8 @@ cert.pem  get_endpoint.js  privatekey.pem</pre>
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id8">
-<h2>3.8. エンドポイントの設定<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id10">
+<h2>3.8. エンドポイントの設定<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>CloudFormationのOutputに表示されたAccessKeyとSecretKeyをパラメータに指定してスクリプトを実行します。AWS IoTのエンドポイントが取得され、~/.endpoint に書き出されます。source ~/.endpoint で、endpoint情報を環境変数に登録し、デバイス用プログラムで使用します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># node get_endpoint2.js -a &lt;your access key&gt; -s &lt;your secret key&gt;  &gt; ~/.endpoint</span>
 <span class="c1"># source ~/.endpoint</span>
@@ -333,9 +372,13 @@ cert.pem  get_endpoint.js  privatekey.pem</pre>
 <li><a class="reference external" href="#wifi">3.3. WiFi設定</a></li>
 <li><a class="reference external" href="#id5">3.4. Edison環境のクリーンアップ</a></li>
 <li><a class="reference external" href="#aws-sdk">3.5. AWS SDKの準備</a></li>
-<li><a class="reference external" href="#id6">3.6. 環境変数の設定</a></li>
-<li><a class="reference external" href="#id7">3.7. ハンズオン用コード、証明書の準備</a></li>
-<li><a class="reference external" href="#id8">3.8. エンドポイントの設定</a></li>
+<li><a class="reference external" href="#id6">3.6. 環境変数の設定</a><ul>
+<li><a class="reference external" href="#id7">3.6.1. 参加者番号</a></li>
+<li><a class="reference external" href="#id8">3.6.2. リージョン</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#id9">3.7. ハンズオン用コード、証明書の準備</a></li>
+<li><a class="reference external" href="#id10">3.8. エンドポイントの設定</a></li>
 </ul>
 </li>
 </ul>
