@@ -24,72 +24,98 @@ Edisonに接続されたLEDの点灯/消灯をEdisonに接続されたボタン�
 利用するデバイス、アプリケーション、サービス
 ============================================
 
-**インテルEdison**
+インテルEdison
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Intel社が提供する開発用のシングルボードコンピュータです。本ハンズオンではセンサーからのデータ取得してAWS IoTへのデータ送信、LEDの制御に利用します。
     http://www.intel.co.jp/content/www/jp/ja/do-it-yourself/edison.html
 
 |
 
-**Speeed Studio Groveスターターキット**
+Speeed Studio Groveスターターキット
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Aruduinoなどの開発用ボードに接続可能なセンサーやケーブルが同梱されたキット。本ハンズオンではスターターキットの中のセンサーを選んでIntel Edisonに接続し、センサーデータを取得します。
     http://www.seeedstudio.com/document/Grove%20Starter%20Kit.pdf http://www.seeedstudio.com/wiki/GROVE_System
 
 |
 
-**AWSアカウント**
+AWSアカウント
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 センサーデータの保存先、LEDのリモート制御に使用するAWSを利用・管理するためのアカウント。アカウント作成の手順はこちらのとおりです。
     https://aws.amazon.com/jp/register-flow/
 
 |
 
-**AWS IoT**
+AWS IoT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 接続されたデバイスが安全かつ簡単にクラウドアプリケーションやその他のデバイスとやりとりするためのマネージド型プラットフォームです。本ハンズオンではデバイスからのデータ受信、デバイスのリモート制御などで利用します。
     https://aws.amazon.com/jp/iot/
 
 |
 
-**Amazon DynamoDB**
+Amazon DynamoDB
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 マネージド型のNoSQLサービスで、高速で予測可能なパフォーマンスとシームレスな拡張性が特長です。本ハンズオンでは照度センサーで測定したデータを格納する時系列データベースとして利用します。
     https://aws.amazon.com/jp/dynamodb/
 
 |
 
-**Amazon SNS (Simple Notification Service)**
+Amazon SNS (Simple Notification Service)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 メッセージを複数の方式でpub-subが行えるサービスです。本ハンズオンの1では簡易的なメール通知に利用します。
     https://aws.amazon.com/jp/sns/
 
 |
 
-**Amazon S3 (Simple Storage Service)**
+Amazon S3 (Simple Storage Service)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 スケーラブルなクラウドストレージです。Webのコンテンツを配置してWebサーバとしても利用できます。本ハンズオンでは、HTMLファイル、画像ファイル、JavaScriptが保管された別途用意済みのS3を使用します。
     https://aws.amazon.com/jp/sns/
 
 |
 
-**Amazon Cognito**
+Amazon Cognito
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ユーザーアイデンティティおよびデータ同期の機能を提供するサービスです。本ハンズオンでは、Webブラウザからのアクセスに匿名ユーザとしてDynamoDBやLambdaにアクセスできる限定的な権限を付与するのに使用します。
     https://aws.amazon.com/jp/cognito/
 
 |
 
-**AWS Lambda**
+AWS Lambda
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 お客様のコードをイベント発生時やリクエストごとに実行できる管理不要なコンピューティングプラットフォームです。本ハンズオンでは、Webブラウザからのリクエストに応じてAWS IoTの情報を返したり、情報を伝えたりするのに使用します。
     https://aws.amazon.com/jp/lambda/
 
 |
 
-**Amazon CloudWatch**
+Amazon CloudWatch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 AWSクラウドリソースとAWSで実行するアプリケーションのモニタリングサービスです。メトリクスの収集、ログファイルの収集が可能です。本ハンズオンではCloudWatch Logsを利用してAWS IoTのログを収集、閲覧します。
     https://aws.amazon.com/jp/cloudwatch/
+
+|
+
+Amazon Kinesis Firehose
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Amazon Kinesis Firehose は、ストリーミングデータを AWS にロードする最も簡単な方法です。本ハンズオンでは、AWS IoTで取得した温湿度センサーのデータを加工し、S3に保存したり、ElasticSearch Serviceに保存し可視化するために使用します。
+    https://aws.amazon.com/jp/kinesis/firehose/
+
+|
+
+Amazon Elasticsearch Service
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+オープンソースのElasticsearchを利用できるマネージド型のサービスです。本ハンズオンでは、データのストアとElasticsearchで利用できるKibanaを利用してデータの可視化に利用します。
+    https://aws.amazon.com/jp/elasticsearch-service/
 
 |
