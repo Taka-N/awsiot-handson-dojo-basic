@@ -236,7 +236,7 @@ Time-field names               timestamp (リストから選択)
 
 |
 
-Y軸にサンプル数(Count)が設定されている事を確認し、X軸の設定を開始するために[X-Axis]をクリックします。
+Y軸にサンプル数(Count)が設定されている事を確認し、X軸の設定を開始するために [X-Axis] をクリックします。
 
 .. image:: images/6-kibana-visualize-2.png
 
