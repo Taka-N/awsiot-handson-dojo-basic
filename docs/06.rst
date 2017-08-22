@@ -154,9 +154,9 @@ ID             ${timestamp()}
 |
 
 
-"*IAM ロール名" 横の[新しいロールの作成] ボタンを押して、Elasticsearch Search用のロールを作成します。
+"*IAM ロール名" 横の [新しいロールの作成] ボタンを押して、Elasticsearch Search用のロールを作成します。
 
-"*IAM ロール名" 欄に、SaveToElasticSearchRole-<参加者番号> を入力し、[新しいロールの作成] ボタンを押します。
+"*IAM ロール名" 欄に、"SaveToElasticSearchRole-<参加者番号>" と入力し、[新しいロールの作成] ボタンを押します。
 
 新しいロールが作成されるので、メニューから、SaveToElasticSearchRole-<参加者番号> を選択し、[ロールの更新] ボタンを押します。
 
