@@ -39,6 +39,22 @@ Intel Edisonに接続された照度センサーと温度センサーのデー�
 ElasticSearch Serviceのドメインを作成する
 ==============================================
 
+グローバルIPアドレスを調べる
+-------------------------------------
+
+Kibanaを特定のIPアドレスからだけアクセスさせるために、PCのグローバルIPアドレスを調べます。下記のURLにアクセスしてください。
+
+https://www.cman.jp/network/support/go_access.cgi
+
+.. image:: images/grobal_ip.png
+
+|
+
+グローバルIPアドレスが表示されるので、ノートパッドなどにカーク有しておいて下さい。
+
+ElasticSearch Serviceのドメインを作成
+------------------------------------------
+
 サービス一覧から[ElasticSearch Service] をクリックして開きます。
 
 .. image:: images/es.png
@@ -64,19 +80,19 @@ Elasticsearch ドメイン名        awsioth-sensor-<参加者番号>
 |
 
 次の画面では、何も入力せずに、[次へ] をクリックして下さい。
-[テンプレートを選択] で、 "ドメインへのオープンアクセスを許可" を選択して下さい。
+[テンプレートを選択] で、 "特定のIPからのドメインのアクセスを許可" を選択して下さい。
 
 .. image:: images/domain-access-policy.png
 
 |
 
-確認画面が表示されるので、"リスクに同意します" をチェックし、[OK] を押して下さい。
+Iアドレスの入力画面が表示されるので、先ほど記録したグローバルIPアドレスを入力し、[OK] を押して下さい。
 
-.. image:: images/domain-access-policy-risk-confirm.png
+.. image:: images/domain-access-ip_input.png
 
 |
 
-アクセスポリシーが表示されるので、[次へ] をクリックして下さい。
+アクセスポリシーが表示されるので、[次へ] をクリックして下さい。このIPアドレスからのみKibanaへのアクセスが許可されます。
 
 .. image:: images/domain-access-policy-2.png
 
