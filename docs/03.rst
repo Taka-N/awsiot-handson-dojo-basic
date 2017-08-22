@@ -245,6 +245,9 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
 環境変数の設定
 ============
 
+参加者番号
+---------------------
+
 参加者番号を設定します。以下の01となっている箇所を各自の参加者番号に変更して実行します。
 
 ::
@@ -253,6 +256,47 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
     # source ./.profile
 
 |
+
+リージョン
+---------------------
+
+リージョンを設定します。
+
+バージニア北部の場合
+
+::
+
+    # echo "export region=us-east-1" >> .region
+    # source ./.region
+
+|
+
+オレゴンの場合
+
+::
+
+    # echo "export region=us-west-2" >> .region
+    # source ./.region
+
+|
+
+アイルランドの場合
+
+::
+
+    # echo "export region=eu-west-1" >> .region
+    # source ./.region
+
+|
+
+環境変数に登録します。
+
+::
+
+    # source ./.region
+
+|
+
 
 ハンズオン用コード、証明書の準備
 ====================================================
