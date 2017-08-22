@@ -158,7 +158,7 @@ IAMロールを削除
 ===================================
 
 マネージメントコンソールのサービス一覧から[IAM]をクリックして開きます。
-メニューから[ロール]をクリックして下さい。右上の設定アイコンを押して、作成時刻を表示して下さい。作成時刻でソートすると、本ハンズオンで作成したロールが見えます。フィルターに "-<参加者番号>" と入力して絞り込んで下さい。
+メニューから[ロール]をクリックして下さい。右上の設定アイコンを押して、作成時刻を表示して下さい。作成時刻でソートすると、本ハンズオンで作成したロールが見えます。フィルターに "<参加者番号>" と入力して絞り込んで下さい。
 
 .. image:: images/9-IAM-roles.png
 
@@ -166,15 +166,19 @@ IAMロールを削除
 
 本ハンズオンで作成した下記のロールのみにチェックを入れ、[ロールの削除]をクリックして下さい。
 
-SaveToElasticSearchRole-<参加者番号>
-Cognito_AWSIoTHandson<参加者番号>Auth_Role
-Cognito_AWSIoTHandson<参加者番号>Unauth_Role
-AWSIoTHandsonStack-<参加者番号>-SaveToDynamodbRole-<英数字>
-AWSIoTHandsonStack-<参加者番号>-FirehoseDeliveryRole-<英数字>
-AWSIoTHandsonStack-<参加者番号>-NotifyToSNSRole-<英数字>
-AWSIoTHandsonStack-<参加者番号>-SaveToFirehoseRole-<英数字>
-Cognito_AWSIoTHandson<参加者番号>Unauth_Role
-Cognito_AWSIoTHandson<参加者番号>Auth_Role
+===  =======================================================================
+番号
+===  =======================================================================
+1      SaveToElasticSearchRole-<参加者番号>
+2      Cognito_AWSIoTHandson<参加者番号>Auth_Role
+3      Cognito_AWSIoTHandson<参加者番号>Unauth_Role
+4      AWSIoTHandsonStack-<参加者番号>-SaveToDynamodbRole-<英数字>
+5      AWSIoTHandsonStack-<参加者番号>-FirehoseDeliveryRole-<英数字>
+6      AWSIoTHandsonStack-<参加者番号>-NotifyToSNSRole-<英数字>
+7      AWSIoTHandsonStack-<参加者番号>-SaveToFirehoseRole-<英数字>
+8      Cognito_AWSIoTHandson<参加者番号>Unauth_Role
+9      Cognito_AWSIoTHandson<参加者番号>Auth_Role
+===  =======================================================================
 
 .. image:: images/9-IAM-role-delete.png
 
