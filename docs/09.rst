@@ -77,16 +77,6 @@ S3バケットの削除
 |
 
 
-CloudFormationスタックの削除
-============================
-
-- マネージメントコンソールのサービス一覧から[CloudFormation]をクリックします。
-- リストから"AWSIoTHandsonStack"のスタックを選択し、"Actions"から[Delete Stack]をクリックします。
-
-.. image:: images/8-delete-cf-stack-1.png
-
-|
-
 Kinesis Firehoseの設定を削除
 ========================================================
 
@@ -103,6 +93,7 @@ S3 Delivery Streamsから、"FromIotToS3-<参加者番号>" をチェックし�
 .. image:: images/6-firehose-delete-confirm.png
 
 |
+
 
 ElsticSearch Serviceの設定を削除
 ========================================================
@@ -161,3 +152,18 @@ Congnite IDプールを削除
 .. image:: images/9-cognite-delete-4.png
 
 |
+
+
+CloudFormationスタックの削除
+============================
+
+- マネージメントコンソールのサービス一覧から[CloudFormation]をクリックします。
+- リストから"AWSIoTHandsonStack"のスタックを選択し、"Actions"から[Delete Stack]をクリックします。
+
+.. image:: images/8-delete-cf-stack-1.png
+
+|
+
+
+IAMロールを削除
+===================================
