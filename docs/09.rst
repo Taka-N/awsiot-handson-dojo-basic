@@ -102,3 +102,25 @@ ElsticSearch Serviceは、オプションシナリオで使用したものです
 .. image:: images/9-elasticsearch-delete-fonfirm.png
 
 |
+
+
+Congnite IDプールを削除
+========================================================
+
+マネージメントコンソールのサービス一覧から [Cognito] をクリックして開き、[フェデレーテッドアイデンティティの管理] をクリックします。
+
+.. image:: images/2-cognito-1@2x.png
+
+|
+
+”AWSIoTHandson <参加者番号>” をクリックします。
+
+.. image:: images/9-cognite-delete.png
+
+|
+
+[IDプールの編集] をクリックします。
+
+.. image:: images/9-cognite-delete-2.png
+
+|
