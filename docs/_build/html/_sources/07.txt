@@ -82,7 +82,7 @@ Shadowの確認や変更をS3に保存されているWebサイトでもLambdaを
 
 https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/scenario2/IoT+HandsOn+Dojo+Basic+-+Scenario+2_+LED+Remote+Button.html
 
-[Cognito Identity Pool ID]に「2.2. Cognito Identityを手動作成」で作成したCognito Identityの[Identity Pool ID]を、[Member ID]に参加者番号を入力し、[Cognito Unauth Login]をクリックします。
+[Cognito Identity Pool ID]に「Cognito Identityを手動作成」で作成したCognito Identityの[Identity Pool ID]を、[Member ID]に参加者番号を入力し、[Cognito Unauth Login]をクリックします。
 
 .. image:: images/6-webapp-1@2x.png
 

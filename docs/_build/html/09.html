@@ -77,11 +77,11 @@
 </div>
 <div class="section" id="aws-iot">
 <h2>9.2. AWS IoTのリソース削除<a class="headerlink" href="#aws-iot" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>AWS IoTの証明書、ポリシー、デバイスを削除するためには、削除前にアタッチされているリソースをデタッチする必要があります。（ルールは他のリソースとの関連性はありません）</p>
+<p>AWS IoTの証明書、ポリシー、デバイスを削除するためには、削除前にアタッチされているリソースをデタッチする必要があります。</p>
 <ul class="simple">
 <li>マネージメントコンソールのサービスから[AWS IoT]を選択します。</li>
 <li>削除したい証明書を選択します。</li>
-<li>関連付けられているデバイスを選択し、[Detach]をクリックします。</li>
+<li>関連付けられているデバイスを選択し、[デタッチ] をクリックします。</li>
 <li>同様にポリシーもデタッチします。</li>
 </ul>
 <img alt="_images/8-detach-1.png" src="_images/8-detach-1.png" />
@@ -89,11 +89,12 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li>削除したいリソースを選択し、&#8221;Actions&#8221;のメニューから&#8221;Delete”を選択します。</li>
+<li>削除したいリソース (モノ、証明書、ポリシー) を選択し、&#8221;アクション&#8221; のメニューから &#8220;削除” を選択します。</li>
 </ul>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p>ルールも同様に削除して下さい。</p>
 </div>
 <div class="section" id="s3">
 <h2>9.3. S3バケットの削除<a class="headerlink" href="#s3" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -113,21 +114,10 @@
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="cloudformation">
-<h2>9.4. CloudFormationスタックの削除<a class="headerlink" href="#cloudformation" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul class="simple">
-<li>マネージメントコンソールのサービス一覧から[CloudFormation]をクリックします。</li>
-<li>リストから&#8221;AWSIoTHandsonStack&#8221;のスタックを選択し、&#8221;Actions&#8221;から[Delete Stack]をクリックします。</li>
-</ul>
-<img alt="_images/8-delete-cf-stack-1.png" src="_images/8-delete-cf-stack-1.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
 <div class="section" id="kinesis-firehose">
-<h2>9.5. Kinesis Firehoseの設定を削除<a class="headerlink" href="#kinesis-firehose" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>9.4. Kinesis Firehoseの設定を削除<a class="headerlink" href="#kinesis-firehose" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>マネージメントコンソールのサービス一覧から[Kinesis]をクリックして開きます。[Firehose コンソールに移動]をクリックし、Kinesis Firehoseの設定画面に移動します。</p>
-<p>S3 Delivery Streamsから、&#8221;FromIotToS3-&lt;参加者番号&gt;&#8221; をチェックし、[アクション]から、&#8221;Delete&#8221;を選びます。</p>
+<p>S3 Delivery Streamsから、&#8221;FromIotToS3-&lt;参加者番号&gt;&#8221; をチェックし、[Actions] から、&#8221;Delete&#8221; を選びます。</p>
 <img alt="_images/6-firehose-delete.png" src="_images/6-firehose-delete.png" />
 <div class="line-block">
 <div class="line"><br /></div>
@@ -139,7 +129,7 @@
 </div>
 </div>
 <div class="section" id="elsticsearch-service">
-<h2>9.6. ElsticSearch Serviceの設定を削除<a class="headerlink" href="#elsticsearch-service" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>9.5. ElsticSearch Serviceの設定を削除<a class="headerlink" href="#elsticsearch-service" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>ElsticSearch Serviceは、オプションシナリオで使用したものです。オプションシナリオ未実施の方は削除する必要はありません。スキップして下さい。</p>
 <p>マネージメントコンソールのサービス一覧から[ElsticSearch Service]をクリックして開きます。
 ドメイン ”awsioth-sensor-&lt;参加者番号&gt;”をクリックします。</p>
@@ -159,7 +149,7 @@
 </div>
 </div>
 <div class="section" id="congnite-id">
-<h2>9.7. Congnite IDプールを削除<a class="headerlink" href="#congnite-id" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>9.6. Congnite IDプールを削除<a class="headerlink" href="#congnite-id" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>マネージメントコンソールのサービス一覧から [Cognito] をクリックして開き、[フェデレーテッドアイデンティティの管理] をクリックします。</p>
 <img alt="_images/2-cognito-1&#64;2x.png" src="_images/2-cognito-1&#64;2x.png" />
 <div class="line-block">
@@ -186,6 +176,36 @@
 <div class="line"><br /></div>
 </div>
 </div>
+<div class="section" id="iam">
+<h2>9.7. IAMロールを削除<a class="headerlink" href="#iam" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>マネージメントコンソールのサービス一覧から[IAM]をクリックして開きます。
+メニューから[ロール]をクリックして下さい。右上の設定アイコンを押して、作成時刻を表示して下さい。作成時刻でソートすると、本ハンズオンで作成したロールが見えます。フィルターに &#8220;&lt;参加者番号&gt;&#8221; と入力して絞り込んで下さい。</p>
+<img alt="_images/9-IAM-roles.png" src="_images/9-IAM-roles.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>本ハンズオンで作成した下記のロールのみにチェックを入れ、[ロールの削除]をクリックして下さい。</p>
+<img alt="_images/9-IAM-role-delete.png" src="_images/9-IAM-role-delete.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>確認画面が表示されますので、[はい、削除する]をクリックして下さい。</p>
+<img alt="_images/9-IAM-role-delete-confirm.png" src="_images/9-IAM-role-delete-confirm.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="cloudformation">
+<h2>9.8. CloudFormationスタックの削除<a class="headerlink" href="#cloudformation" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>マネージメントコンソールのサービス一覧から[CloudFormation]をクリックします。</li>
+<li>リストから&#8221;AWSIoTHandsonStack&#8221;のスタックを選択し、&#8221;Actions&#8221;から[Delete Stack]をクリックします。</li>
+</ul>
+<img alt="_images/8-delete-cf-stack-1.png" src="_images/8-delete-cf-stack-1.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
 </div>
 
 
@@ -205,10 +225,11 @@
 </li>
 <li><a class="reference external" href="#aws-iot">9.2. AWS IoTのリソース削除</a></li>
 <li><a class="reference external" href="#s3">9.3. S3バケットの削除</a></li>
-<li><a class="reference external" href="#cloudformation">9.4. CloudFormationスタックの削除</a></li>
-<li><a class="reference external" href="#kinesis-firehose">9.5. Kinesis Firehoseの設定を削除</a></li>
-<li><a class="reference external" href="#elsticsearch-service">9.6. ElsticSearch Serviceの設定を削除</a></li>
-<li><a class="reference external" href="#congnite-id">9.7. Congnite IDプールを削除</a></li>
+<li><a class="reference external" href="#kinesis-firehose">9.4. Kinesis Firehoseの設定を削除</a></li>
+<li><a class="reference external" href="#elsticsearch-service">9.5. ElsticSearch Serviceの設定を削除</a></li>
+<li><a class="reference external" href="#congnite-id">9.6. Congnite IDプールを削除</a></li>
+<li><a class="reference external" href="#iam">9.7. IAMロールを削除</a></li>
+<li><a class="reference external" href="#cloudformation">9.8. CloudFormationスタックの削除</a></li>
 </ul>
 </li>
 </ul>

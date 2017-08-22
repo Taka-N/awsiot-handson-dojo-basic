@@ -62,7 +62,8 @@
 </div>
 <div class="section" id="id3">
 <h2>1.2. 利用するデバイス、アプリケーション、サービス<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p><strong>インテルEdison</strong></p>
+<div class="section" id="edison">
+<h3>1.2.1. インテルEdison<a class="headerlink" href="#edison" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="docutils">
 <dt>Intel社が提供する開発用のシングルボードコンピュータです。本ハンズオンではセンサーからのデータ取得してAWS IoTへのデータ送信、LEDの制御に利用します。</dt>
 <dd><a class="reference external" href="http://www.intel.co.jp/content/www/jp/ja/do-it-yourself/edison.html">http://www.intel.co.jp/content/www/jp/ja/do-it-yourself/edison.html</a></dd>
@@ -70,7 +71,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Speeed Studio Groveスターターキット</strong></p>
+</div>
+<div class="section" id="speeed-studio-grove">
+<h3>1.2.2. Speeed Studio Groveスターターキット<a class="headerlink" href="#speeed-studio-grove" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="docutils">
 <dt>Aruduinoなどの開発用ボードに接続可能なセンサーやケーブルが同梱されたキット。本ハンズオンではスターターキットの中のセンサーを選んでIntel Edisonに接続し、センサーデータを取得します。</dt>
 <dd><a class="reference external" href="http://www.seeedstudio.com/document/Grove%20Starter%20Kit.pdf">http://www.seeedstudio.com/document/Grove%20Starter%20Kit.pdf</a> <a class="reference external" href="http://www.seeedstudio.com/wiki/GROVE_System">http://www.seeedstudio.com/wiki/GROVE_System</a></dd>
@@ -78,7 +81,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>AWSアカウント</strong></p>
+</div>
+<div class="section" id="aws">
+<h3>1.2.3. AWSアカウント<a class="headerlink" href="#aws" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="docutils">
 <dt>センサーデータの保存先、LEDのリモート制御に使用するAWSを利用・管理するためのアカウント。アカウント作成の手順はこちらのとおりです。</dt>
 <dd><a class="reference external" href="https://aws.amazon.com/jp/register-flow/">https://aws.amazon.com/jp/register-flow/</a></dd>
@@ -86,7 +91,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>AWS IoT</strong></p>
+</div>
+<div class="section" id="aws-iot">
+<h3>1.2.4. AWS IoT<a class="headerlink" href="#aws-iot" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="docutils">
 <dt>接続されたデバイスが安全かつ簡単にクラウドアプリケーションやその他のデバイスとやりとりするためのマネージド型プラットフォームです。本ハンズオンではデバイスからのデータ受信、デバイスのリモート制御などで利用します。</dt>
 <dd><a class="reference external" href="https://aws.amazon.com/jp/iot/">https://aws.amazon.com/jp/iot/</a></dd>
@@ -94,7 +101,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Amazon DynamoDB</strong></p>
+</div>
+<div class="section" id="amazon-dynamodb">
+<h3>1.2.5. Amazon DynamoDB<a class="headerlink" href="#amazon-dynamodb" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="docutils">
 <dt>マネージド型のNoSQLサービスで、高速で予測可能なパフォーマンスとシームレスな拡張性が特長です。本ハンズオンでは照度センサーで測定したデータを格納する時系列データベースとして利用します。</dt>
 <dd><a class="reference external" href="https://aws.amazon.com/jp/dynamodb/">https://aws.amazon.com/jp/dynamodb/</a></dd>
@@ -102,7 +111,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Amazon SNS (Simple Notification Service)</strong></p>
+</div>
+<div class="section" id="amazon-sns-simple-notification-service">
+<h3>1.2.6. Amazon SNS (Simple Notification Service)<a class="headerlink" href="#amazon-sns-simple-notification-service" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="docutils">
 <dt>メッセージを複数の方式でpub-subが行えるサービスです。本ハンズオンの1では簡易的なメール通知に利用します。</dt>
 <dd><a class="reference external" href="https://aws.amazon.com/jp/sns/">https://aws.amazon.com/jp/sns/</a></dd>
@@ -110,7 +121,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Amazon S3 (Simple Storage Service)</strong></p>
+</div>
+<div class="section" id="amazon-s3-simple-storage-service">
+<h3>1.2.7. Amazon S3 (Simple Storage Service)<a class="headerlink" href="#amazon-s3-simple-storage-service" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="docutils">
 <dt>スケーラブルなクラウドストレージです。Webのコンテンツを配置してWebサーバとしても利用できます。本ハンズオンでは、HTMLファイル、画像ファイル、JavaScriptが保管された別途用意済みのS3を使用します。</dt>
 <dd><a class="reference external" href="https://aws.amazon.com/jp/sns/">https://aws.amazon.com/jp/sns/</a></dd>
@@ -118,7 +131,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Amazon Cognito</strong></p>
+</div>
+<div class="section" id="amazon-cognito">
+<h3>1.2.8. Amazon Cognito<a class="headerlink" href="#amazon-cognito" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="docutils">
 <dt>ユーザーアイデンティティおよびデータ同期の機能を提供するサービスです。本ハンズオンでは、Webブラウザからのアクセスに匿名ユーザとしてDynamoDBやLambdaにアクセスできる限定的な権限を付与するのに使用します。</dt>
 <dd><a class="reference external" href="https://aws.amazon.com/jp/cognito/">https://aws.amazon.com/jp/cognito/</a></dd>
@@ -126,7 +141,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>AWS Lambda</strong></p>
+</div>
+<div class="section" id="aws-lambda">
+<h3>1.2.9. AWS Lambda<a class="headerlink" href="#aws-lambda" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="docutils">
 <dt>お客様のコードをイベント発生時やリクエストごとに実行できる管理不要なコンピューティングプラットフォームです。本ハンズオンでは、Webブラウザからのリクエストに応じてAWS IoTの情報を返したり、情報を伝えたりするのに使用します。</dt>
 <dd><a class="reference external" href="https://aws.amazon.com/jp/lambda/">https://aws.amazon.com/jp/lambda/</a></dd>
@@ -134,13 +151,36 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Amazon CloudWatch</strong></p>
+</div>
+<div class="section" id="amazon-cloudwatch">
+<h3>1.2.10. Amazon CloudWatch<a class="headerlink" href="#amazon-cloudwatch" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="docutils">
 <dt>AWSクラウドリソースとAWSで実行するアプリケーションのモニタリングサービスです。メトリクスの収集、ログファイルの収集が可能です。本ハンズオンではCloudWatch Logsを利用してAWS IoTのログを収集、閲覧します。</dt>
 <dd><a class="reference external" href="https://aws.amazon.com/jp/cloudwatch/">https://aws.amazon.com/jp/cloudwatch/</a></dd>
 </dl>
 <div class="line-block">
 <div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="amazon-kinesis-firehose">
+<h3>1.2.11. Amazon Kinesis Firehose<a class="headerlink" href="#amazon-kinesis-firehose" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="docutils">
+<dt>Amazon Kinesis Firehose は、ストリーミングデータを AWS にロードする最も簡単な方法です。本ハンズオンでは、AWS IoTで取得した温湿度センサーのデータを加工し、S3に保存したり、ElasticSearch Serviceに保存し可視化するために使用します。</dt>
+<dd><a class="reference external" href="https://aws.amazon.com/jp/kinesis/firehose/">https://aws.amazon.com/jp/kinesis/firehose/</a></dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="amazon-elasticsearch-service">
+<h3>1.2.12. Amazon Elasticsearch Service<a class="headerlink" href="#amazon-elasticsearch-service" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="docutils">
+<dt>オープンソースのElasticsearchを利用できるマネージド型のサービスです。本ハンズオンでは、データのストアとElasticsearchで利用できるKibanaを利用してデータの可視化に利用します。</dt>
+<dd><a class="reference external" href="https://aws.amazon.com/jp/elasticsearch-service/">https://aws.amazon.com/jp/elasticsearch-service/</a></dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </div>
 </div>
 </div>
@@ -155,7 +195,21 @@
             <ul>
 <li><a class="reference external" href="#">1. イントロダクション</a><ul>
 <li><a class="reference external" href="#id2">1.1. ハンズオンシナリオ</a></li>
-<li><a class="reference external" href="#id3">1.2. 利用するデバイス、アプリケーション、サービス</a></li>
+<li><a class="reference external" href="#id3">1.2. 利用するデバイス、アプリケーション、サービス</a><ul>
+<li><a class="reference external" href="#edison">1.2.1. インテルEdison</a></li>
+<li><a class="reference external" href="#speeed-studio-grove">1.2.2. Speeed Studio Groveスターターキット</a></li>
+<li><a class="reference external" href="#aws">1.2.3. AWSアカウント</a></li>
+<li><a class="reference external" href="#aws-iot">1.2.4. AWS IoT</a></li>
+<li><a class="reference external" href="#amazon-dynamodb">1.2.5. Amazon DynamoDB</a></li>
+<li><a class="reference external" href="#amazon-sns-simple-notification-service">1.2.6. Amazon SNS (Simple Notification Service)</a></li>
+<li><a class="reference external" href="#amazon-s3-simple-storage-service">1.2.7. Amazon S3 (Simple Storage Service)</a></li>
+<li><a class="reference external" href="#amazon-cognito">1.2.8. Amazon Cognito</a></li>
+<li><a class="reference external" href="#aws-lambda">1.2.9. AWS Lambda</a></li>
+<li><a class="reference external" href="#amazon-cloudwatch">1.2.10. Amazon CloudWatch</a></li>
+<li><a class="reference external" href="#amazon-kinesis-firehose">1.2.11. Amazon Kinesis Firehose</a></li>
+<li><a class="reference external" href="#amazon-elasticsearch-service">1.2.12. Amazon Elasticsearch Service</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

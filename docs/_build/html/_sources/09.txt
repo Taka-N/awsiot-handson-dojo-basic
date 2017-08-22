@@ -37,20 +37,22 @@ Edisonから、DCプラグを抜き、電源を切って下さい。
 AWS IoTのリソース削除
 =====================
 
-AWS IoTの証明書、ポリシー、デバイスを削除するためには、削除前にアタッチされているリソースをデタッチする必要があります。（ルールは他のリソースとの関連性はありません）
+AWS IoTの証明書、ポリシー、デバイスを削除するためには、削除前にアタッチされているリソースをデタッチする必要があります。
 
 - マネージメントコンソールのサービスから[AWS IoT]を選択します。
 - 削除したい証明書を選択します。
-- 関連付けられているデバイスを選択し、[Detach]をクリックします。
+- 関連付けられているデバイスを選択し、[デタッチ] をクリックします。
 - 同様にポリシーもデタッチします。
 
 .. image:: images/8-detach-1.png
 
 |
 
-- 削除したいリソースを選択し、"Actions"のメニューから"Delete”を選択します。
+- 削除したいリソース (モノ、証明書、ポリシー) を選択し、"アクション" のメニューから "削除” を選択します。
 
 |
+
+ルールも同様に削除して下さい。
 
 
 S3バケットの削除
@@ -75,22 +77,12 @@ S3バケットの削除
 |
 
 
-CloudFormationスタックの削除
-============================
-
-- マネージメントコンソールのサービス一覧から[CloudFormation]をクリックします。
-- リストから"AWSIoTHandsonStack"のスタックを選択し、"Actions"から[Delete Stack]をクリックします。
-
-.. image:: images/8-delete-cf-stack-1.png
-
-|
-
 Kinesis Firehoseの設定を削除
 ========================================================
 
 マネージメントコンソールのサービス一覧から[Kinesis]をクリックして開きます。[Firehose コンソールに移動]をクリックし、Kinesis Firehoseの設定画面に移動します。
 
-S3 Delivery Streamsから、"FromIotToS3-<参加者番号>" をチェックし、[アクション]から、"Delete"を選びます。
+S3 Delivery Streamsから、"FromIotToS3-<参加者番号>" をチェックし、[Actions] から、"Delete" を選びます。
 
 .. image:: images/6-firehose-delete.png
 
@@ -101,6 +93,7 @@ S3 Delivery Streamsから、"FromIotToS3-<参加者番号>" をチェックし�
 .. image:: images/6-firehose-delete-confirm.png
 
 |
+
 
 ElsticSearch Serviceの設定を削除
 ========================================================
@@ -157,5 +150,53 @@ Congnite IDプールを削除
 確認画面が表示されるので、[プールの削除] をクリックします。
 
 .. image:: images/9-cognite-delete-4.png
+
+|
+
+
+IAMロールを削除
+===================================
+
+マネージメントコンソールのサービス一覧から[IAM]をクリックして開きます。
+メニューから[ロール]をクリックして下さい。右上の設定アイコンを押して、作成時刻を表示して下さい。作成時刻でソートすると、本ハンズオンで作成したロールが見えます。フィルターに "<参加者番号>" と入力して絞り込んで下さい。
+
+.. image:: images/9-IAM-roles.png
+
+|
+
+本ハンズオンで作成した下記のロールのみにチェックを入れ、[ロールの削除]をクリックして下さい。
+
+===  =======================================================================
+番号
+===  =======================================================================
+1      SaveToElasticSearchRole-<参加者番号>
+2      Cognito_AWSIoTHandson<参加者番号>Auth_Role
+3      Cognito_AWSIoTHandson<参加者番号>Unauth_Role
+4      AWSIoTHandsonStack-<参加者番号>-SaveToDynamodbRole-<英数字>
+5      AWSIoTHandsonStack-<参加者番号>-FirehoseDeliveryRole-<英数字>
+6      AWSIoTHandsonStack-<参加者番号>-NotifyToSNSRole-<英数字>
+7      AWSIoTHandsonStack-<参加者番号>-SaveToFirehoseRole-<英数字>
+8      Cognito_AWSIoTHandson<参加者番号>Unauth_Role
+9      Cognito_AWSIoTHandson<参加者番号>Auth_Role
+===  =======================================================================
+
+.. image:: images/9-IAM-role-delete.png
+
+|
+
+確認画面が表示されますので、[はい、削除する]をクリックして下さい。
+
+.. image:: images/9-IAM-role-delete-confirm.png
+
+|
+
+
+CloudFormationスタックの削除
+============================
+
+- マネージメントコンソールのサービス一覧から[CloudFormation]をクリックします。
+- リストから"AWSIoTHandsonStack"のスタックを選択し、"Actions"から[Delete Stack]をクリックします。
+
+.. image:: images/8-delete-cf-stack-1.png
 
 |

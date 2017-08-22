@@ -268,7 +268,6 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
 ::
 
     # echo "export region=us-east-1" >> .region
-    # source ./.region
 
 |
 
@@ -277,7 +276,6 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
 ::
 
     # echo "export region=us-west-2" >> .region
-    # source ./.region
 
 |
 
@@ -286,7 +284,6 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
 ::
 
     # echo "export region=eu-west-1" >> .region
-    # source ./.region
 
 |
 

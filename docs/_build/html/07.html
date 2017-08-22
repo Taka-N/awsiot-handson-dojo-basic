@@ -111,7 +111,7 @@ Received status 'accepted' on 'edison-01': {"state":{"reported":{"led":"off"}},"
 <p>Shadowの確認や変更をS3に保存されているWebサイトでもLambdaを経由して行う事ができます。Webブラウザに読み込まれたJavaScriptはWebブラウザ上で動作して、CognitoでAWSにアクセスするための一時クレデンシャルを取得し、定期的にLambda経由でShadowの状態を確認して最新のLEDの状態を画像で表示させます。また、On/Offボタンが押されるとJavaScriptはLambdaを経由してShadowの内容を更新します。Shadowの内容が更新されると、AWS IoT Shadowは差分が発生したことをEdisonに通知して、Edison上のプログラムは通知を受けて実際のLEDをOn/Offさせます。</p>
 <p>以下のURLをブラウザで開きます。</p>
 <p><a class="reference external" href="https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/scenario2/IoT+HandsOn+Dojo+Basic+-+Scenario+2_+LED+Remote+Button.html">https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/scenario2/IoT+HandsOn+Dojo+Basic+-+Scenario+2_+LED+Remote+Button.html</a></p>
-<p>[Cognito Identity Pool ID]に「2.2. Cognito Identityを手動作成」で作成したCognito Identityの[Identity Pool ID]を、[Member ID]に参加者番号を入力し、[Cognito Unauth Login]をクリックします。</p>
+<p>[Cognito Identity Pool ID]に「Cognito Identityを手動作成」で作成したCognito Identityの[Identity Pool ID]を、[Member ID]に参加者番号を入力し、[Cognito Unauth Login]をクリックします。</p>
 <img alt="_images/6-webapp-1&#64;2x.png" src="_images/6-webapp-1&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>
