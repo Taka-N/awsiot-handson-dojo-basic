@@ -173,6 +173,8 @@ AWSIoTHandsonStack-<参加者番号>-SaveToDynamodbRole-<英数字>
 AWSIoTHandsonStack-<参加者番号>-FirehoseDeliveryRole-<英数字>
 AWSIoTHandsonStack-<参加者番号>-NotifyToSNSRole-<英数字>
 AWSIoTHandsonStack-<参加者番号>-SaveToFirehoseRole-<英数字>
+Cognito_AWSIoTHandson<参加者番号>Unauth_Role
+Cognito_AWSIoTHandson<参加者番号>Auth_Role
 
 .. image:: images/9-IAM-role-delete.png
 
