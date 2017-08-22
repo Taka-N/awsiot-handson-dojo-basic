@@ -124,3 +124,15 @@ Congnite IDプールを削除
 .. image:: images/9-cognite-delete-2.png
 
 |
+
+[IDプールの削除] をクリックします。
+
+.. image:: images/9-cognite-delete-3.png
+
+|
+
+確認画面が表示されるので、[プールの削除] をクリックします。
+
+.. image:: images/9-cognite-delete-4.png
+
+|
