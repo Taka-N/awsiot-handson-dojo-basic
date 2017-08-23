@@ -11,11 +11,11 @@ Intel Edison上のプログラムは接続されたボタンを監視してボ�
 プログラムの実行
 ==========================
 
-E本ハンズオン用に用意されているzipファイルを解凍したaws-iot-handson-fundamentalsの配下scenario2にシナリオ2用のNode.jsプログラムがあります。プログラムを実行します。
+E本ハンズオン用に用意されているzipファイルを解凍した aws-iot-handson-dojo-basic の配下scenario2にシナリオ2用のNode.jsプログラムがあります。プログラムを実行します。
 
 ::
 
-    # cd ~/aws-iot-handson-fundamentals/scenario2/
+    # cd ~/aws-iot-handson-dojo-basic/scenario2/
     # node main.js
     Connected to Shadow
     -> Sending update {"state":{"reported":{"led":"off"}}}
