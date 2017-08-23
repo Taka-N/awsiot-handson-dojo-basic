@@ -289,8 +289,9 @@ Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperatu
 </div>
 <div class="section" id="id7">
 <h2>5.4. データの受信を確認する<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>AWS IoTの テスト にて、&#8221;発行&#8221;に &#8220;place-a/position-&lt;任意の番号&gt;&#8221; を入力し、[トピックに発行] をクリックすれば、左側の &#8220;サブスクリプション&#8221; 欄に、&#8221;place-a/position-&lt;任意の番号&gt;&#8221;が、表示されます。デバイスから送信されているセンサーデータがリアルタイムで表示されます。</p>
+<p>AWS IoTの テスト にて、&#8221;トピックのサブスクリプション&#8221; に &#8220;place-a/position-&lt;任意の番号&gt;&#8221; を入力し、[トピックへのサブスクライブ] をクリックすれば、左側の &#8220;サブスクリプション&#8221; 欄に、&#8221;place-a/position-&lt;任意の番号&gt;&#8221;が、表示されます。デバイスから送信されているセンサーデータがリアルタイムで表示されます。</p>
 <img alt="_images/5-test-1.png" src="_images/5-test-1.png" />
+<img alt="_images/5-test-15.png" src="_images/5-test-15.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -305,7 +306,7 @@ Publishing: {"timestamp":"2016-04-06T07:05:19.084Z","illuminance":343,"temperatu
 <p>DynamoDBに保存されたデータをS3に保存されているWebサイトでも確認する事ができます。Webブラウザに読み込まれたJavaScriptはWebブラウザ上で動作して、CognitoでAWSにアクセスするための一時クレデンシャルを取得し、DynamoDBに直接アクセスしてデータを取得しグラフ表示します。</p>
 <p>以下のURLをブラウザで開きます。</p>
 <p><a class="reference external" href="https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/scenario1/IoT+HandsOn+Dojo+Basic+-+Scenario+1_+Sensor+Graph.html">https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/scenario1/IoT+HandsOn+Dojo+Basic+-+Scenario+1_+Sensor+Graph.html</a></p>
-<p>[Cognito Identity Pool ID]に「Cognito Identityを手動作成」の章で作成したCognito Identityの[Identity Pool ID]を入力し、[Member ID] に参加者番号を入力し、[Cognito Unauth Login]をクリックします。JavaScriptがバックグラウンドで定期的にDynamoDBにアクセスして新しいセンサー情報が得られればグラフは自動更新されます。</p>
+<p>[Cognito Identity Pool ID]に「Cognito Identityを手動作成」の章で作成したCognito Identityの[Identity Pool ID]を入力し、[Member ID] に 参加者番号 を入力し、[Cognito Unauth Login]をクリックします。JavaScriptがバックグラウンドで定期的にDynamoDBにアクセスして新しいセンサー情報が得られればグラフは自動更新されます。</p>
 <img alt="_images/5-webapp-1&#64;2x.png" src="_images/5-webapp-1&#64;2x.png" />
 <div class="line-block">
 <div class="line"><br /></div>

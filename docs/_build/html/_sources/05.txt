@@ -191,9 +191,10 @@ CloudFormationでStack作成時にメール通知の宛先確認メールが届�
 データの受信を確認する
 ====================================
 
-AWS IoTの テスト にて、"発行"に "place-a/position-<任意の番号>" を入力し、[トピックに発行] をクリックすれば、左側の "サブスクリプション" 欄に、"place-a/position-<任意の番号>"が、表示されます。デバイスから送信されているセンサーデータがリアルタイムで表示されます。
+AWS IoTの テスト にて、"トピックのサブスクリプション" に "place-a/position-<任意の番号>" を入力し、[トピックへのサブスクライブ] をクリックすれば、左側の "サブスクリプション" 欄に、"place-a/position-<任意の番号>"が、表示されます。デバイスから送信されているセンサーデータがリアルタイムで表示されます。
 
 .. image:: images/5-test-1.png
+.. image:: images/5-test-15.png
 
 |
 
@@ -213,7 +214,7 @@ DynamoDBに保存されたデータをS3に保存されているWebサイトで�
 
 https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/scenario1/IoT+HandsOn+Dojo+Basic+-+Scenario+1_+Sensor+Graph.html
 
-[Cognito Identity Pool ID]に「Cognito Identityを手動作成」の章で作成したCognito Identityの[Identity Pool ID]を入力し、[Member ID] に参加者番号を入力し、[Cognito Unauth Login]をクリックします。JavaScriptがバックグラウンドで定期的にDynamoDBにアクセスして新しいセンサー情報が得られればグラフは自動更新されます。
+[Cognito Identity Pool ID]に「Cognito Identityを手動作成」の章で作成したCognito Identityの[Identity Pool ID]を入力し、[Member ID] に 参加者番号 を入力し、[Cognito Unauth Login]をクリックします。JavaScriptがバックグラウンドで定期的にDynamoDBにアクセスして新しいセンサー情報が得られればグラフは自動更新されます。
 
 .. image:: images/5-webapp-1@2x.png
 
