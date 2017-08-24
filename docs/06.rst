@@ -42,7 +42,9 @@ ElasticSearch Serviceのドメインを作成する
 グローバルIPアドレスを調べる
 -------------------------------------
 
-Kibanaを特定のIPアドレスからだけアクセスさせるために、PCのグローバルIPアドレスを調べます。下記のURLにアクセスしてください。
+Kibanaを特定のIPアドレスからだけアクセスさせるために、PCのグローバルIPアドレスを調べます。下記のURLにアクセスしてください。(PCを社内WiFiに接続している場合、Kibanaからアクセスできない場合がありますので、トレーナーが準備したWiFiに接続し直して下さい。)
+
+SSID = awshandson もしくは、awshandson5、パスワード = awshandson
 
 https://www.cman.jp/network/support/go_access.cgi
 
