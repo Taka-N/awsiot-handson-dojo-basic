@@ -99,7 +99,7 @@ IPアドレスの入力画面が表示されるので、先ほど記録した "�
 |
 
 確認画面が出てきますので、[確認] をクリックして下さい。
-Elasticsearch ドメインが出来るまで、10数分かかります。
+Elasticsearch ドメインが出来るまで、15分程度かかります。Elasticsearch ドメインが出来るまでの間、Firehoseのストリームを作成 を行って下さい。
 
 .. image:: images/confirm-create.png
 
@@ -119,6 +119,7 @@ ElasticSearch Serviceへ保存するAWS IoT ルールを作成
 スクリーンショットの赤枠で囲んだ部分について、以下の項目を入力し、[アクションの追加] をクリックします。
 
 .. csv-table::
+
     :header-rows: 1
     :file: table/elasticSearch_rule.csv
 
