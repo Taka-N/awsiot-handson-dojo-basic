@@ -121,7 +121,6 @@ ElasticSearch Serviceへ保存するAWS IoT ルールを作成
 スクリーンショットの赤枠で囲んだ部分について、以下の項目を入力し、[アクションの追加] をクリックします。
 
 .. csv-table::
-
     :header-rows: 1
     :file: table/elasticSearch_rule.csv
 
