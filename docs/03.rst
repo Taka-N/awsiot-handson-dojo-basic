@@ -120,7 +120,7 @@ MacOSをご利用の場合は、ターミナルから以下のコマンドを入
 
 |
 
-プロンプトが表示されれば接続成功です。loginのプロンプトで、ユーザ名”root”、パスワード”Password1”でログインします。
+プロンプトが表示されれば接続成功です。loginのプロンプトで、ユーザ名 ”root”、パスワード ”Password1” でログインします。
 
 ::
 
@@ -131,36 +131,9 @@ MacOSをご利用の場合は、ターミナルから以下のコマンドを入
 |
 
 WiFi設定
-========
+============
 
-WiFiの設定を行います。ログイン後、**configure_edison --wifi** コマンドでSSIDとPSK(パスワード)の設定を実施してください。
-
-::
-
-    configure_edison --wifi
-
-    Configre Edison: WiFi Connection
-
-    Scanning: 8 seconds left..
-    1. Exit WiFi setup
-    2. Manually input a hidden SSID
-    3. Guest
-    4. xxxxxxxxx
-
-    Enter 0 to rescan for networks.
-    Enter 1 to exit.
-    Enter 2 to input a hidden network SSID.
-    Enter a number between 3 to N to choose one of the listed network SSIDs: ←Guestが表示されている番号を入力
-
-    Is Guest corrrect? [Y or N]: ←Yを入力
-
-    What is the network password?: ←WiFiのパスワードを入力
-    Initiating connection to Guest. Please wait...
-    Attempting to enable network access, please check 'wpa_cli status' after a minute to confirm.
-    Done. Please connect your laptop or PC to the same network as this device and go to http://x.x.x.x or http://edison.local in your browser.
-    (Doneが出力されたら成功）
-
-|
+WiFiの設定を行います。
 
 WiFiのSSIDとPSKが明確な場合、下記のコマンドで一括設定できます。
 
@@ -170,7 +143,7 @@ WiFiのSSIDとPSKが明確な場合、下記のコマンドで一括設定でき
 
 |
 
-通常のハンズオンでは、この設定になります。
+通常のハンズオンでは、この設定になります。(SSIDが、awshandson5、 パスワードが、awshandson)
 
 ::
 
@@ -178,19 +151,16 @@ WiFiのSSIDとPSKが明確な場合、下記のコマンドで一括設定でき
 
 |
 
-
-WiFiの接続が不安定な場合、再接続すれば回復することがあります。
-お使いのWiFiネットワークが5GHz帯をサポートしている場合は、安定して通信できますので、可能であれば2.4GHzではなく5GHzのWiFiを使用して下さい。
-
-インターネットに接続できるか確認します。IPアドレスが表示されれば成功です。
+設定を反映させるために、リブートして下さい。
 
 ::
 
-  # curl http://checkip.amazonaws.com/
+  # reboot
 
 |
 
-接続の確認方法
+
+リブート後、再度ログインして下さい。iwconfig でWiFi接続を確認します。
 
 ::
 
@@ -202,16 +172,8 @@ WiFiの接続が不安定な場合、再接続すれば回復することがあ�
 
 |
 
-Frequency:X.X GHz のところで周波数を確認できます。
+ESSIDにSSIDが表示されていれば、OKです。
 
-再接続を行うには、下記を実行して下さい。
-
-::
-
-    # ifconfig wlan0 down
-    # ifconfig wlan0 up
-
-|
 
 Edison環境のクリーンアップ
 ============================
