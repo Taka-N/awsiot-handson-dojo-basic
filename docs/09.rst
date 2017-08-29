@@ -22,7 +22,7 @@
     # rm -rf ./.aws
     # rm -f ./.profile
     # rm -f ./.endpoint
-    # rm -f ./.reasion
+    # rm -f ./.region
 
 |
 
