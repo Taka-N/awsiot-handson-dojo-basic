@@ -262,44 +262,28 @@ root@edison1: ~#</pre>
 <div class="section" id="id8">
 <h3>3.6.2. リージョン<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>リージョンを設定します。下記のいずれかを実行してください。</p>
-<div class="section" id="id9">
-<h4>3.6.2.1. バージニア北部の場合<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p><strong>バージニア北部の場合</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># echo &quot;export region=us-east-1&quot; &gt; .region</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="id10">
-<h4>3.6.2.2. オレゴンの場合<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p><strong>オレゴンの場合</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># echo &quot;export region=us-west-2&quot; &gt; .region</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="id11">
-<h4>3.6.2.3. アイルランドの場合<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p><strong>アイルランドの場合</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># echo &quot;export region=eu-west-1&quot; &gt; .region</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="id12">
-<h4>3.6.2.4. アイルランドの場合<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># echo &quot;export region=eu-west-1&quot; &gt; .region</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
-<div class="section" id="id13">
-<h4>3.6.2.5. 東京の場合<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p><strong>東京の場合</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># echo &quot;export region=ap-northeast-1&quot; &gt; .region</span>
 </pre></div>
 </div>
@@ -307,9 +291,8 @@ root@edison1: ~#</pre>
 <div class="line"><br /></div>
 </div>
 </div>
-</div>
-<div class="section" id="id14">
-<h3>3.6.3. 環境変数にリージョンを登録します<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id9">
+<h3>3.6.3. 環境変数にリージョンを登録します<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># source ./.region</span>
 </pre></div>
 </div>
@@ -318,8 +301,8 @@ root@edison1: ~#</pre>
 </div>
 </div>
 </div>
-<div class="section" id="id15">
-<h2>3.7. ハンズオン用コード、証明書の準備<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id10">
+<h2>3.7. ハンズオン用コード、証明書の準備<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Edison上で以下のコマンドを実行し、本ハンズオン用に用意されているzipファイルのダウンロードと解凍を行います。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># cd</span>
 <span class="c1"># wget https://s3-ap-northeast-1.amazonaws.com/awsiot-handson-dojo-jp/aws-iot-handson-dojo-basic.zip</span>
@@ -360,8 +343,8 @@ cert.pem  get_endpoint.js  privatekey.pem</pre>
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id16">
-<h2>3.8. エンドポイントの設定<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id11">
+<h2>3.8. エンドポイントの設定<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>CloudFormationのOutputに表示されたAccessKeyとSecretKeyをパラメータに指定してスクリプトを実行します。AWS IoTのエンドポイントが取得され、~/.endpoint に書き出されます。source ~/.endpoint で、endpoint情報を環境変数に登録し、デバイス用プログラムで使用します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># node get_endpoint2.js -a &lt;your access key&gt; -s &lt;your secret key&gt;  &gt; ~/.endpoint</span>
 <span class="c1"># source ~/.endpoint</span>
@@ -389,19 +372,12 @@ cert.pem  get_endpoint.js  privatekey.pem</pre>
 <li><a class="reference external" href="#aws-sdk">3.5. AWS SDKの準備</a></li>
 <li><a class="reference external" href="#id6">3.6. 環境変数の設定</a><ul>
 <li><a class="reference external" href="#id7">3.6.1. 参加者番号</a></li>
-<li><a class="reference external" href="#id8">3.6.2. リージョン</a><ul>
-<li><a class="reference external" href="#id9">3.6.2.1. バージニア北部の場合</a></li>
-<li><a class="reference external" href="#id10">3.6.2.2. オレゴンの場合</a></li>
-<li><a class="reference external" href="#id11">3.6.2.3. アイルランドの場合</a></li>
-<li><a class="reference external" href="#id12">3.6.2.4. アイルランドの場合</a></li>
-<li><a class="reference external" href="#id13">3.6.2.5. 東京の場合</a></li>
+<li><a class="reference external" href="#id8">3.6.2. リージョン</a></li>
+<li><a class="reference external" href="#id9">3.6.3. 環境変数にリージョンを登録します</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#id14">3.6.3. 環境変数にリージョンを登録します</a></li>
-</ul>
-</li>
-<li><a class="reference external" href="#id15">3.7. ハンズオン用コード、証明書の準備</a></li>
-<li><a class="reference external" href="#id16">3.8. エンドポイントの設定</a></li>
+<li><a class="reference external" href="#id10">3.7. ハンズオン用コード、証明書の準備</a></li>
+<li><a class="reference external" href="#id11">3.8. エンドポイントの設定</a></li>
 </ul>
 </li>
 </ul>
