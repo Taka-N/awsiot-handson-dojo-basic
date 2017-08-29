@@ -42,7 +42,9 @@ ElasticSearch Serviceのドメインを作成する
 グローバルIPアドレスを調べる
 -------------------------------------
 
-Kibanaを特定のIPアドレスからだけアクセスさせるために、PCのグローバルIPアドレスを調べます。下記のURLにアクセスしてください。
+Kibanaを特定のIPアドレスからだけアクセスさせるために、PCのグローバルIPアドレスを調べます。下記のURLにアクセスしてください。(PCを社内WiFiに接続している場合、Kibanaからアクセスできない場合がありますので、トレーナーが準備したWiFiに接続し直して下さい。)
+
+SSID = awshandson もしくは、awshandson5、パスワード = awshandson
 
 https://www.cman.jp/network/support/go_access.cgi
 
@@ -99,7 +101,7 @@ IPアドレスの入力画面が表示されるので、先ほど記録した "�
 |
 
 確認画面が出てきますので、[確認] をクリックして下さい。
-Elasticsearch ドメインが出来るまで、10数分かかります。
+Elasticsearch ドメインが出来るまで、15分程度かかります。Elasticsearch ドメインが出来るまでの間、Firehoseのストリームを作成 を行って下さい。
 
 .. image:: images/confirm-create.png
 
