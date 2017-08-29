@@ -320,7 +320,7 @@ root@edison1: ~#</pre>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>スクリプトの実行に必要なモジュールのインストールし、「2. AWS環境の準備」の最後でコピーしたCloudFormationのOutputに表示されたAccessKeyとSecretKeyをパラメータに指定してスクリプトを実行します。AWS IoTで証明書の作成と登録が行われます。出力される「証明書ID」をメモ帳にコピーします。次章のAWS IoTの設定の中で証明書を特定するために利用します。</p>
+<p>スクリプトの実行に必要なモジュールのインストールし、「AWS環境の準備」の最後でコピーしたCloudFormationの「出力」に表示された AccessKey と SecretKey をパラメータに指定してスクリプトを実行します。AWS IoTで証明書の作成と登録が行われます。出力される「証明書ID」をメモ帳にコピーします。次章のAWS IoTの設定の中で証明書を特定するために利用します。</p>
 <div class="highlight-python"><pre># node create_cert.js -a &lt;your access key&gt; -s &lt;your secret key&gt;
 certificateId: '&lt;証明書ID&gt;'</pre>
 </div>
@@ -345,7 +345,7 @@ cert.pem  get_endpoint.js  privatekey.pem</pre>
 </div>
 <div class="section" id="id11">
 <h2>3.8. エンドポイントの設定<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>CloudFormationのOutputに表示されたAccessKeyとSecretKeyをパラメータに指定してスクリプトを実行します。AWS IoTのエンドポイントが取得され、~/.endpoint に書き出されます。source ~/.endpoint で、endpoint情報を環境変数に登録し、デバイス用プログラムで使用します。</p>
+<p>CloudFormationの「出力」に表示された AccessKey と SecretKey をパラメータに指定してスクリプトを実行します。AWS IoTのエンドポイントが取得され、~/.endpoint に書き出されます。source ~/.endpoint で、endpoint情報を環境変数に登録し、デバイス用プログラムで使用します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># node get_endpoint2.js -a &lt;your access key&gt; -s &lt;your secret key&gt;  &gt; ~/.endpoint</span>
 <span class="c1"># source ~/.endpoint</span>
 </pre></div>
