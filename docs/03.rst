@@ -207,21 +207,15 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
 
 ::
 
-    # npm install aws-iot-device-sdk
-    # npm install aws-sdk
-    # npm install argv
-    # npm install moment
-
-|
-
-aws-sdk のサイズは26MB程度で、network状況にも因りますが、通常は、1分以内でインストールが終わります。インストールに時間が掛かる場合は、下記のコマンドを入力してみてください。
-
-::
-
     # npm config set registry http://registry.npmjs.org/
 
-|
+    # npm install aws-iot-device-sdk        42 sec
+    # npm install aws-sdk                   45 sec
+    # npm install argv                      12 sec
+    # npm install moment                    15 sec
+                                            ↑ インストール時間の目安
 
+|
 
 
 環境変数の設定
