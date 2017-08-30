@@ -203,7 +203,7 @@ Edison環境のクリーンアップ
 AWS SDKの準備
 =====================
 
-Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをインストールします。インストールには、少し時間が掛かります。
+Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをインストールします。
 
 ::
 
@@ -213,6 +213,16 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
     # npm install moment
 
 |
+
+aws-sdk のサイズは26MB程度で、network状況にも因りますが、通常は、約40秒でインストールが終わります。インストールに時間が掛かる場合は、下記のコマンドを入力してみてください。
+
+::
+
+    # npm config set registry http://registry.npmjs.org/
+
+|
+
+
 
 環境変数の設定
 =================================
