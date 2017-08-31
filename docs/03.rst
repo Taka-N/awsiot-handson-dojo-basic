@@ -213,7 +213,7 @@ Edison上でAWS IoTデバイスSDK、AWS SDK、その他のモジュールをイ
     # npm install aws-sdk                   45 sec
     # npm install argv                      12 sec
     # npm install moment                    15 sec
-                                            ↑ インストール時間の目安
+                                            ↑↑ インストール時間の目安
 
 |
 
