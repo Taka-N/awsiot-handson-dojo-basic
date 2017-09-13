@@ -46,7 +46,7 @@ EdisonにUSBでシリアル接続するのに必要なドライバを以下のUR
 Windowsの場合
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* `Intel Edisonドライバのインストール <https://s3-ap-northeast-1.amazonaws.com/toshiake-iot-handson/classmethod-devday/tools/win/IntelEdisonDriverSetup1.2.1.exe>`_
+* `TeraTerm (zipファイル) <http://www.forest.impress.co.jp/library/software/utf8teraterm/download_10869.html>`_
 
 * `Windows FTDI ドライバのインストール <http://www.ftdichip.com/Drivers/CDM/CDM%20v2.10.00%20WHQL%20Certified.exe>`_
 
